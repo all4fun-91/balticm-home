@@ -1,4 +1,4 @@
-const BACKEND = "https://balticm-home-preview.all4fun91.workers.dev";
+const BACKEND = "https://balticm.eu";
 
 function readBody(req) {
   return new Promise((resolve, reject) => {
@@ -39,8 +39,6 @@ export default async function handler(req, res) {
 
     res.statusCode = upstream.status;
 
-    // Preserve every Set-Cookie header and make the login session usable on
-    // the temporary Vercel hostname as well as the final balticm.eu domain.
     const setCookies = typeof upstream.headers.getSetCookie === "function"
       ? upstream.headers.getSetCookie()
       : [];
@@ -55,8 +53,6 @@ export default async function handler(req, res) {
       res.setHeader("Set-Cookie", setCookies.map(cookie => rewriteCookie(cookie, incoming.hostname)));
     }
 
-    // Keep OAuth redirects on the public host instead of exposing the
-    // Cloudflare worker origin behind the Vercel proxy.
     const location = upstream.headers.get("location");
     if (location) {
       try {
