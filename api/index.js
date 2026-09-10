@@ -16,13 +16,13 @@ function rewriteCookie(value, host) {
 
 function tightenHomepage(html) {
   const patch = `<style id="balticm-home-hero-spacing">
-.hero-inner{transform:translateY(-52px)!important}
+.hero-inner{transform:translateY(-90px)!important}
 .hero h1{margin-top:10px!important;margin-bottom:10px!important}
 .eyebrow{margin-bottom:0!important}
 .lead{margin-top:0!important}
-@media(max-width:600px){.hero-inner{transform:translateY(-34px)!important}.hero h1{margin-top:8px!important;margin-bottom:9px!important}}
+@media(max-width:600px){.hero-inner{transform:translateY(-42px)!important}.hero h1{margin-top:8px!important;margin-bottom:9px!important}}
 </style>`;
-  if (html.includes('id="balticm-home-hero-spacing"')) return html;
+  if (html.includes('id="balticm-home-hero-spacing"')) return html.replace(/<style id="balticm-home-hero-spacing">[\s\S]*?<\/style>/, patch);
   return html.includes("</head>") ? html.replace("</head>", patch + "</head>") : html;
 }
 
