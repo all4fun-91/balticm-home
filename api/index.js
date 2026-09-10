@@ -1,4 +1,4 @@
-const BACKEND = "https://balticm.eu";
+const BACKEND = "https://balticm-home-preview.all4fun91.workers.dev";
 
 function readBody(req) {
   return new Promise((resolve, reject) => {
