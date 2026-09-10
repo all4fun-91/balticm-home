@@ -21,8 +21,8 @@ function tightenHomepage(html) {
 .hero h1{margin-top:7px!important;margin-bottom:6px!important}
 .eyebrow{margin-bottom:0!important}
 .lead{margin-top:0!important}
-.stats{margin-top:-55px!important}
-@media(max-width:600px){.hero{min-height:405px!important}.hero-inner{transform:translateY(-26px)!important}.hero h1{margin-top:6px!important;margin-bottom:6px!important}.stats{margin-top:-28px!important}}
+.stats{margin-top:-110px!important}
+@media(max-width:600px){.hero{min-height:405px!important}.hero-inner{transform:translateY(-26px)!important}.hero h1{margin-top:6px!important;margin-bottom:6px!important}.stats{margin-top:-55px!important}}
 </style>`;
   if (html.includes('id="balticm-home-hero-spacing"')) return html.replace(/<style id="balticm-home-hero-spacing">[\s\S]*?<\/style>/, patch);
   return html.includes("</head>") ? html.replace("</head>", patch + "</head>") : html;
@@ -30,9 +30,9 @@ function tightenHomepage(html) {
 
 function injectProfileAvatar(html) {
   const patch = `<script id="balticm-profile-avatar-sync">
-(async()=>{try{const target=document.querySelector('.home-avatar');if(!target)return;const r=await fetch('/profile',{credentials:'include',cache:'no-store'});if(!r.ok)return;const text=await r.text();const doc=new DOMParser().parseFromString(text,'text/html');const img=doc.querySelector('.hero-avatar img');if(!img?.src)return;target.innerHTML='';const a=document.createElement('img');a.src=img.src;a.alt='';a.referrerPolicy='no-referrer';target.appendChild(a)}catch{}})();
+(async()=>{try{const target=document.querySelector('.home-avatar');if(!target)return;const r=await fetch('/profile',{credentials:'include',cache:'no-store'});if(!r.ok)return;const text=await r.text();const doc=new DOMParser().parseFromString(text,'text/html');const img=doc.querySelector('.hero-avatar img, .profile-menu img, img[src*="steamcommunity.com"], img[src*="steamstatic.com"]');if(!img?.src)return;target.innerHTML='';const a=document.createElement('img');a.src=img.src;a.alt='';a.referrerPolicy='no-referrer';a.style.width='100%';a.style.height='100%';a.style.objectFit='cover';a.style.borderRadius='7px';target.appendChild(a)}catch{}})();
 </script>`;
-  if (html.includes('id="balticm-profile-avatar-sync"')) return html;
+  if (html.includes('id="balticm-profile-avatar-sync"')) return html.replace(/<script id="balticm-profile-avatar-sync">[\s\S]*?<\/script>/, patch);
   return html.includes("</body>") ? html.replace("</body>", patch + "</body>") : html + patch;
 }
 
