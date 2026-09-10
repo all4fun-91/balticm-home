@@ -14,6 +14,18 @@ function rewriteCookie(value, host) {
   return value.replace(/;\s*Domain=\.balticm\.eu/gi, "");
 }
 
+function tightenHomepage(html) {
+  const patch = `<style id="balticm-home-hero-spacing">
+.hero-inner{transform:translateY(-52px)!important}
+.hero h1{margin-top:10px!important;margin-bottom:10px!important}
+.eyebrow{margin-bottom:0!important}
+.lead{margin-top:0!important}
+@media(max-width:600px){.hero-inner{transform:translateY(-34px)!important}.hero h1{margin-top:8px!important;margin-bottom:9px!important}}
+</style>`;
+  if (html.includes('id="balticm-home-hero-spacing"')) return html;
+  return html.includes("</head>") ? html.replace("</head>", patch + "</head>") : html;
+}
+
 export default async function handler(req, res) {
   try {
     const incoming = new URL(req.url || "/", `https://${req.headers.host || "balticm-home.vercel.app"}`);
@@ -45,7 +57,7 @@ export default async function handler(req, res) {
 
     upstream.headers.forEach((value, key) => {
       const lower = key.toLowerCase();
-      if (lower === "content-encoding" || lower === "set-cookie") return;
+      if (lower === "content-encoding" || lower === "set-cookie" || lower === "content-length") return;
       res.setHeader(key, value);
     });
 
@@ -69,7 +81,11 @@ export default async function handler(req, res) {
       }
     }
 
-    const buffer = Buffer.from(await upstream.arrayBuffer());
+    let buffer = Buffer.from(await upstream.arrayBuffer());
+    const contentType = upstream.headers.get("content-type") || "";
+    if (incoming.pathname === "/" && contentType.includes("text/html")) {
+      buffer = Buffer.from(tightenHomepage(buffer.toString("utf8")), "utf8");
+    }
     res.end(buffer);
   } catch (error) {
     console.error("BalticM backend proxy error", error);
