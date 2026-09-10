@@ -30,7 +30,39 @@ function tightenHomepage(html) {
 
 function injectProfileAvatar(html) {
   const patch = `<script id="balticm-profile-avatar-sync">
-(async()=>{try{const target=document.querySelector('.home-avatar');if(!target)return;const r=await fetch('/profile',{credentials:'include',cache:'no-store'});if(!r.ok)return;const text=await r.text();const doc=new DOMParser().parseFromString(text,'text/html');const img=doc.querySelector('.hero-avatar img, .profile-menu img, img[src*="steamcommunity.com"], img[src*="steamstatic.com"]');if(!img?.src)return;target.innerHTML='';const a=document.createElement('img');a.src=img.src;a.alt='';a.referrerPolicy='no-referrer';a.style.width='100%';a.style.height='100%';a.style.objectFit='cover';a.style.borderRadius='7px';target.appendChild(a)}catch{}})();
+(async()=>{try{
+  const target=document.querySelector('.home-avatar');
+  if(!target)return;
+  const r=await fetch('/profile?avatar_sync=1',{credentials:'include',cache:'no-store'});
+  if(!r.ok)return;
+  const text=await r.text();
+  const doc=new DOMParser().parseFromString(text,'text/html');
+  const box=doc.querySelector('.hero-avatar');
+  let src='';
+  const img=box?.querySelector('img')||doc.querySelector('.hero-avatar img');
+  if(img?.src)src=img.src;
+  if(!src&&box){
+    const raw=box.getAttribute('style')||'';
+    const m=raw.match(/url\\([\\"']?([^\\)\\"']+)[\\"']?\\)/i);
+    if(m)src=m[1];
+    if(!src)src=box.getAttribute('data-avatar')||box.getAttribute('data-avatar-url')||box.getAttribute('data-src')||'';
+  }
+  if(!src){
+    const candidate=doc.querySelector('img[src*="steamcommunity.com"],img[src*="steamstatic.com"],img[src*="discordapp.com"],img[src*="discordapp.net"],img[src*="cdn.discordapp.com"]');
+    if(candidate?.src)src=candidate.src;
+  }
+  if(!src)return;
+  target.innerHTML='';
+  const a=document.createElement('img');
+  a.src=src;
+  a.alt='';
+  a.referrerPolicy='no-referrer';
+  a.style.width='100%';
+  a.style.height='100%';
+  a.style.objectFit='cover';
+  a.style.borderRadius='7px';
+  target.appendChild(a);
+}catch{}})();
 </script>`;
   if (html.includes('id="balticm-profile-avatar-sync"')) return html.replace(/<script id="balticm-profile-avatar-sync">[\s\S]*?<\/script>/, patch);
   return html.includes("</body>") ? html.replace("</body>", patch + "</body>") : html + patch;
