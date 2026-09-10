@@ -1,4 +1,4 @@
-const BACKEND = "https://balticm-home-preview.all4fun91.workers.dev";
+const BACKEND = "https://balticm.eu";
 
 function readBody(req) {
   return new Promise((resolve, reject) => {
@@ -29,7 +29,7 @@ export default async function handler(req, res) {
       res.setHeader(key, value);
     });
     const location = upstream.headers.get("location");
-    if (location && location.includes("balticm-home-preview.all4fun91.workers.dev")) {
+    if (location && location.includes("balticm.eu")) {
       const rewritten = new URL(location);
       rewritten.host = incoming.host;
       rewritten.protocol = incoming.protocol;
