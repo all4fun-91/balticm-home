@@ -16,13 +16,13 @@ function rewriteCookie(value, host) {
 
 function tightenHomepage(html) {
   const patch = `<style id="balticm-home-hero-spacing">
-.hero{min-height:450px!important}
-.hero-inner{transform:translateY(-55px)!important}
-.hero h1{margin-top:8px!important;margin-bottom:7px!important}
+.hero{min-height:420px!important}
+.hero-inner{transform:translateY(-42px)!important}
+.hero h1{margin-top:7px!important;margin-bottom:6px!important}
 .eyebrow{margin-bottom:0!important}
 .lead{margin-top:0!important}
-.stats{margin-top:-65px!important}
-@media(max-width:600px){.hero{min-height:430px!important}.hero-inner{transform:translateY(-30px)!important}.hero h1{margin-top:7px!important;margin-bottom:7px!important}.stats{margin-top:-32px!important}}
+.stats{margin-top:-55px!important}
+@media(max-width:600px){.hero{min-height:405px!important}.hero-inner{transform:translateY(-26px)!important}.hero h1{margin-top:6px!important;margin-bottom:6px!important}.stats{margin-top:-28px!important}}
 </style>`;
   if (html.includes('id="balticm-home-hero-spacing"')) return html.replace(/<style id="balticm-home-hero-spacing">[\s\S]*?<\/style>/, patch);
   return html.includes("</head>") ? html.replace("</head>", patch + "</head>") : html;
