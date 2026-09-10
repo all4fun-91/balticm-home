@@ -37,13 +37,13 @@ function injectProfileAvatar(html) {
   if(!r.ok)return;
   const text=await r.text();
   const doc=new DOMParser().parseFromString(text,'text/html');
-  const box=doc.querySelector('.hero-avatar');
+  const box=doc.querySelector('.avatar');
   let src='';
-  const img=box?.querySelector('img')||doc.querySelector('.hero-avatar img');
+  const img=box?.querySelector('img')||doc.querySelector('.avatar img');
   if(img?.src)src=img.src;
   if(!src&&box){
     const raw=box.getAttribute('style')||'';
-    const m=raw.match(/url\\([\\"']?([^\\)\\"']+)[\\"']?\\)/i);
+    const m=raw.match(/url\([\"']?([^\)\"']+)[\"']?\)/i);
     if(m)src=m[1];
     if(!src)src=box.getAttribute('data-avatar')||box.getAttribute('data-avatar-url')||box.getAttribute('data-src')||'';
   }
