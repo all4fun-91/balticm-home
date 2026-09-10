@@ -37,15 +37,17 @@ function injectProfileAvatar(html) {
   if(!r.ok)return;
   const text=await r.text();
   const doc=new DOMParser().parseFromString(text,'text/html');
-  const box=doc.querySelector('.avatar');
   let src='';
-  const img=box?.querySelector('img')||doc.querySelector('.avatar img');
-  if(img?.src)src=img.src;
-  if(!src&&box){
-    const raw=box.getAttribute('style')||'';
-    const m=raw.match(/url\([\"']?([^\)\"']+)[\"']?\)/i);
-    if(m)src=m[1];
-    if(!src)src=box.getAttribute('data-avatar')||box.getAttribute('data-avatar-url')||box.getAttribute('data-src')||'';
+  const img=doc.querySelector('.avatar img')||doc.querySelector('.hero-avatar img')||doc.querySelector('.avatar img[src]');
+  if(img?.getAttribute('src'))src=img.getAttribute('src');
+  if(!src){
+    const box=doc.querySelector('.avatar')||doc.querySelector('.hero-avatar');
+    if(box){
+      const raw=box.getAttribute('style')||'';
+      const m=raw.match(/url\\([\\"']?([^\\)\\"']+)[\\"']?\\)/i);
+      if(m)src=m[1];
+      if(!src)src=box.getAttribute('data-avatar')||box.getAttribute('data-avatar-url')||box.getAttribute('data-src')||'';
+    }
   }
   if(!src){
     const candidate=doc.querySelector('img[src*="steamcommunity.com"],img[src*="steamstatic.com"],img[src*="discordapp.com"],img[src*="discordapp.net"],img[src*="cdn.discordapp.com"]');
