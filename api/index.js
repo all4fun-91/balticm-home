@@ -28,6 +28,14 @@ function tightenHomepage(html) {
   return html.includes("</head>") ? html.replace("</head>", patch + "</head>") : html;
 }
 
+function injectProfileAvatar(html) {
+  const patch = `<script id="balticm-profile-avatar-sync">
+(async()=>{try{const target=document.querySelector('.home-avatar');if(!target)return;const r=await fetch('/profile',{credentials:'include',cache:'no-store'});if(!r.ok)return;const text=await r.text();const doc=new DOMParser().parseFromString(text,'text/html');const img=doc.querySelector('.hero-avatar img');if(!img?.src)return;target.innerHTML='';const a=document.createElement('img');a.src=img.src;a.alt='';a.referrerPolicy='no-referrer';target.appendChild(a)}catch{}})();
+</script>`;
+  if (html.includes('id="balticm-profile-avatar-sync"')) return html;
+  return html.includes("</body>") ? html.replace("</body>", patch + "</body>") : html + patch;
+}
+
 export default async function handler(req, res) {
   try {
     const incoming = new URL(req.url || "/", `https://${req.headers.host || "balticm-home.vercel.app"}`);
@@ -86,7 +94,10 @@ export default async function handler(req, res) {
     let buffer = Buffer.from(await upstream.arrayBuffer());
     const contentType = upstream.headers.get("content-type") || "";
     if (incoming.pathname === "/" && contentType.includes("text/html")) {
-      buffer = Buffer.from(tightenHomepage(buffer.toString("utf8")), "utf8");
+      let html = buffer.toString("utf8");
+      html = tightenHomepage(html);
+      html = injectProfileAvatar(html);
+      buffer = Buffer.from(html, "utf8");
     }
     res.end(buffer);
   } catch (error) {
