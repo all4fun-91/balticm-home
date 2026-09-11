@@ -24,10 +24,10 @@ jobs:
         run: |
           $ErrorActionPreference = 'Stop'
           $app = 'C:\BalticM\balticm-home'
-          $pids = Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue |
+          $processIds = Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue |
             Select-Object -ExpandProperty OwningProcess -Unique
-          foreach ($pid in $pids) {
-            Stop-Process -Id $pid -Force -ErrorAction SilentlyContinue
+          foreach ($processId in $processIds) {
+            Stop-Process -Id $processId -Force -ErrorAction SilentlyContinue
           }
           Start-Sleep -Seconds 2
           Start-Process -FilePath 'node.exe' -ArgumentList 'server.mjs' -WorkingDirectory $app -WindowStyle Hidden
