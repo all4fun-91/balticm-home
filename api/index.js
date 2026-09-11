@@ -70,6 +70,28 @@ function injectProfileAvatar(html) {
   return html.includes("</body>") ? html.replace("</body>", patch + "</body>") : html + patch;
 }
 
+function polishProfile(html) {
+  const patch = `<style id="balticm-profile-nav-polish">
+.bm-profile-back{position:fixed!important;left:24px!important;top:24px!important;z-index:99999!important;height:42px!important;display:inline-flex!important;align-items:center!important;gap:8px!important;padding:0 15px!important;border:1px solid rgba(87,176,255,.42)!important;border-radius:10px!important;background:rgba(4,12,23,.92)!important;color:#e9f4ff!important;text-decoration:none!important;font:800 10px/1 Inter,system-ui,sans-serif!important;letter-spacing:.08em!important;box-shadow:0 8px 28px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.06)!important;backdrop-filter:blur(12px)!important}
+.bm-profile-logout{position:fixed!important;right:24px!important;top:24px!important;z-index:99999!important;height:42px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;padding:0 15px!important;border:1px solid rgba(255,89,108,.38)!important;border-radius:10px!important;background:rgba(25,7,13,.92)!important;color:#fff!important;text-decoration:none!important;font:800 10px/1 Inter,system-ui,sans-serif!important;letter-spacing:.08em!important;box-shadow:0 8px 28px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.06)!important;backdrop-filter:blur(12px)!important}
+.bm-profile-back:hover{border-color:rgba(87,200,255,.8)!important;transform:translateY(-1px)}
+.bm-profile-logout:hover{border-color:rgba(255,106,124,.85)!important;background:rgba(45,9,18,.95)!important;transform:translateY(-1px)}
+@media(max-width:600px){.bm-profile-back,.bm-profile-logout{top:12px!important;height:38px!important;padding:0 11px!important;font-size:9px!important}.bm-profile-back{left:12px!important}.bm-profile-logout{right:12px!important}}
+</style>
+<script id="balticm-profile-nav-polish-script">
+(()=>{
+  const text=n=>(n?.textContent||'').replace(/\\s+/g,' ').trim().toUpperCase();
+  document.querySelectorAll('a,button').forEach(el=>{const t=text(el);if(t==='BACK HOME'||t==='HOME'&&/profile/i.test(location.pathname))el.style.display='none'});
+  const old=document.querySelector('.bm-profile-back'); if(old)old.remove();
+  const oldOut=document.querySelector('.bm-profile-logout'); if(oldOut)oldOut.remove();
+  const back=document.createElement('a');back.className='bm-profile-back';back.href='/';back.textContent='← BACK TO BALTICM';document.body.appendChild(back);
+  const out=document.createElement('a');out.className='bm-profile-logout';out.href='/logout';out.textContent='LOGOUT';document.body.appendChild(out);
+})();
+</script>`;
+  if (html.includes('id="balticm-profile-nav-polish"')) return html;
+  return html.includes("</head>") ? html.replace("</head>", patch + "</head>") : html + patch;
+}
+
 export default async function handler(req, res) {
   try {
     const incoming = new URL(req.url || "/", `https://${req.headers.host || "balticm-home.vercel.app"}`);
@@ -127,11 +149,17 @@ export default async function handler(req, res) {
 
     let buffer = Buffer.from(await upstream.arrayBuffer());
     const contentType = upstream.headers.get("content-type") || "";
-    if (incoming.pathname === "/" && contentType.includes("text/html")) {
+    if (contentType.includes("text/html")) {
       let html = buffer.toString("utf8");
-      html = tightenHomepage(html);
-      html = injectProfileAvatar(html);
+      if (incoming.pathname === "/") {
+        html = tightenHomepage(html);
+        html = injectProfileAvatar(html);
+      }
+      if (incoming.pathname === "/profile") html = polishProfile(html);
       buffer = Buffer.from(html, "utf8");
+      if (["/profile","/forum","/messages","/notifications","/friends","/online","/statistics","/login"].includes(incoming.pathname)) {
+        res.setHeader("Cache-Control", "private, no-store, max-age=0, must-revalidate");
+      }
     }
     res.end(buffer);
   } catch (error) {
