@@ -1,0 +1,34 @@
+name: Deploy BalticM to VPS
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Update VPS working copy
+        shell: powershell
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $app = 'C:\BalticM\balticm-home'
+          git -C $app fetch origin main
+          git -C $app reset --hard origin/main
+
+      - name: Restart BalticM Node server
+        shell: powershell
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $app = 'C:\BalticM\balticm-home'
+          Get-CimInstance Win32_Process -Filter "Name = 'node.exe'" |
+            Where-Object { $_.CommandLine -like '*server.mjs*' -and $_.CommandLine -like "*$app*" } |
+            ForEach-Object { Stop-Process -Id $_.ProcessId -Force }
+          Start-Sleep -Seconds 2
+          Start-Process -FilePath 'node.exe' -ArgumentList 'server.mjs' -WorkingDirectory $app -WindowStyle Hidden
+          Start-Sleep -Seconds 3
+          $listening = Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue
+          if (-not $listening) { throw 'BalticM is not listening on port 3000 after restart.' }
