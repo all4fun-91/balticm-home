@@ -24,9 +24,11 @@ jobs:
         run: |
           $ErrorActionPreference = 'Stop'
           $app = 'C:\BalticM\balticm-home'
-          Get-CimInstance Win32_Process -Filter "Name = 'node.exe'" |
-            Where-Object { $_.CommandLine -like '*server.mjs*' -and $_.CommandLine -like "*$app*" } |
-            ForEach-Object { Stop-Process -Id $_.ProcessId -Force }
+          $pids = Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue |
+            Select-Object -ExpandProperty OwningProcess -Unique
+          foreach ($pid in $pids) {
+            Stop-Process -Id $pid -Force -ErrorAction SilentlyContinue
+          }
           Start-Sleep -Seconds 2
           Start-Process -FilePath 'node.exe' -ArgumentList 'server.mjs' -WorkingDirectory $app -WindowStyle Hidden
           Start-Sleep -Seconds 3
