@@ -28,14 +28,10 @@
             </div>
 
             <div class="bm-nav-right">
-                @if($server && $server->isOnline())
-                    <a class="bm-server-pill" href="{{ $server->joinUrl() ?: '#' }}">
-                        <i></i><span>{{ $server->name }}</span>
-                    </a>
-                @endif
-
                 @auth
-                    <a class="bm-icon-btn" href="{{ route('notifications') }}" aria-label="Notifications"><i class="bi bi-bell"></i></a>
+                    <a class="bm-icon-btn" href="#" aria-label="Messages" title="Messages"><i class="bi bi-chat-square-text"></i></a>
+                    <a class="bm-icon-btn" href="#" aria-label="Search" title="Search"><i class="bi bi-search"></i></a>
+                    <a class="bm-icon-btn" href="{{ route('notifications') }}" aria-label="Notifications" title="Notifications"><i class="bi bi-bell"></i></a>
                     <div class="dropdown">
                         <button class="bm-login bm-user-btn dropdown-toggle" data-bs-toggle="dropdown" type="button">{{ Auth::user()->name }}</button>
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
@@ -51,6 +47,9 @@
                     </div>
                     <form id="bm-logout" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
                 @else
+                    <a class="bm-icon-btn" href="#" aria-label="Messages" title="Messages"><i class="bi bi-chat-square-text"></i></a>
+                    <a class="bm-icon-btn" href="#" aria-label="Search" title="Search"><i class="bi bi-search"></i></a>
+                    <a class="bm-icon-btn" href="{{ route('notifications') }}" aria-label="Notifications" title="Notifications"><i class="bi bi-bell"></i></a>
                     @if(Route::has('register'))
                         <a class="bm-register" href="{{ route('register') }}">REGISTER</a>
                     @endif
