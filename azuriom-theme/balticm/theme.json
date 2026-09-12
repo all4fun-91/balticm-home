@@ -1,0 +1,11 @@
+{
+  "id": "balticm",
+  "name": "BalticM",
+  "version": "1.0.0",
+  "description": "BalticM custom theme for Azuriom.",
+  "url": "https://balticm.eu",
+  "authors": [
+    "BalticM"
+  ],
+  "azuriom_api": "1.2.0"
+}
