@@ -46,22 +46,33 @@
 .bm-login-card h1{margin:8px 0 7px;font-size:34px;letter-spacing:-.03em;color:#f5f8ff}
 .bm-auth-lead{margin:0 0 25px;color:#718198;font-size:12px}
 .bm-auth-providers{display:flex;flex-direction:column;gap:10px;text-align:left}
-.bm-auth-provider{min-height:68px;display:flex;align-items:center;gap:14px;padding:13px 15px;border:1px solid rgba(102,164,220,.17);border-radius:11px;background:rgba(8,19,32,.78);color:#edf5ff;text-decoration:none;transition:transform .18s ease,border-color .18s ease,background .18s ease,box-shadow .18s ease}
-.bm-auth-provider:hover{transform:translateY(-1px);border-color:rgba(67,177,255,.5);background:rgba(12,31,51,.96);color:#fff;box-shadow:0 10px 30px rgba(0,0,0,.22)}
-.bm-auth-provider>i:first-child{width:38px;text-align:center;font-size:22px;color:#e9f5ff}
-.bm-auth-provider span{display:flex;flex:1;flex-direction:column;gap:3px}
-.bm-auth-provider b{font-size:12px;font-weight:850}
-.bm-auth-provider small{font-size:9px;color:#718198}
-.bm-provider-arrow{font-size:14px!important;color:#5f7997!important}
-.bm-steam:hover>i:first-child{color:#8ed3ff}
-.bm-discord:hover>i:first-child{color:#7289da}
-.bm-google:hover>i:first-child{color:#fff}
-.bm-provider-disabled{opacity:.62;cursor:default}
-.bm-provider-disabled:hover{transform:none;border-color:rgba(102,164,220,.17);background:rgba(8,19,32,.78);box-shadow:none}
-.bm-provider-soon{flex:0!important;font-size:7px!important;letter-spacing:.12em;color:#5f7997!important;font-weight:900!important}
+.bm-auth-provider{min-height:64px;display:flex;align-items:center;gap:14px;padding:0 17px;border:1px solid rgba(102,164,220,.2);border-radius:11px;background:rgba(8,19,32,.86);color:#edf5ff;text-decoration:none;transition:transform .18s ease,border-color .18s ease,background .18s ease,box-shadow .18s ease}
+.bm-auth-provider:hover{transform:translateY(-1px);color:#fff;box-shadow:0 12px 30px rgba(0,0,0,.25)}
+.bm-provider-icon{width:34px;height:34px;display:grid;place-items:center;flex:0 0 34px;border-radius:9px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.08)}
+.bm-provider-icon i{font-size:18px}
+.bm-provider-label{flex:1;font-size:10px;font-weight:950;letter-spacing:.08em;color:#eef6ff}
+.bm-provider-arrow{font-size:14px!important;color:#7289a2!important;transition:transform .18s ease,color .18s ease}
+.bm-auth-provider:hover .bm-provider-arrow{transform:translateX(3px);color:#fff!important}
+.bm-steam{border-color:rgba(82,155,211,.28);background:linear-gradient(100deg,rgba(21,46,67,.95),rgba(8,20,33,.9))}
+.bm-steam:hover{border-color:rgba(106,194,255,.7);background:linear-gradient(100deg,rgba(24,61,87,1),rgba(9,25,41,1))}
+.bm-steam .bm-provider-icon{background:rgba(55,154,221,.13);border-color:rgba(92,183,240,.24)}
+.bm-steam .bm-provider-icon i{color:#9ddcff}
+.bm-discord{border-color:rgba(114,137,218,.38);background:linear-gradient(100deg,rgba(54,57,102,.96),rgba(25,27,55,.94))}
+.bm-discord:hover{border-color:rgba(143,157,255,.78);background:linear-gradient(100deg,rgba(64,66,124,1),rgba(29,31,67,1))}
+.bm-discord .bm-provider-icon{background:rgba(114,137,218,.17);border-color:rgba(150,160,244,.26)}
+.bm-discord .bm-provider-icon i{color:#c7d0ff}
+.bm-google{border-color:rgba(220,225,232,.38);background:linear-gradient(100deg,#f6f8fb,#dfe5ec);color:#172231}
+.bm-google:hover{border-color:#fff;background:linear-gradient(100deg,#fff,#edf2f7);color:#111c2a}
+.bm-google .bm-provider-icon{background:#fff;border-color:rgba(26,43,61,.1)}
+.bm-google .bm-provider-icon i{color:#4285f4}
+.bm-google .bm-provider-label{color:#172231}
+.bm-google .bm-provider-arrow{color:#53677f!important}
+.bm-provider-disabled{opacity:.55;cursor:default}
+.bm-provider-disabled:hover{transform:none;box-shadow:none}
+.bm-provider-soon{flex:0!important;font-size:7px!important;letter-spacing:.12em;color:#7d8da1!important;font-weight:900!important}
 .bm-auth-divider{display:flex;align-items:center;gap:10px;margin:25px 0 12px;color:#53677f;font-size:7px;letter-spacing:.16em;font-weight:900}
 .bm-auth-divider:before,.bm-auth-divider:after{content:"";height:1px;flex:1;background:rgba(102,164,220,.13)}
 .bm-auth-note{margin:0 auto 22px;max-width:390px;color:#66788f;font-size:9px;line-height:1.6}
-.bm-auth-back{display:inline-flex;align-items:center;gap:8px;color:#8da5bf;text-decoration:none;font-size:8px;letter-spacing:.1em;font-weight:900}
-.bm-auth-back:hover{color:#42baff}
-@media(max-width:600px){.bm-auth-page{padding:45px 12px 65px}.bm-login-card{padding:34px 18px 28px}.bm-login-card h1{font-size:29px}.bm-auth-provider{min-height:64px}}
+.bm-auth-back{width:100%;min-height:48px;display:flex;align-items:center;justify-content:center;gap:8px;border:1px solid rgba(102,164,220,.24);border-radius:10px;background:rgba(255,255,255,.025);color:#a8b9cd;text-decoration:none;font-size:9px;letter-spacing:.11em;font-weight:950;transition:.18s ease}
+.bm-auth-back:hover{border-color:rgba(67,177,255,.55);background:rgba(45,125,255,.08);color:#fff;transform:translateY(-1px)}
+@media(max-width:600px){.bm-auth-page{padding:45px 12px 65px}.bm-login-card{padding:34px 18px 28px}.bm-login-card h1{font-size:29px}.bm-auth-provider{min-height:62px;padding:0 13px}.bm-provider-label{font-size:9px}.bm-auth-back{min-height:46px}}
