@@ -44,8 +44,11 @@ jobs:
           Copy-Item "$themeSource\*" $themeTarget -Recurse -Force
 
           Push-Location 'C:\Azuriom'
-          & $php artisan tinker --execute="app(\\Azuriom\\Extensions\\Theme\\ThemeManager::class)->changeTheme('balticm'); app(\\Azuriom\\Support\\Optimizer::class)->clearViewCache();"
+          $tinkerCode = "app(\Azuriom\Extensions\Theme\ThemeManager::class)->changeTheme('balticm'); app(\Azuriom\Support\Optimizer::class)->clearViewCache();"
+          & $php artisan tinker --execute=$tinkerCode
+          if ($LASTEXITCODE -ne 0) { throw 'Azuriom theme activation failed.' }
           & $php artisan optimize:clear
+          if ($LASTEXITCODE -ne 0) { throw 'Azuriom cache clear failed.' }
           Pop-Location
 
       - name: Deploy and restart Caddy
