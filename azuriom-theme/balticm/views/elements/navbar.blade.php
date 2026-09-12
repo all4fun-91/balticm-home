@@ -31,7 +31,11 @@
                 @auth
                     <a class="bm-icon-btn" href="#" aria-label="Messages" title="Messages"><i class="bi bi-chat-square-text"></i></a>
                     <a class="bm-icon-btn" href="#" aria-label="Search" title="Search"><i class="bi bi-search"></i></a>
-                    <a class="bm-icon-btn" href="{{ route('notifications') }}" aria-label="Notifications" title="Notifications"><i class="bi bi-bell"></i></a>
+                    @if(Route::has('notifications'))
+                        <a class="bm-icon-btn" href="{{ route('notifications') }}" aria-label="Notifications" title="Notifications"><i class="bi bi-bell"></i></a>
+                    @else
+                        <a class="bm-icon-btn" href="#" aria-label="Notifications" title="Notifications"><i class="bi bi-bell"></i></a>
+                    @endif
                     <div class="dropdown">
                         <button class="bm-login bm-user-btn dropdown-toggle" data-bs-toggle="dropdown" type="button">{{ Auth::user()->name }}</button>
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
@@ -49,7 +53,11 @@
                 @else
                     <a class="bm-icon-btn" href="#" aria-label="Messages" title="Messages"><i class="bi bi-chat-square-text"></i></a>
                     <a class="bm-icon-btn" href="#" aria-label="Search" title="Search"><i class="bi bi-search"></i></a>
-                    <a class="bm-icon-btn" href="{{ route('notifications') }}" aria-label="Notifications" title="Notifications"><i class="bi bi-bell"></i></a>
+                    @if(Route::has('notifications'))
+                        <a class="bm-icon-btn" href="{{ route('notifications') }}" aria-label="Notifications" title="Notifications"><i class="bi bi-bell"></i></a>
+                    @else
+                        <a class="bm-icon-btn" href="#" aria-label="Notifications" title="Notifications"><i class="bi bi-bell"></i></a>
+                    @endif
                     @if(Route::has('register'))
                         <a class="bm-register" href="{{ route('register') }}">REGISTER</a>
                     @endif
