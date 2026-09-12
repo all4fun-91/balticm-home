@@ -26,9 +26,14 @@ jobs:
           $app = 'C:\BalticM\balticm-home'
           $themeSource = Join-Path $app 'azuriom-theme\balticm'
           $themeTarget = 'C:\Azuriom\resources\themes\balticm'
+          $php = 'C:\tools\php83\php.exe'
 
           if (-not (Test-Path 'C:\Azuriom\artisan')) {
             throw 'Azuriom installation not found at C:\Azuriom.'
+          }
+
+          if (-not (Test-Path $php)) {
+            throw 'PHP executable not found at C:\tools\php83\php.exe.'
           }
 
           if (Test-Path $themeTarget) {
@@ -39,8 +44,8 @@ jobs:
           Copy-Item "$themeSource\*" $themeTarget -Recurse -Force
 
           Push-Location 'C:\Azuriom'
-          php artisan tinker --execute="app(\\Azuriom\\Extensions\\Theme\\ThemeManager::class)->changeTheme('balticm'); app(\\Azuriom\\Support\\Optimizer::class)->clearViewCache();"
-          php artisan optimize:clear
+          & $php artisan tinker --execute="app(\\Azuriom\\Extensions\\Theme\\ThemeManager::class)->changeTheme('balticm'); app(\\Azuriom\\Support\\Optimizer::class)->clearViewCache();"
+          & $php artisan optimize:clear
           Pop-Location
 
       - name: Restart BalticM Node server
