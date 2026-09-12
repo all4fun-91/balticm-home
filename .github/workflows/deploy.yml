@@ -48,6 +48,41 @@ jobs:
           & $php artisan optimize:clear
           Pop-Location
 
+      - name: Deploy and restart Caddy
+        shell: powershell
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $app = 'C:\BalticM\balticm-home'
+          $caddy = 'C:\Users\Administrator\balticm-home\services\caddy\caddy.exe'
+          $configSource = Join-Path $app 'services\caddy\Caddyfile'
+          $configTarget = 'C:\Users\Administrator\balticm-home\services\caddy\Caddyfile'
+
+          if (-not (Test-Path $caddy)) {
+            throw 'Caddy executable not found.'
+          }
+          if (-not (Test-Path $configSource)) {
+            throw 'Caddyfile not found in the GitHub working copy.'
+          }
+
+          Copy-Item $configSource $configTarget -Force
+          & $caddy validate --config $configTarget --adapter caddyfile
+          if ($LASTEXITCODE -ne 0) { throw 'Caddy configuration validation failed.' }
+
+          Get-CimInstance Win32_Process -Filter "Name='caddy.exe'" | ForEach-Object {
+            Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue
+          }
+          Start-Sleep -Seconds 2
+
+          Start-Process -FilePath $caddy -ArgumentList 'run','--config',$configTarget,'--adapter','caddyfile' -WorkingDirectory (Split-Path $caddy) -WindowStyle Hidden
+          Start-Sleep -Seconds 4
+
+          $listening = Get-NetTCPConnection -LocalPort 80 -State Listen -ErrorAction SilentlyContinue
+          if (-not $listening) { throw 'Caddy is not listening on port 80 after restart.' }
+
+          $response = Invoke-WebRequest -Uri 'http://127.0.0.1/' -UseBasicParsing
+          if ($response.StatusCode -ne 200) { throw "BalticM returned HTTP $($response.StatusCode) on localhost." }
+          if ($response.Content -notmatch 'BALTICM') { throw 'BalticM homepage was not returned by Azuriom/Caddy.' }
+
       - name: Restart BalticM Node server
         shell: powershell
         run: |
