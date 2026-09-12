@@ -19,6 +19,30 @@ jobs:
           git -C $app fetch origin main
           git -C $app reset --hard origin/main
 
+      - name: Deploy BalticM Azuriom theme
+        shell: powershell
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $app = 'C:\BalticM\balticm-home'
+          $themeSource = Join-Path $app 'azuriom-theme\balticm'
+          $themeTarget = 'C:\Azuriom\resources\themes\balticm'
+
+          if (-not (Test-Path 'C:\Azuriom\artisan')) {
+            throw 'Azuriom installation not found at C:\Azuriom.'
+          }
+
+          if (Test-Path $themeTarget) {
+            Remove-Item $themeTarget -Recurse -Force
+          }
+
+          New-Item -ItemType Directory -Path $themeTarget -Force | Out-Null
+          Copy-Item "$themeSource\*" $themeTarget -Recurse -Force
+
+          Push-Location 'C:\Azuriom'
+          php artisan tinker --execute="app(\\Azuriom\\Extensions\\Theme\\ThemeManager::class)->changeTheme('balticm'); app(\\Azuriom\\Support\\Optimizer::class)->clearViewCache();"
+          php artisan optimize:clear
+          Pop-Location
+
       - name: Restart BalticM Node server
         shell: powershell
         run: |
