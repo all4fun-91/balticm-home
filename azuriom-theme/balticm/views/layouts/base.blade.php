@@ -34,7 +34,8 @@
             <div class="bm-foot-tag">PLAY TOGETHER</div>
         </div>
         <nav class="bm-foot-links">
-            @foreach($navbar as $element)
+            @php($footerNavbar = $navbar ?? [])
+            @foreach($footerNavbar as $element)
                 @if(!$element->isDropdown())
                     <a href="{{ $element->getLink() }}" @if($element->new_tab) target="_blank" rel="noopener noreferrer" @endif>{{ $element->name }}</a>
                 @endif
