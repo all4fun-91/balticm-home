@@ -6,12 +6,13 @@
     <meta name="description" content="@yield('description', setting('description', 'BalticM — Play Together'))">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="theme-color" content="#02050b">
-    <title>@yield('title', site_name()) | {{ site_name() }}</title>
+    <title>@yield('title', 'BalticM — Play Together') | {{ site_name() }}</title>
     <link rel="shortcut icon" href="{{ favicon() }}">
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
     <link href="{{ asset('css/base.css') }}" rel="stylesheet">
     <link href="{{ theme_asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ theme_asset('css/reference.css') }}" rel="stylesheet">
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}" defer></script>
     <script src="{{ asset('js/script.js') }}" defer></script>
     @stack('meta')
