@@ -17,14 +17,6 @@
             <div class="bm-eyebrow">G A M I N G &nbsp; C O M M U N I T Y</div>
             <h1>BALTICM<span>PLAY TOGETHER.</span></h1>
             <p class="bm-lead">A home for players, creators and communities. Play together. Grow together.</p>
-            <div class="bm-actions">
-                <a class="bm-btn bm-primary" href="https://discord.com/invite/y2EGmd5Er5" target="_blank" rel="noopener">JOIN OUR DISCORD <i class="bi bi-arrow-right"></i></a>
-                @if($server && $server->joinUrl())
-                    <a class="bm-btn" href="{{ $server->joinUrl() }}">JOIN SERVER <i class="bi bi-arrow-right"></i></a>
-                @else
-                    <a class="bm-btn" href="#latest-news">EXPLORE BALTICM <i class="bi bi-arrow-right"></i></a>
-                @endif
-            </div>
         </div>
     </section>
 
@@ -41,51 +33,46 @@
         @endif
 
         <section class="bm-latest" id="latest-news">
-            <div class="bm-section-title">
-                <div><h2>LATEST NEWS</h2><span>Stay up to date with BalticM</span></div>
-                @if(Route::has('posts.index'))
-                    <a class="bm-btn" href="{{ route('posts.index') }}">VIEW ALL <i class="bi bi-arrow-right"></i></a>
-                @endif
-            </div>
-
-            @if($posts->isEmpty())
-                <div class="bm-news-empty">No news published yet. More BalticM updates are coming soon.</div>
-            @else
-                <div class="bm-news-grid">
+            <div class="bm-news-grid">
+                @if($posts->isEmpty())
+                    <div class="bm-news-empty">No news published yet. More BalticM updates are coming soon.</div>
+                @else
                     @foreach($posts->take(3) as $post)
                         <a class="bm-news-card" href="{{ route('posts.show', $post->slug) }}">
+                            <div class="bm-news-topline">
+                                <span>NEWS</span>
+                                <small>{{ format_date($post->created_at) }}</small>
+                            </div>
                             @if($post->hasImage())
                                 <img src="{{ $post->imageUrl() }}" alt="{{ $post->title }}">
                             @endif
                             <div class="bm-news-body">
-                                <small>{{ format_date($post->created_at) }}</small>
                                 <h3>{{ $post->title }}</h3>
                                 <p>{{ Str::limit(strip_tags($post->content), 150) }}</p>
+                                <span class="bm-read">READ STORY <i class="bi bi-arrow-right"></i></span>
                             </div>
                         </a>
                     @endforeach
-                </div>
-            @endif
-        </section>
-
-        <section class="bm-feature-grid">
-            <article class="bm-feature">
-                <div class="bm-feature-icon"><i class="bi bi-controller"></i></div>
-                <h3>PLAY TOGETHER</h3>
-                <p>Gaming servers, events and a community built around playing together.</p>
-                <a class="bm-go" href="#latest-news">EXPLORE <i class="bi bi-arrow-right"></i></a>
-            </article>
-            <article class="bm-feature">
-                <div class="bm-feature-icon"><i class="bi bi-shield-check"></i></div>
-                <h3>BUILT FOR COMMUNITY</h3>
-                <p>Profiles, forums, rewards, shop systems and everything your community needs.</p>
-                <a class="bm-go" href="{{ route('home') }}">DISCOVER <i class="bi bi-arrow-right"></i></a>
-            </article>
+                @endif
+            </div>
         </section>
 
         <section class="bm-cta">
-            <div><h2>PLAY TOGETHER. ANYTIME. ANYWHERE.</h2><p>Join our community and be part of something bigger.</p></div>
-            <a class="bm-btn bm-primary" href="https://discord.com/invite/y2EGmd5Er5" target="_blank" rel="noopener">JOIN OUR DISCORD <i class="bi bi-arrow-right"></i></a>
+            <div>
+                <div class="bm-cta-label">BALTICM COMMUNITY</div>
+                <h2>PLAY TOGETHER. ANYTIME. ANYWHERE.</h2>
+                <p>Join our community and be part of something bigger.</p>
+            </div>
+            <a class="bm-btn bm-primary" href="https://discord.com/invite/y2EGmd5Er5" target="_blank" rel="noopener">
+                <i class="bi bi-discord"></i> JOIN OUR DISCORD
+            </a>
+        </section>
+
+        <section class="bm-community-strip">
+            <div><i class="bi bi-people-fill"></i><span><b>Active Community</b><small>Players from all over Europe</small></span></div>
+            <div><i class="bi bi-shield-fill-check"></i><span><b>Secure &amp; Stable</b><small>Reliable gaming experience</small></span></div>
+            <div><i class="bi bi-controller"></i><span><b>Multiple Games</b><small>More titles coming soon</small></span></div>
+            <div><i class="bi bi-heart"></i><span><b>Built Together</b><small>By the community, for the community</small></span></div>
         </section>
     </div>
 </main>
