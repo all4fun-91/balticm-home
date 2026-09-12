@@ -30,7 +30,7 @@
 
 <footer class="bm-footer">
     <div class="bm-wrap bm-foot">
-        <div>
+        <div class="bm-foot-brand-block">
             <a class="bm-foot-brand" href="{{ route('home') }}">BALTICM</a>
             <div class="bm-foot-tag">PLAY TOGETHER</div>
         </div>
@@ -38,16 +38,16 @@
             @php($footerNavbar = $navbar ?? [])
             @foreach($footerNavbar as $element)
                 @if(!$element->isDropdown())
-                    <a href="{{ $element->getLink() }}" @if($element->new_tab) target="_blank" rel="noopener noreferrer" @endif>{{ $element->name }}</a>
+                    <a class="@if($element->isCurrent()) active @endif" href="{{ $element->getLink() }}" @if($element->new_tab) target="_blank" rel="noopener noreferrer" @endif>{{ $element->name }}</a>
                 @endif
             @endforeach
         </nav>
         <div class="bm-socials">
-            <a class="bm-social" href="https://discord.com/invite/y2EGmd5Er5" target="_blank" rel="noopener" aria-label="Discord">D</a>
-            <a class="bm-social" href="https://www.youtube.com/@MiersBerzins" target="_blank" rel="noopener" aria-label="YouTube">Y</a>
-            <a class="bm-social" href="https://www.twitch.tv/miersberzins" target="_blank" rel="noopener" aria-label="Twitch">T</a>
-            <a class="bm-social" href="https://steamcommunity.com/profiles/76561198963497293" target="_blank" rel="noopener" aria-label="Steam">S</a>
-            <a class="bm-social" href="https://www.tiktok.com/@miersberzins" target="_blank" rel="noopener" aria-label="TikTok">♪</a>
+            <a class="bm-social" href="https://discord.com/invite/y2EGmd5Er5" target="_blank" rel="noopener" aria-label="Discord"><i class="bi bi-discord"></i></a>
+            <a class="bm-social" href="https://www.youtube.com/@MiersBerzins" target="_blank" rel="noopener" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+            <a class="bm-social" href="https://www.twitch.tv/miersberzins" target="_blank" rel="noopener" aria-label="Twitch"><i class="bi bi-twitch"></i></a>
+            <a class="bm-social" href="https://steamcommunity.com/profiles/76561198963497293" target="_blank" rel="noopener" aria-label="Steam"><i class="bi bi-steam"></i></a>
+            <a class="bm-social" href="https://www.tiktok.com/@miersberzins" target="_blank" rel="noopener" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
         </div>
     </div>
     <div class="bm-wrap bm-copy">© {{ now()->year }} BalticM. All rights reserved.</div>
