@@ -28,14 +28,10 @@
             </div>
 
             <div class="bm-nav-right">
+                <a class="bm-icon-btn" href="#" aria-label="Messages" title="Messages"><i class="bi bi-chat-square-text"></i></a>
+                <a class="bm-icon-btn" href="#" aria-label="Search" title="Search"><i class="bi bi-search"></i></a>
+                <a class="bm-icon-btn" href="#" aria-label="Notifications" title="Notifications"><i class="bi bi-bell"></i></a>
                 @auth
-                    <a class="bm-icon-btn" href="#" aria-label="Messages" title="Messages"><i class="bi bi-chat-square-text"></i></a>
-                    <a class="bm-icon-btn" href="#" aria-label="Search" title="Search"><i class="bi bi-search"></i></a>
-                    @if(Route::has('notifications'))
-                        <a class="bm-icon-btn" href="{{ route('notifications') }}" aria-label="Notifications" title="Notifications"><i class="bi bi-bell"></i></a>
-                    @else
-                        <a class="bm-icon-btn" href="#" aria-label="Notifications" title="Notifications"><i class="bi bi-bell"></i></a>
-                    @endif
                     <div class="dropdown">
                         <button class="bm-login bm-user-btn dropdown-toggle" data-bs-toggle="dropdown" type="button">{{ Auth::user()->name }}</button>
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
@@ -51,16 +47,6 @@
                     </div>
                     <form id="bm-logout" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
                 @else
-                    <a class="bm-icon-btn" href="#" aria-label="Messages" title="Messages"><i class="bi bi-chat-square-text"></i></a>
-                    <a class="bm-icon-btn" href="#" aria-label="Search" title="Search"><i class="bi bi-search"></i></a>
-                    @if(Route::has('notifications'))
-                        <a class="bm-icon-btn" href="{{ route('notifications') }}" aria-label="Notifications" title="Notifications"><i class="bi bi-bell"></i></a>
-                    @else
-                        <a class="bm-icon-btn" href="#" aria-label="Notifications" title="Notifications"><i class="bi bi-bell"></i></a>
-                    @endif
-                    @if(Route::has('register'))
-                        <a class="bm-register" href="{{ route('register') }}">REGISTER</a>
-                    @endif
                     <a class="bm-login" href="{{ route('login') }}"><i class="bi bi-person"></i> LOGIN</a>
                 @endauth
             </div>
