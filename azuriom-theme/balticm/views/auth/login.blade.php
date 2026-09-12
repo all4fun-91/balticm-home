@@ -20,48 +20,48 @@
             <div class="bm-auth-providers">
                 @if(Route::has('auth.steam'))
                     <a class="bm-auth-provider bm-steam" href="{{ route('auth.steam') }}">
-                        <i class="bi bi-steam"></i>
-                        <span><b>Continue with Steam</b><small>Use your Steam account</small></span>
+                        <span class="bm-provider-icon"><i class="bi bi-steam"></i></span>
+                        <span class="bm-provider-label">CONTINUE WITH STEAM</span>
                         <i class="bi bi-arrow-right bm-provider-arrow"></i>
                     </a>
                 @else
-                    <div class="bm-auth-provider bm-provider-disabled">
-                        <i class="bi bi-steam"></i>
-                        <span><b>Continue with Steam</b><small>Steam login will be connected next</small></span>
+                    <div class="bm-auth-provider bm-provider-disabled bm-steam">
+                        <span class="bm-provider-icon"><i class="bi bi-steam"></i></span>
+                        <span class="bm-provider-label">CONTINUE WITH STEAM</span>
                         <span class="bm-provider-soon">SOON</span>
                     </div>
                 @endif
 
                 @if(Route::has('discord-auth.login'))
                     <a class="bm-auth-provider bm-discord" href="{{ route('discord-auth.login') }}">
-                        <i class="bi bi-discord"></i>
-                        <span><b>Continue with Discord</b><small>Use your Discord account</small></span>
+                        <span class="bm-provider-icon"><i class="bi bi-discord"></i></span>
+                        <span class="bm-provider-label">CONTINUE WITH DISCORD</span>
                         <i class="bi bi-arrow-right bm-provider-arrow"></i>
                     </a>
                 @else
-                    <div class="bm-auth-provider bm-provider-disabled">
-                        <i class="bi bi-discord"></i>
-                        <span><b>Continue with Discord</b><small>Discord login will be connected next</small></span>
+                    <div class="bm-auth-provider bm-provider-disabled bm-discord">
+                        <span class="bm-provider-icon"><i class="bi bi-discord"></i></span>
+                        <span class="bm-provider-label">CONTINUE WITH DISCORD</span>
                         <span class="bm-provider-soon">SOON</span>
                     </div>
                 @endif
 
                 @if(Route::has('google.login'))
                     <a class="bm-auth-provider bm-google" href="{{ route('google.login') }}">
-                        <i class="bi bi-google"></i>
-                        <span><b>Continue with Google</b><small>Use your Google account</small></span>
+                        <span class="bm-provider-icon"><i class="bi bi-google"></i></span>
+                        <span class="bm-provider-label">CONTINUE WITH GOOGLE</span>
                         <i class="bi bi-arrow-right bm-provider-arrow"></i>
                     </a>
                 @elseif(Route::has('google-auth.login'))
                     <a class="bm-auth-provider bm-google" href="{{ route('google-auth.login') }}">
-                        <i class="bi bi-google"></i>
-                        <span><b>Continue with Google</b><small>Use your Google account</small></span>
+                        <span class="bm-provider-icon"><i class="bi bi-google"></i></span>
+                        <span class="bm-provider-label">CONTINUE WITH GOOGLE</span>
                         <i class="bi bi-arrow-right bm-provider-arrow"></i>
                     </a>
                 @else
-                    <div class="bm-auth-provider bm-provider-disabled">
-                        <i class="bi bi-google"></i>
-                        <span><b>Continue with Google</b><small>Google login will be connected next</small></span>
+                    <div class="bm-auth-provider bm-provider-disabled bm-google">
+                        <span class="bm-provider-icon"><i class="bi bi-google"></i></span>
+                        <span class="bm-provider-label">CONTINUE WITH GOOGLE</span>
                         <span class="bm-provider-soon">SOON</span>
                     </div>
                 @endif
