@@ -1,30 +1,36 @@
-/* BalticM custom background */
+/* BalticM hero background — uploaded artwork replaces the old CSS art */
 body.balticm-theme{
     background-color:#02050b;
-    background-image:
-        linear-gradient(180deg,rgba(2,5,11,.38) 0%,rgba(2,5,11,.55) 48%,rgba(2,5,11,.82) 100%),
-        url('../balticm-background-web.webp');
-    background-position:center top;
-    background-repeat:no-repeat;
-    background-size:cover;
-    background-attachment:fixed;
+    background-image:none;
 }
 
 .bm-hero{
-    background:transparent !important;
+    position:relative;
+    background-image:
+        linear-gradient(90deg,rgba(2,5,11,.72) 0%,rgba(2,5,11,.48) 38%,rgba(2,5,11,.16) 72%,rgba(2,5,11,.18) 100%),
+        linear-gradient(180deg,rgba(2,5,11,.18) 0%,rgba(2,5,11,.08) 55%,rgba(2,5,11,.82) 100%),
+        url('../balticm-background-web.webp') !important;
+    background-position:center center !important;
+    background-repeat:no-repeat !important;
+    background-size:cover !important;
 }
 
-.bm-hero:before{
-    background:linear-gradient(90deg,rgba(2,5,11,.78) 0%,rgba(2,5,11,.58) 31%,rgba(2,5,11,.22) 67%,rgba(2,5,11,.08) 100%) !important;
+/* Remove the previous generated moon/mountain/city artwork. */
+.bm-hero-art,
+.bm-hero-art *{
+    display:none !important;
 }
 
+.bm-hero:before,
 .bm-hero:after{
-    background:linear-gradient(transparent,#02050b) !important;
+    pointer-events:none;
 }
 
 @media(max-width:900px){
     body.balticm-theme{
         background-attachment:scroll;
-        background-position:center top;
+    }
+    .bm-hero{
+        background-position:center center !important;
     }
 }
