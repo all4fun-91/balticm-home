@@ -18,6 +18,18 @@
         border-bottom: 0 !important;
         background: #02050a !important;
     }
+    .bm-community-strip > div {
+        border-right-color: rgba(255,255,255,.07) !important;
+    }
+    .bm-community-strip > div > i {
+        color: #aeb8c7 !important;
+    }
+    @media(max-width:900px){
+        .bm-community-strip > div { border-bottom-color: rgba(255,255,255,.07) !important; }
+    }
+    @media(max-width:600px){
+        .bm-community-strip > div { border-bottom-color: rgba(255,255,255,.07) !important; }
+    }
 </style>
 <main>
     <section class="bm-hero">
