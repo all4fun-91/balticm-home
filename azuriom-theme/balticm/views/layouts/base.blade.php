@@ -15,7 +15,6 @@
     <link href="{{ theme_asset('css/reference.css') }}" rel="stylesheet">
     <link href="{{ theme_asset('css/background.css') }}" rel="stylesheet">
     <style>
-        /* Footer: absolutely no blue decoration. */
         footer.bm-footer-new,
         footer.bm-footer-new * {
             border-color: transparent !important;
@@ -25,15 +24,13 @@
             border: 0 !important;
             background: #02050b !important;
         }
-        footer.bm-footer-new .bm-social {
+        footer.bm-footer-new .bm-social,
+        footer.bm-footer-new .bm-social:hover {
             border: 0 !important;
             outline: 0 !important;
-            background: #080c12 !important;
+            background: transparent !important;
             color: #c9d2df !important;
-        }
-        footer.bm-footer-new .bm-social:hover {
-            background: #10161f !important;
-            color: #fff !important;
+            box-shadow: none !important;
         }
         footer.bm-footer-new .bm-footer-bottom {
             border: 0 !important;
