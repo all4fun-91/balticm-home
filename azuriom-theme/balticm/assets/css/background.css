@@ -3,7 +3,7 @@ body.balticm-theme{
     background-color:#02050b;
     background-image:
         linear-gradient(180deg,rgba(2,5,11,.38) 0%,rgba(2,5,11,.55) 48%,rgba(2,5,11,.82) 100%),
-        url('../../balticm-background-web.webp');
+        url('../balticm-background-web.webp');
     background-position:center top;
     background-repeat:no-repeat;
     background-size:cover;
