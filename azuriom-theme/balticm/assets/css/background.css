@@ -1,17 +1,23 @@
 /* BalticM page background — uploaded artwork spans the hero + content area */
+html,
+body,
+#app,
+main,
+footer,
+.bm-footer,
+.bm-community-strip{
+    border:0 !important;
+    border-top:0 !important;
+    border-right:0 !important;
+    border-bottom:0 !important;
+    border-left:0 !important;
+    outline:0 !important;
+    box-shadow:none !important;
+}
+
 body.balticm-theme{
     background:#02050b !important;
     background-image:none !important;
-    border:0 !important;
-    outline:0 !important;
-}
-
-#app,
-main,
-footer.bm-footer{
-    border:0 !important;
-    outline:0 !important;
-    box-shadow:none !important;
 }
 
 main{
@@ -27,7 +33,6 @@ main{
     position:relative;
     overflow:hidden !important;
     background:transparent !important;
-    border:0 !important;
 }
 
 /* Remove the previous generated CSS artwork completely. */
@@ -49,10 +54,14 @@ main{
 .bm-community-strip:after,
 main:before,
 main:after,
+#app:before,
+#app:after,
+footer:before,
+footer:after,
 .bm-footer:before,
 .bm-footer:after,
-.bm-footer .bm-copy:before,
-.bm-footer .bm-copy:after{
+.bm-copy:before,
+.bm-copy:after{
     display:none !important;
     content:none !important;
 }
@@ -60,7 +69,8 @@ main:after,
 .bm-latest,
 .bm-community-strip,
 .bm-footer,
-.bm-footer .bm-copy{
+.bm-copy{
+    border:0 !important;
     border-top:0 !important;
     border-right:0 !important;
     border-bottom:0 !important;
