@@ -9,6 +9,42 @@
     .bm-copy { border-top: 0 !important; }
     .bm-cta { border-color: transparent !important; box-shadow: none !important; }
     html, body { overflow-x: hidden !important; }
+    .bm-community-strip {
+        margin-left: calc(50% - 50vw) !important;
+        margin-right: calc(50% - 50vw) !important;
+        padding-left: max(24px, calc((100vw - 1200px) / 2)) !important;
+        padding-right: max(24px, calc((100vw - 1200px) / 2)) !important;
+        width: auto !important;
+        border: 0 !important;
+        background: #02050b !important;
+        box-shadow: none !important;
+    }
+    .bm-community-strip > div,
+    .bm-community-strip > div:last-child,
+    .bm-community-strip > div:nth-child(2),
+    .bm-community-strip > div:nth-child(3),
+    .bm-community-strip > div:nth-child(4) {
+        border: 0 !important;
+        box-shadow: none !important;
+    }
+    .bm-community-strip > div > i {
+        display: inline-block !important;
+        width: auto !important;
+        height: auto !important;
+        min-width: 0 !important;
+        min-height: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        color: #aeb8c7 !important;
+        text-shadow: none !important;
+        filter: none !important;
+    }
+    .bm-community-strip b { color: #e3e8ef !important; }
+    .bm-community-strip small { color: #687386 !important; }
 </style>
 <main>
     <section class="bm-hero">
@@ -45,10 +81,7 @@
                 @else
                     @foreach($posts->take(3) as $post)
                         <a class="bm-news-card" href="{{ route('posts.show', $post->slug) }}">
-                            <div class="bm-news-topline">
-                                <span>NEWS</span>
-                                <small>{{ format_date($post->created_at) }}</small>
-                            </div>
+                            <div class="bm-news-topline"><span>NEWS</span><small>{{ format_date($post->created_at) }}</small></div>
                             @if($post->hasImage())
                                 <img src="{{ $post->imageUrl() }}" alt="{{ $post->title }}">
                             @endif
@@ -72,6 +105,13 @@
             <a class="bm-btn bm-primary" href="https://discord.com/invite/y2EGmd5Er5" target="_blank" rel="noopener">
                 <i class="bi bi-discord"></i> JOIN OUR DISCORD
             </a>
+        </section>
+
+        <section class="bm-community-strip">
+            <div><i class="bi bi-people-fill"></i><span><b>Active Community</b><small>Players from all over Europe</small></span></div>
+            <div><i class="bi bi-shield-fill-check"></i><span><b>Secure &amp; Stable</b><small>Reliable gaming experience</small></span></div>
+            <div><i class="bi bi-controller"></i><span><b>Multiple Games</b><small>More titles coming soon</small></span></div>
+            <div><i class="bi bi-heart"></i><span><b>Built Together</b><small>By the community, for the community</small></span></div>
         </section>
     </div>
 </main>
