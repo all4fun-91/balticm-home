@@ -7,14 +7,10 @@ body.balticm-theme{
 .bm-hero{
     position:relative;
     overflow:hidden !important;
-    background-color:#02050b !important;
-    background-image:url('../balticm-background-web.webp') !important;
-    background-position:center center !important;
-    background-repeat:no-repeat !important;
-    background-size:cover !important;
+    background:#02050b url('../balticm-background-web.webp') center center / cover no-repeat !important;
 }
 
-/* Remove all old generated hero artwork and its bottom fade. */
+/* Keep the hero clean: no old generated artwork or fade/blue overlays. */
 .bm-hero-art,
 .bm-hero-art *{
     display:none !important;
@@ -26,18 +22,13 @@ body.balticm-theme{
     content:none !important;
 }
 
-/* Keep everything below the hero on the same neutral black background. */
+/* Solid black below the hero — no blue background bleeding through. */
 .bm-stats,
 .bm-latest,
 .bm-message,
 .bm-community-strip,
-main,
-.bm-wrap{
-    background-color:transparent;
-}
-
-.bm-community-strip{
-    background:#02050b !important;
+.bm-footer{
+    background-color:#02050b;
 }
 
 @media(max-width:900px){
