@@ -29,7 +29,7 @@
     @yield('app')
 </div>
 
-<footer class="bm-footer" style="border-top:0 !important;">
+<footer class="bm-footer" style="border:0 !important; box-shadow:none !important;">
     <div class="bm-wrap bm-foot">
         <div class="bm-foot-brand-block">
             <a class="bm-foot-brand" href="{{ route('home') }}">BALTICM</a>
@@ -51,7 +51,7 @@
             <a class="bm-social" href="https://www.tiktok.com/@miersberzins" target="_blank" rel="noopener" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
         </div>
     </div>
-    <div class="bm-wrap bm-copy">© {{ now()->year }} BalticM. All rights reserved.</div>
+    <div class="bm-wrap bm-copy" style="border:0 !important; box-shadow:none !important;">© {{ now()->year }} BalticM. All rights reserved.</div>
 </footer>
 
 @stack('footer-scripts')
