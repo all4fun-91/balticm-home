@@ -13,6 +13,7 @@
     <link href="{{ asset('css/base.css') }}" rel="stylesheet">
     <link href="{{ theme_asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ theme_asset('css/reference.css') }}" rel="stylesheet">
+    <link href="{{ theme_asset('css/background.css') }}" rel="stylesheet">
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}" defer></script>
     <script src="{{ asset('js/script.js') }}" defer></script>
     @stack('meta')
