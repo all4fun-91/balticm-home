@@ -5,7 +5,7 @@
 
 @section('app')
 <style>
-    .bm-footer { border-top: 1px solid var(--bm-line) !important; }
+    .bm-footer { border-top: 0 !important; }
     .bm-copy { border-top: 0 !important; }
     html, body { overflow-x: hidden !important; }
     .bm-community-strip {
