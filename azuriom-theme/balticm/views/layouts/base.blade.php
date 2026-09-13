@@ -33,17 +33,9 @@
             position: relative !important;
             z-index: 20 !important;
         }
-        /* Cover the last few pixels of the old page artwork/seam above the footer. */
         footer.bm-footer-new::before {
-            content: "" !important;
-            position: absolute !important;
-            left: 0 !important;
-            right: 0 !important;
-            top: -12px !important;
-            height: 12px !important;
-            background: #02050b !important;
-            border: 0 !important;
-            box-shadow: none !important;
+            display: none !important;
+            content: none !important;
         }
         footer.bm-footer-new a,
         footer.bm-footer-new i,
