@@ -29,29 +29,46 @@
     @yield('app')
 </div>
 
-<footer class="bm-footer" style="border:0 !important; box-shadow:none !important;">
-    <div class="bm-wrap bm-foot">
-        <div class="bm-foot-brand-block">
-            <a class="bm-foot-brand" href="{{ route('home') }}">BALTICM</a>
-            <div class="bm-foot-tag">PLAY TOGETHER</div>
+<footer class="bm-footer bm-footer-new">
+    <div class="bm-wrap bm-footer-main">
+        <div class="bm-footer-brand">
+            <a href="{{ route('home') }}" class="bm-footer-logo">BALTICM</a>
+            <div class="bm-footer-tag">PLAY TOGETHER</div>
+            <p>Gaming community for players, creators and communities.</p>
         </div>
-        <nav class="bm-foot-links">
-            @php($footerNavbar = $navbar ?? [])
-            @foreach($footerNavbar as $element)
-                @if(!$element->isDropdown())
-                    <a class="@if($element->isCurrent()) active @endif" href="{{ $element->getLink() }}" @if($element->new_tab) target="_blank" rel="noopener noreferrer" @endif>{{ $element->name }}</a>
-                @endif
-            @endforeach
-        </nav>
-        <div class="bm-socials">
-            <a class="bm-social" href="https://discord.com/invite/y2EGmd5Er5" target="_blank" rel="noopener" aria-label="Discord"><i class="bi bi-discord"></i></a>
-            <a class="bm-social" href="https://www.youtube.com/@MiersBerzins" target="_blank" rel="noopener" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
-            <a class="bm-social" href="https://www.twitch.tv/miersberzins" target="_blank" rel="noopener" aria-label="Twitch"><i class="bi bi-twitch"></i></a>
-            <a class="bm-social" href="https://steamcommunity.com/profiles/76561198963497293" target="_blank" rel="noopener" aria-label="Steam"><i class="bi bi-steam"></i></a>
-            <a class="bm-social" href="https://www.tiktok.com/@miersberzins" target="_blank" rel="noopener" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+
+        <div class="bm-footer-column">
+            <span class="bm-footer-title">EXPLORE</span>
+            <a href="{{ url('/') }}">Home</a>
+            <a href="{{ url('/forum') }}">Forum</a>
+            <a href="{{ url('/servers') }}">Servers</a>
+            <a href="{{ url('/about') }}">About</a>
+        </div>
+
+        <div class="bm-footer-column">
+            <span class="bm-footer-title">COMMUNITY</span>
+            <a href="https://discord.com/invite/y2EGmd5Er5" target="_blank" rel="noopener">Discord</a>
+            <a href="https://www.youtube.com/@MiersBerzins" target="_blank" rel="noopener">YouTube</a>
+            <a href="https://www.twitch.tv/miersberzins" target="_blank" rel="noopener">Twitch</a>
+            <a href="https://steamcommunity.com/profiles/76561198963497293" target="_blank" rel="noopener">Steam</a>
+        </div>
+
+        <div class="bm-footer-social-block">
+            <span class="bm-footer-title">FOLLOW US</span>
+            <div class="bm-socials bm-footer-socials">
+                <a class="bm-social" href="https://discord.com/invite/y2EGmd5Er5" target="_blank" rel="noopener" aria-label="Discord"><i class="bi bi-discord"></i></a>
+                <a class="bm-social" href="https://www.youtube.com/@MiersBerzins" target="_blank" rel="noopener" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                <a class="bm-social" href="https://www.twitch.tv/miersberzins" target="_blank" rel="noopener" aria-label="Twitch"><i class="bi bi-twitch"></i></a>
+                <a class="bm-social" href="https://steamcommunity.com/profiles/76561198963497293" target="_blank" rel="noopener" aria-label="Steam"><i class="bi bi-steam"></i></a>
+                <a class="bm-social" href="https://www.tiktok.com/@miersberzins" target="_blank" rel="noopener" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+            </div>
         </div>
     </div>
-    <div class="bm-wrap bm-copy" style="border:0 !important; box-shadow:none !important;">© {{ now()->year }} BalticM. All rights reserved.</div>
+
+    <div class="bm-wrap bm-footer-bottom">
+        <span>© {{ now()->year }} BalticM. All rights reserved.</span>
+        <span>PLAY TOGETHER. ANYTIME. ANYWHERE.</span>
+    </div>
 </footer>
 
 @stack('footer-scripts')
