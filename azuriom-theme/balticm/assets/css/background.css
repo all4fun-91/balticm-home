@@ -1,91 +1,11 @@
-/* BalticM background: keep artwork for the page content, switch to clean black below the artwork. */
-html,
-body,
-#app,
-main,
-footer,
-.bm-footer,
-.bm-community-strip{
-    border:0 !important;
-    border-top:0 !important;
-    border-right:0 !important;
-    border-bottom:0 !important;
-    border-left:0 !important;
-    outline:0 !important;
-    box-shadow:none !important;
-}
-
-body.balticm-theme{
-    background:#02050b !important;
-    background-image:none !important;
-}
-
-main{
-    background-color:#02050b !important;
-    background-image:url('../balticm-background-web.webp') !important;
-    background-position:center top !important;
-    background-repeat:no-repeat !important;
-    background-size:100% auto !important;
-    background-clip:content-box !important;
-    padding-bottom:1px !important;
-}
-
-.bm-hero{
-    position:relative;
-    overflow:hidden !important;
-    background:transparent !important;
-}
-
-.bm-hero-art,
-.bm-hero-art *{
-    display:none !important;
-}
-
-.bm-hero:before,
-.bm-hero:after,
-.bm-latest:before,
-.bm-latest:after,
-.bm-community-strip:before,
-.bm-community-strip:after,
-main:before,
-main:after,
-#app:before,
-#app:after,
-footer:before,
-footer:after,
-.bm-footer:before,
-.bm-footer:after,
-.bm-copy:before,
-.bm-copy:after{
-    display:none !important;
-    content:none !important;
-}
-
-.bm-latest,
-.bm-community-strip,
-.bm-footer,
-.bm-copy{
-    border:0 !important;
-    border-top:0 !important;
-    border-right:0 !important;
-    border-bottom:0 !important;
-    border-left:0 !important;
-    outline:0 !important;
-    box-shadow:none !important;
-}
-
-.bm-community-strip{
-    background:#02050b !important;
-}
-
-.bm-footer{
-    background:#02050b !important;
-    background-image:none !important;
-}
-
-@media(max-width:900px){
-    main{
-        background-size:auto 1000px !important;
-        background-position:center top !important;
-    }
-}
+/* BalticM background */
+html,body,#app,main,footer,.bm-footer,.bm-community-strip{border:0 !important;outline:0 !important;box-shadow:none !important}
+body.balticm-theme{background:#02050b !important;background-image:none !important}
+main{background-color:#02050b !important;background-image:url('../balticm-background-web.webp') !important;background-position:center top !important;background-repeat:no-repeat !important;background-size:100% calc(100% - 1px) !important;background-clip:border-box !important;padding-bottom:0 !important}
+.bm-hero{position:relative;overflow:hidden !important;background:transparent !important}
+.bm-hero-art,.bm-hero-art *{display:none !important}
+.bm-hero:before,.bm-hero:after,.bm-latest:before,.bm-latest:after,.bm-community-strip:before,.bm-community-strip:after,main:before,main:after,#app:before,#app:after,footer:before,footer:after,.bm-footer:before,.bm-footer:after,.bm-copy:before,.bm-copy:after{display:none !important;content:none !important}
+.bm-latest,.bm-community-strip,.bm-footer,.bm-copy{border:0 !important;outline:0 !important;box-shadow:none !important}
+.bm-community-strip{background:#02050b !important}
+.bm-footer{background:#02050b !important;background-image:none !important}
+@media(max-width:900px){main{background-size:calc(100% - 1px) auto !important;background-position:center top !important}}
