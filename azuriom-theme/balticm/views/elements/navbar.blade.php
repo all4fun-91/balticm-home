@@ -11,20 +11,12 @@
 
         <div class="collapse bm-collapse" id="bm-navbar">
             <div class="bm-navlinks">
-                @foreach($navbar as $element)
-                    @if(!$element->isDropdown())
-                        <a class="@if($element->isCurrent()) active @endif" href="{{ $element->getLink() }}" @if($element->new_tab) target="_blank" rel="noopener noreferrer" @endif>{{ $element->name }}</a>
-                    @else
-                        <div class="bm-dropdown">
-                            <button type="button" class="bm-nav-dropdown" data-bs-toggle="dropdown" aria-expanded="false">{{ $element->name }}</button>
-                            <div class="dropdown-menu dropdown-menu-dark">
-                                @foreach($element->elements as $childElement)
-                                    <a class="dropdown-item @if($childElement->isCurrent()) active @endif" href="{{ $childElement->getLink() }}" @if($childElement->new_tab) target="_blank" rel="noopener noreferrer" @endif>{{ $childElement->name }}</a>
-                                @endforeach
-                            </div>
-                        </div>
-                    @endif
-                @endforeach
+                <a href="{{ url('/') }}">Home</a>
+                <a href="{{ url('/forum') }}">Forum</a>
+                <a href="{{ url('/servers') }}">Servers</a>
+                <a href="{{ url('/online') }}">Online</a>
+                <a href="{{ url('/statistics') }}">Statistics</a>
+                <a href="{{ url('/about') }}">About</a>
             </div>
 
             <div class="bm-nav-right">
