@@ -28,14 +28,12 @@ main{
     background-size:100% auto !important;
 }
 
-/* The image belongs to the whole main content area, not only the hero. */
 .bm-hero{
     position:relative;
     overflow:hidden !important;
     background:transparent !important;
 }
 
-/* Remove the previous generated CSS artwork completely. */
 .bm-hero-art,
 .bm-hero-art *{
     display:none !important;
@@ -47,7 +45,6 @@ main{
     content:none !important;
 }
 
-/* Remove every decorative separator around the content/footer boundary. */
 .bm-latest:before,
 .bm-latest:after,
 .bm-community-strip:before,
@@ -67,27 +64,187 @@ footer:after,
 }
 
 .bm-latest,
-.bm-community-strip,
-.bm-footer,
-.bm-copy{
+.bm-community-strip{
     border:0 !important;
+    box-shadow:none !important;
+    outline:0 !important;
+}
+
+.bm-community-strip{
+    background:#02050b !important;
+}
+
+/* Completely new footer: clean, premium, neutral, and free of blue decorations. */
+.bm-footer-new{
+    position:relative !important;
+    margin-top:0 !important;
+    padding:0 !important;
+    background:#05070b !important;
+    color:#eef2f7 !important;
+    border:0 !important;
+    box-shadow:none !important;
+}
+
+.bm-footer-new *{
     border-top:0 !important;
     border-right:0 !important;
     border-bottom:0 !important;
     border-left:0 !important;
     box-shadow:none !important;
-    outline:0 !important;
 }
 
-/* Solid black below the artwork. */
-.bm-community-strip,
-.bm-footer{
-    background:#02050b !important;
+.bm-footer-main{
+    min-height:245px;
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1.35fr;
+    gap:56px;
+    align-items:start;
+    padding-top:58px;
+    padding-bottom:48px;
+}
+
+.bm-footer-brand{
+    max-width:330px;
+}
+
+.bm-footer-logo{
+    display:inline-block;
+    color:#f4f6f9 !important;
+    text-decoration:none !important;
+    font-size:25px;
+    font-weight:950;
+    letter-spacing:.075em;
+}
+
+.bm-footer-tag{
+    margin-top:7px;
+    color:#8d96a3 !important;
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:.28em;
+}
+
+.bm-footer-brand p{
+    margin:22px 0 0;
+    max-width:285px;
+    color:#737d8b !important;
+    font-size:11px;
+    line-height:1.7;
+}
+
+.bm-footer-title{
+    display:block;
+    margin-bottom:17px;
+    color:#dfe4eb !important;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:.18em;
+}
+
+.bm-footer-column{
+    display:flex;
+    flex-direction:column;
+    gap:11px;
+}
+
+.bm-footer-column a{
+    width:max-content;
+    color:#7e8794 !important;
+    text-decoration:none !important;
+    font-size:11px;
+    transition:color .16s ease;
+}
+
+.bm-footer-column a:hover{
+    color:#f5f7fa !important;
+}
+
+.bm-footer-social-block{
+    justify-self:end;
+}
+
+.bm-footer-socials{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.bm-footer-new .bm-social{
+    width:40px !important;
+    height:40px !important;
+    border:1px solid rgba(255,255,255,.10) !important;
+    border-radius:10px !important;
+    display:grid !important;
+    place-items:center !important;
+    color:#d7dce3 !important;
+    background:#0a0d12 !important;
+    font-size:14px !important;
+}
+
+.bm-footer-new .bm-social:hover{
+    border-color:rgba(255,255,255,.22) !important;
+    background:#10141a !important;
+    color:#fff !important;
+}
+
+.bm-footer-bottom{
+    min-height:58px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    color:#5f6875 !important;
+    font-size:9px;
+    letter-spacing:.04em;
+}
+
+.bm-footer-bottom span:last-child{
+    color:#4f5864 !important;
+    letter-spacing:.16em;
+    font-size:8px;
 }
 
 @media(max-width:900px){
     main{
         background-size:auto 1000px !important;
         background-position:center top !important;
+    }
+
+    .bm-footer-main{
+        grid-template-columns:1fr 1fr;
+        gap:38px 28px;
+    }
+
+    .bm-footer-social-block{
+        justify-self:start;
+    }
+}
+
+@media(max-width:600px){
+    .bm-footer-main{
+        grid-template-columns:1fr 1fr;
+        gap:30px 18px;
+        padding-top:42px;
+        padding-bottom:34px;
+    }
+
+    .bm-footer-brand{
+        grid-column:1 / -1;
+    }
+
+    .bm-footer-social-block{
+        grid-column:1 / -1;
+    }
+
+    .bm-footer-bottom{
+        min-height:70px;
+        align-items:flex-start;
+        justify-content:center;
+        flex-direction:column;
+        gap:7px;
+    }
+
+    .bm-footer-bottom span:last-child{
+        display:none;
     }
 }
