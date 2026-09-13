@@ -6,7 +6,6 @@
 @section('app')
 <style>
     html, body { overflow-x: hidden !important; }
-    .bm-cta { border-color: transparent !important; box-shadow: none !important; }
 </style>
 <main>
     <section class="bm-hero">
@@ -56,17 +55,6 @@
                     @endforeach
                 @endif
             </div>
-        </section>
-
-        <section class="bm-cta">
-            <div>
-                <div class="bm-cta-label">BALTICM COMMUNITY</div>
-                <h2>PLAY TOGETHER. ANYTIME. ANYWHERE.</h2>
-                <p>Join our community and be part of something bigger.</p>
-            </div>
-            <a class="bm-btn bm-primary" href="https://discord.com/invite/y2EGmd5Er5" target="_blank" rel="noopener">
-                <i class="bi bi-discord"></i> JOIN OUR DISCORD
-            </a>
         </section>
     </div>
 </main>
