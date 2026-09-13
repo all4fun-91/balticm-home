@@ -4,6 +4,9 @@
 @section('description', 'BalticM — a gaming community for players, creators and communities.')
 
 @section('app')
+<style>
+    .bm-footer { border-top: 0 !important; }
+</style>
 <main>
     <section class="bm-hero">
         <div class="bm-hero-art">
