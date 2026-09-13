@@ -15,7 +15,53 @@
     <link href="{{ theme_asset('css/reference.css') }}" rel="stylesheet">
     <link href="{{ theme_asset('css/background.css') }}" rel="stylesheet">
     <style>
-        html, body, #app { border:0 !important; box-shadow:none !important; outline:0 !important; }
+        html, body, #app, footer.bm-footer-new,
+        footer.bm-footer-new * {
+            border-color: transparent !important;
+            box-shadow: none !important;
+            outline: 0 !important;
+        }
+        footer.bm-footer-new,
+        footer.bm-footer-new::before,
+        footer.bm-footer-new::after {
+            border: 0 !important;
+            background: #02050b !important;
+            box-shadow: none !important;
+            outline: 0 !important;
+        }
+        footer.bm-footer-new {
+            position: relative !important;
+            z-index: 20 !important;
+        }
+        /* Cover the last few pixels of the old page artwork/seam above the footer. */
+        footer.bm-footer-new::before {
+            content: "" !important;
+            position: absolute !important;
+            left: 0 !important;
+            right: 0 !important;
+            top: -12px !important;
+            height: 12px !important;
+            background: #02050b !important;
+            border: 0 !important;
+            box-shadow: none !important;
+        }
+        footer.bm-footer-new a,
+        footer.bm-footer-new i,
+        footer.bm-footer-new p,
+        footer.bm-footer-new span,
+        footer.bm-footer-new div {
+            text-shadow: none !important;
+        }
+        footer.bm-footer-new a,
+        footer.bm-footer-new .bm-social,
+        footer.bm-footer-new a:hover,
+        footer.bm-footer-new .bm-social:hover {
+            border: 0 !important;
+            outline: 0 !important;
+            background: transparent !important;
+            color: #c9d2df !important;
+            box-shadow: none !important;
+        }
     </style>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}" defer></script>
     <script src="{{ asset('js/script.js') }}" defer></script>
@@ -31,6 +77,8 @@
 
     @yield('app')
 </div>
+
+<footer class="bm-footer bm-footer-new"></footer>
 
 @stack('footer-scripts')
 </body>
