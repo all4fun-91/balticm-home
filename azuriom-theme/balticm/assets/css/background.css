@@ -31,6 +31,20 @@ main{
     content:none !important;
 }
 
+/* Remove the thin blue decorative line that was sitting above the content. */
+.bm-latest:before{
+    display:none !important;
+    content:none !important;
+}
+
+/* No blue border/line at the footer transition. */
+.bm-footer{
+    border-top:0 !important;
+}
+.bm-copy{
+    border-top:0 !important;
+}
+
 /* Community strip is intentionally solid black and ends the artwork area. */
 .bm-community-strip{
     background:#02050b !important;
