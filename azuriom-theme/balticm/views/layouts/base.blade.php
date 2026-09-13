@@ -28,7 +28,7 @@
     @yield('app')
 </div>
 
-<footer class="bm-footer">
+<footer class="bm-footer" style="border-top:0 !important;">
     <div class="bm-wrap bm-foot">
         <div class="bm-foot-brand-block">
             <a class="bm-foot-brand" href="{{ route('home') }}">BALTICM</a>
