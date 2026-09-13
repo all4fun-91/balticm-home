@@ -1,0 +1,30 @@
+/* BalticM custom background */
+body.balticm-theme{
+    background-color:#02050b;
+    background-image:
+        linear-gradient(180deg,rgba(2,5,11,.38) 0%,rgba(2,5,11,.55) 48%,rgba(2,5,11,.82) 100%),
+        url('../../balticm-background-web.webp');
+    background-position:center top;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-attachment:fixed;
+}
+
+.bm-hero{
+    background:transparent !important;
+}
+
+.bm-hero:before{
+    background:linear-gradient(90deg,rgba(2,5,11,.78) 0%,rgba(2,5,11,.58) 31%,rgba(2,5,11,.22) 67%,rgba(2,5,11,.08) 100%) !important;
+}
+
+.bm-hero:after{
+    background:linear-gradient(transparent,#02050b) !important;
+}
+
+@media(max-width:900px){
+    body.balticm-theme{
+        background-attachment:scroll;
+        background-position:center top;
+    }
+}
