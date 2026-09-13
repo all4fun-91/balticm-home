@@ -1,14 +1,11 @@
-/* BalticM clean base — remove the old artwork from the lower page/footer area. */
+/* BalticM background: keep artwork for the page content, switch to clean black below the community strip. */
 html,
 body,
 #app,
 main,
 footer,
 .bm-footer,
-.bm-footer-new,
-.bm-community-strip,
-.bm-copy,
-.bm-footer-bottom{
+.bm-community-strip{
     border:0 !important;
     border-top:0 !important;
     border-right:0 !important;
@@ -18,22 +15,23 @@ footer,
     box-shadow:none !important;
 }
 
-html,
 body.balticm-theme{
     background:#02050b !important;
     background-image:none !important;
 }
 
-/* No artwork, gradients, or inherited background panels below the content. */
-main,
-.bm-hero,
-.bm-community-strip,
-.bm-footer,
-.bm-footer-new,
-.bm-copy,
-.bm-footer-bottom{
+main{
     background-color:#02050b !important;
-    background-image:none !important;
+    background-image:url('../balticm-background-web.webp') !important;
+    background-position:center top !important;
+    background-repeat:no-repeat !important;
+    background-size:100% auto !important;
+}
+
+.bm-hero{
+    position:relative;
+    overflow:hidden !important;
+    background:transparent !important;
 }
 
 .bm-hero-art,
@@ -55,8 +53,6 @@ footer:before,
 footer:after,
 .bm-footer:before,
 .bm-footer:after,
-.bm-footer-new:before,
-.bm-footer-new:after,
 .bm-copy:before,
 .bm-copy:after{
     display:none !important;
@@ -66,22 +62,30 @@ footer:after,
 .bm-latest,
 .bm-community-strip,
 .bm-footer,
-.bm-footer-new,
 .bm-copy{
     border:0 !important;
     border-top:0 !important;
     border-right:0 !important;
     border-bottom:0 !important;
     border-left:0 !important;
-    box-shadow:none !important;
     outline:0 !important;
+    box-shadow:none !important;
+}
+
+/* The strip is the last element over the artwork. */
+.bm-community-strip{
+    background:#02050b !important;
+}
+
+/* Everything below the strip is a clean black base for the new footer. */
+.bm-footer{
+    background:#02050b !important;
+    background-image:none !important;
 }
 
 @media(max-width:900px){
-    html,
-    body.balticm-theme,
     main{
-        background:#02050b !important;
-        background-image:none !important;
+        background-size:auto 1000px !important;
+        background-position:center top !important;
     }
 }
