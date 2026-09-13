@@ -1,16 +1,25 @@
-/* BalticM hero background — uploaded artwork replaces the old CSS art */
+/* BalticM page background — uploaded artwork spans the hero + content area */
 body.balticm-theme{
     background:#02050b !important;
     background-image:none !important;
 }
 
+main{
+    background-color:#02050b !important;
+    background-image:url('../balticm-background-web.webp') !important;
+    background-position:center top !important;
+    background-repeat:no-repeat !important;
+    background-size:100% auto !important;
+}
+
+/* The image belongs to the whole main content area, not only the hero. */
 .bm-hero{
     position:relative;
     overflow:hidden !important;
-    background:#02050b url('../balticm-background-web.webp') center center / cover no-repeat !important;
+    background:transparent !important;
 }
 
-/* Keep the hero clean: no old generated artwork or fade/blue overlays. */
+/* Remove the previous generated CSS artwork completely. */
 .bm-hero-art,
 .bm-hero-art *{
     display:none !important;
@@ -22,17 +31,14 @@ body.balticm-theme{
     content:none !important;
 }
 
-/* Solid black below the hero — no blue background bleeding through. */
-.bm-stats,
-.bm-latest,
-.bm-message,
-.bm-community-strip,
-.bm-footer{
-    background-color:#02050b;
+/* Community strip is intentionally solid black and ends the artwork area. */
+.bm-community-strip{
+    background:#02050b !important;
 }
 
 @media(max-width:900px){
-    .bm-hero{
-        background-position:center center !important;
+    main{
+        background-size:auto 1000px !important;
+        background-position:center top !important;
     }
 }
