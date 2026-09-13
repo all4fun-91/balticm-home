@@ -16,6 +16,7 @@
         width: auto !important;
         border-top: 0 !important;
         border-bottom: 0 !important;
+        background: #02050a !important;
     }
 </style>
 <main>
