@@ -6,6 +6,14 @@
 @section('app')
 <style>
     .bm-footer { border-top: 0 !important; }
+    html, body { overflow-x: hidden !important; }
+    .bm-community-strip {
+        margin-left: calc(50% - 50vw) !important;
+        margin-right: calc(50% - 50vw) !important;
+        padding-left: max(24px, calc((100vw - 1200px) / 2)) !important;
+        padding-right: max(24px, calc((100vw - 1200px) / 2)) !important;
+        width: auto !important;
+    }
 </style>
 <main>
     <section class="bm-hero">
