@@ -1,4 +1,4 @@
-/* BalticM background: keep artwork for the page content, switch to clean black below the community strip. */
+/* BalticM background: keep artwork for the page content, switch to clean black below the artwork. */
 html,
 body,
 #app,
@@ -26,6 +26,8 @@ main{
     background-position:center top !important;
     background-repeat:no-repeat !important;
     background-size:100% auto !important;
+    background-clip:content-box !important;
+    padding-bottom:1px !important;
 }
 
 .bm-hero{
@@ -72,12 +74,10 @@ footer:after,
     box-shadow:none !important;
 }
 
-/* The strip is the last element over the artwork. */
 .bm-community-strip{
     background:#02050b !important;
 }
 
-/* Everything below the strip is a clean black base for the new footer. */
 .bm-footer{
     background:#02050b !important;
     background-image:none !important;
