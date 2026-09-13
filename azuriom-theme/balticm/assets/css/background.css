@@ -2,6 +2,16 @@
 body.balticm-theme{
     background:#02050b !important;
     background-image:none !important;
+    border:0 !important;
+    outline:0 !important;
+}
+
+#app,
+main,
+footer.bm-footer{
+    border:0 !important;
+    outline:0 !important;
+    box-shadow:none !important;
 }
 
 main{
@@ -10,8 +20,6 @@ main{
     background-position:center top !important;
     background-repeat:no-repeat !important;
     background-size:100% auto !important;
-    border:0 !important;
-    box-shadow:none !important;
 }
 
 /* The image belongs to the whole main content area, not only the hero. */
@@ -34,7 +42,7 @@ main{
     content:none !important;
 }
 
-/* Remove every decorative blue separator at the bottom of the content. */
+/* Remove every decorative separator around the content/footer boundary. */
 .bm-latest:before,
 .bm-latest:after,
 .bm-community-strip:before,
@@ -42,17 +50,23 @@ main{
 main:before,
 main:after,
 .bm-footer:before,
-.bm-footer:after{
+.bm-footer:after,
+.bm-footer .bm-copy:before,
+.bm-footer .bm-copy:after{
     display:none !important;
     content:none !important;
 }
 
 .bm-latest,
 .bm-community-strip,
-.bm-footer{
+.bm-footer,
+.bm-footer .bm-copy{
     border-top:0 !important;
+    border-right:0 !important;
     border-bottom:0 !important;
+    border-left:0 !important;
     box-shadow:none !important;
+    outline:0 !important;
 }
 
 /* Solid black below the artwork. */
