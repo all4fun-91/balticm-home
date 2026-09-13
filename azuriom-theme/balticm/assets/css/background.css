@@ -1,19 +1,20 @@
 /* BalticM hero background — uploaded artwork replaces the old CSS art */
 body.balticm-theme{
-    background-color:#02050b;
-    background-image:none;
+    background:#02050b !important;
+    background-image:none !important;
 }
 
 .bm-hero{
     position:relative;
     overflow:hidden !important;
+    background-color:#02050b !important;
     background-image:url('../balticm-background-web.webp') !important;
     background-position:center center !important;
     background-repeat:no-repeat !important;
     background-size:cover !important;
 }
 
-/* Remove the previous generated moon/mountain/city artwork and its dark overlays. */
+/* Remove all old generated hero artwork and its bottom fade. */
 .bm-hero-art,
 .bm-hero-art *{
     display:none !important;
@@ -25,10 +26,21 @@ body.balticm-theme{
     content:none !important;
 }
 
+/* Keep everything below the hero on the same neutral black background. */
+.bm-stats,
+.bm-latest,
+.bm-message,
+.bm-community-strip,
+main,
+.bm-wrap{
+    background-color:transparent;
+}
+
+.bm-community-strip{
+    background:#02050b !important;
+}
+
 @media(max-width:900px){
-    body.balticm-theme{
-        background-attachment:scroll;
-    }
     .bm-hero{
         background-position:center center !important;
     }
