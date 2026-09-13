@@ -32,9 +32,6 @@
             color: #c9d2df !important;
             box-shadow: none !important;
         }
-        footer.bm-footer-new .bm-footer-bottom {
-            border: 0 !important;
-        }
     </style>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}" defer></script>
     <script src="{{ asset('js/script.js') }}" defer></script>
@@ -85,11 +82,6 @@
                 <a class="bm-social" href="https://www.tiktok.com/@miersberzins" target="_blank" rel="noopener" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
             </div>
         </div>
-    </div>
-
-    <div class="bm-wrap bm-footer-bottom">
-        <span>© {{ now()->year }} BalticM. All rights reserved.</span>
-        <span>PLAY TOGETHER. ANYTIME. ANYWHERE.</span>
     </div>
 </footer>
 
