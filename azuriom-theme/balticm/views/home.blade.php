@@ -7,6 +7,7 @@
 <style>
     .bm-footer { border-top: 0 !important; }
     .bm-copy { border-top: 0 !important; }
+    .bm-cta { border-color: transparent !important; box-shadow: none !important; }
     html, body { overflow-x: hidden !important; }
     .bm-community-strip {
         margin-left: calc(50% - 50vw) !important;
@@ -14,9 +15,9 @@
         padding-left: max(24px, calc((100vw - 1200px) / 2)) !important;
         padding-right: max(24px, calc((100vw - 1200px) / 2)) !important;
         width: auto !important;
-        border-top: 0 !important;
-        border-bottom: 0 !important;
+        border: 0 !important;
         background: #02050a !important;
+        box-shadow: none !important;
     }
     .bm-community-strip > div,
     .bm-community-strip > div:last-child,
@@ -24,25 +25,26 @@
     .bm-community-strip > div:nth-child(3),
     .bm-community-strip > div:nth-child(4) {
         border: 0 !important;
-        border-top: 0 !important;
-        border-bottom: 0 !important;
-        border-left: 0 !important;
-        border-right: 0 !important;
         box-shadow: none !important;
     }
     .bm-community-strip > div > i {
+        display: inline-block !important;
+        width: auto !important;
+        height: auto !important;
+        min-width: 0 !important;
+        min-height: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
         color: #aeb8c7 !important;
         text-shadow: none !important;
-    }
-    .bm-community-strip b,
-    .bm-community-strip small {
-        color: #aeb8c7 !important;
+        filter: none !important;
     }
     .bm-community-strip b { color: #e3e8ef !important; }
     .bm-community-strip small { color: #687386 !important; }
-    .bm-community-strip > div > i {
-        filter: none !important;
-    }
 </style>
 <main>
     <section class="bm-hero">
