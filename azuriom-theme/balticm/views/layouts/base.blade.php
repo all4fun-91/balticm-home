@@ -15,21 +15,40 @@
     <link href="{{ theme_asset('css/reference.css') }}" rel="stylesheet">
     <link href="{{ theme_asset('css/background.css') }}" rel="stylesheet">
     <style>
-        footer.bm-footer-new,
+        /* Footer: completely flat, neutral and free of blue decoration. */
+        html, body, #app, footer.bm-footer-new,
         footer.bm-footer-new * {
             border-color: transparent !important;
             box-shadow: none !important;
+            outline: 0 !important;
         }
-        footer.bm-footer-new {
+        footer.bm-footer-new,
+        footer.bm-footer-new::before,
+        footer.bm-footer-new::after {
             border: 0 !important;
             background: #02050b !important;
-        }
-        footer.bm-footer-new .bm-social,
-        footer.bm-footer-new .bm-social:hover {
-            border: 0 !important;
+            box-shadow: none !important;
             outline: 0 !important;
+        }
+        footer.bm-footer-new a,
+        footer.bm-footer-new i,
+        footer.bm-footer-new p,
+        footer.bm-footer-new span,
+        footer.bm-footer-new div {
+            text-shadow: none !important;
+        }
+        footer.bm-footer-new a,
+        footer.bm-footer-new .bm-social {
+            border: 0 !important;
             background: transparent !important;
             color: #c9d2df !important;
+            box-shadow: none !important;
+        }
+        footer.bm-footer-new a:hover,
+        footer.bm-footer-new .bm-social:hover {
+            border: 0 !important;
+            background: transparent !important;
+            color: #ffffff !important;
             box-shadow: none !important;
         }
     </style>
