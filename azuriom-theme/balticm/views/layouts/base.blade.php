@@ -39,6 +39,8 @@
         .bm-login-benefit:last-child{border-right:0}
         .bm-login-benefit i{display:block;margin-bottom:8px;color:#fff;font-size:21px}
         .bm-login-formside{display:flex;flex-direction:column;justify-content:center;padding:55px 58px 42px;background:linear-gradient(135deg,#080d14,#05080d)}
+        .bm-login-view{width:100%}
+        .bm-login-view.is-hidden{display:none}
         .bm-login-form-title{margin:0 0 28px;text-align:center;color:#fff;font-size:38px;font-weight:500;letter-spacing:-.035em}
         .bm-login-form{width:100%;max-width:540px;margin:0 auto}
         .bm-login-field{position:relative;margin-bottom:14px}
@@ -55,7 +57,7 @@
         .bm-login-submit:before{content:'';position:absolute;left:0;bottom:11px;width:24px;height:1px;background:rgba(7,16,25,.32);transform:rotate(28deg);transform-origin:left center;pointer-events:none}
         .bm-login-submit:hover{filter:brightness(1.06);transform:translateY(-1px)}
         .bm-login-links{display:flex;justify-content:space-between;margin:17px 0 25px;font-size:12px}
-        .bm-login-links a{color:rgba(255,255,255,.7);text-decoration:none;border-bottom:1px dotted rgba(255,255,255,.35);padding-bottom:2px}
+        .bm-login-links a{color:rgba(255,255,255,.7);text-decoration:none;border-bottom:1px dotted rgba(255,255,255,.35);padding-bottom:2px;cursor:pointer}
         .bm-login-links a:hover{color:#ff9a3d}
         .bm-login-divider{display:flex;align-items:center;gap:13px;margin:0 0 17px;color:rgba(255,255,255,.43);font-size:9px;font-weight:800;letter-spacing:.12em}
         .bm-login-divider:before,.bm-login-divider:after{content:'';height:1px;flex:1;background:rgba(255,255,255,.14)}
@@ -67,6 +69,15 @@
         .bm-login-provider-disabled{opacity:.52;cursor:default}
         .bm-login-provider-disabled:hover{transform:none;border-color:rgba(255,255,255,.16);background:rgba(255,255,255,.035)}
         .bm-login-note{margin:24px 0 0;color:rgba(255,255,255,.4);font-size:9px;line-height:1.55;text-align:center}
+        .bm-register-form{width:100%;max-width:540px;margin:0 auto}
+        .bm-register-field{position:relative;margin-bottom:14px}
+        .bm-register-field i{position:absolute;left:17px;top:50%;transform:translateY(-50%);z-index:1;color:rgba(255,255,255,.52);font-size:19px}
+        .bm-register-field:after{content:'';position:absolute;left:0;bottom:11px;width:24px;height:1px;background:rgba(255,255,255,.2);transform:rotate(28deg);transform-origin:left center;pointer-events:none;z-index:2}
+        .bm-register-field input{width:100%;height:58px;padding:0 18px 0 53px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.015);color:#fff;font-size:14px;outline:none;clip-path:polygon(0 0,100% 0,100% 100%,4% 100%,0 80%)}
+        .bm-register-field input:focus{border-color:rgba(255,154,61,.72);box-shadow:0 0 0 2px rgba(255,122,24,.08)}
+        .bm-register-field input::placeholder{color:rgba(255,255,255,.38)}
+        .bm-register-submit{margin-top:7px}
+        .bm-register-back{justify-content:center;margin-top:17px;margin-bottom:0}
         body.bm-modal-open{overflow:hidden}
         @media(max-width:820px){.bm-login-dialog{grid-template-columns:1fr;min-height:0;max-height:92vh;overflow:auto}.bm-login-side{min-height:250px;padding:34px 28px 26px}.bm-login-side-copy{margin-top:30px}.bm-login-side h2{font-size:36px}.bm-login-benefits{display:none}.bm-login-formside{padding:34px 28px 32px}.bm-login-form-title{font-size:32px}}
         @media(max-width:520px){.bm-login-modal{padding:8px}.bm-login-dialog{width:100%;border-radius:18px}.bm-login-side{min-height:220px;padding:27px 21px 24px}.bm-login-brand img{width:48px;height:48px}.bm-login-side h2{font-size:31px}.bm-login-side-lead{font-size:12px}.bm-login-formside{padding:28px 19px 25px}.bm-login-form-title{font-size:29px;margin-bottom:22px}.bm-login-providers{gap:8px}.bm-login-provider{height:54px}.bm-login-provider img{width:24px;height:24px}}
@@ -108,43 +119,77 @@
                 </div>
             </section>
             <section class="bm-login-formside">
-                <h2 class="bm-login-form-title" id="bm-login-title">Log In</h2>
-                <form class="bm-login-form" method="POST" action="{{ route('login') }}">
-                    @csrf
-                    <div class="bm-login-field">
-                        <i class="bi bi-envelope"></i>
-                        <input type="email" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="E-mail..." required>
+                <div class="bm-login-view" id="bm-login-view">
+                    <h2 class="bm-login-form-title" id="bm-login-title">Log In</h2>
+                    <form class="bm-login-form" method="POST" action="{{ route('login') }}">
+                        @csrf
+                        <div class="bm-login-field">
+                            <i class="bi bi-envelope"></i>
+                            <input type="email" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="E-mail..." required>
+                        </div>
+                        <div class="bm-login-field bm-login-password">
+                            <i class="bi bi-lock"></i>
+                            <input type="password" name="password" id="bm-login-password" autocomplete="current-password" placeholder="Password" required>
+                            <i class="bi bi-eye bm-login-eye" id="bm-login-eye"></i>
+                        </div>
+                        <label class="bm-login-checkrow"><input type="checkbox" name="remember" value="1"> <span>Remember me</span></label>
+                        <button type="submit" class="bm-login-submit">Log In</button>
+                    </form>
+                    <div class="bm-login-links">
+                        @if(Route::has('password.request'))<a href="{{ route('password.request') }}">Forgot your password?</a>@endif
+                        @if(Route::has('register'))<a href="{{ route('register') }}" id="bm-open-register">Register</a>@endif
                     </div>
-                    <div class="bm-login-field bm-login-password">
-                        <i class="bi bi-lock"></i>
-                        <input type="password" name="password" id="bm-login-password" autocomplete="current-password" placeholder="Password" required>
-                        <i class="bi bi-eye bm-login-eye" id="bm-login-eye"></i>
+                    <div class="bm-login-divider"><span>Other login options</span></div>
+                    <div class="bm-login-providers">
+                        @if(Route::has('auth.steam'))<a class="bm-login-provider" href="{{ route('auth.steam') }}" aria-label="Steam"><img src="https://cdn.simpleicons.org/steam/ffffff" alt="Steam"></a>@else<div class="bm-login-provider bm-login-provider-disabled"><img src="https://cdn.simpleicons.org/steam/ffffff" alt="Steam"></div>@endif
+                        @if(Route::has('discord-auth.login'))<a class="bm-login-provider" href="{{ route('discord-auth.login') }}" aria-label="Discord"><img src="https://cdn.simpleicons.org/discord/ffffff" alt="Discord"></a>@else<div class="bm-login-provider bm-login-provider-disabled"><img src="https://cdn.simpleicons.org/discord/ffffff" alt="Discord"></div>@endif
+                        @if(Route::has('google.login'))<a class="bm-login-provider" href="{{ route('google.login') }}" aria-label="Google"><img src="https://cdn.simpleicons.org/google" alt="Google"></a>@elseif(Route::has('google-auth.login'))<a class="bm-login-provider" href="{{ route('google-auth.login') }}" aria-label="Google"><img src="https://cdn.simpleicons.org/google" alt="Google"></a>@else<div class="bm-login-provider bm-login-provider-disabled"><img src="https://cdn.simpleicons.org/google" alt="Google"></div>@endif
                     </div>
-                    <label class="bm-login-checkrow"><input type="checkbox" name="remember" value="1"> <span>Remember me</span></label>
-                    <button type="submit" class="bm-login-submit">Log In</button>
-                </form>
-                <div class="bm-login-links">
-                    @if(Route::has('password.request'))<a href="{{ route('password.request') }}">Forgot your password?</a>@endif
-                    @if(Route::has('register'))<a href="{{ route('register') }}">Register</a>@endif
+                    <p class="bm-login-note">SECURE COMMUNITY LOGIN · Your account keeps your profile, community activity and game services connected.</p>
                 </div>
-                <div class="bm-login-divider"><span>Other login options</span></div>
-                <div class="bm-login-providers">
-                    @if(Route::has('auth.steam'))<a class="bm-login-provider" href="{{ route('auth.steam') }}" aria-label="Steam"><img src="https://cdn.simpleicons.org/steam/ffffff" alt="Steam"></a>@else<div class="bm-login-provider bm-login-provider-disabled"><img src="https://cdn.simpleicons.org/steam/ffffff" alt="Steam"></div>@endif
-                    @if(Route::has('discord-auth.login'))<a class="bm-login-provider" href="{{ route('discord-auth.login') }}" aria-label="Discord"><img src="https://cdn.simpleicons.org/discord/ffffff" alt="Discord"></a>@else<div class="bm-login-provider bm-login-provider-disabled"><img src="https://cdn.simpleicons.org/discord/ffffff" alt="Discord"></div>@endif
-                    @if(Route::has('google.login'))<a class="bm-login-provider" href="{{ route('google.login') }}" aria-label="Google"><img src="https://cdn.simpleicons.org/google" alt="Google"></a>@elseif(Route::has('google-auth.login'))<a class="bm-login-provider" href="{{ route('google-auth.login') }}" aria-label="Google"><img src="https://cdn.simpleicons.org/google" alt="Google"></a>@else<div class="bm-login-provider bm-login-provider-disabled"><img src="https://cdn.simpleicons.org/google" alt="Google"></div>@endif
+                <div class="bm-login-view is-hidden" id="bm-register-view">
+                    <h2 class="bm-login-form-title">Register</h2>
+                    <form class="bm-register-form" method="POST" action="{{ route('register') }}">
+                        @csrf
+                        <div class="bm-register-field">
+                            <i class="bi bi-person"></i>
+                            <input type="text" name="username" value="{{ old('username') }}" autocomplete="username" placeholder="Username..." required>
+                        </div>
+                        <div class="bm-register-field">
+                            <i class="bi bi-envelope"></i>
+                            <input type="email" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="E-mail..." required>
+                        </div>
+                        <div class="bm-register-field">
+                            <i class="bi bi-lock"></i>
+                            <input type="password" name="password" autocomplete="new-password" placeholder="Password..." required>
+                        </div>
+                        <div class="bm-register-field">
+                            <i class="bi bi-lock-fill"></i>
+                            <input type="password" name="password_confirmation" autocomplete="new-password" placeholder="Confirm password..." required>
+                        </div>
+                        <button type="submit" class="bm-login-submit bm-register-submit">Register</button>
+                    </form>
+                    <div class="bm-login-links bm-register-back">
+                        <a href="#" id="bm-back-login">← Back to Log In</a>
+                    </div>
+                    <p class="bm-login-note">SECURE COMMUNITY REGISTRATION · Your account keeps your profile, community activity and game services connected.</p>
                 </div>
-                <p class="bm-login-note">SECURE COMMUNITY LOGIN · Your account keeps your profile, community activity and game services connected.</p>
             </section>
         </div>
     </div>
     <script>
     document.addEventListener('DOMContentLoaded',function(){
         const modal=document.getElementById('bm-login-modal'),close=document.getElementById('bm-login-close'),eye=document.getElementById('bm-login-eye'),password=document.getElementById('bm-login-password');
+        const loginView=document.getElementById('bm-login-view'),registerView=document.getElementById('bm-register-view'),openRegister=document.getElementById('bm-open-register'),backLogin=document.getElementById('bm-back-login');
         if(!modal)return;
         const open=()=>{modal.classList.add('is-open');modal.setAttribute('aria-hidden','false');document.body.classList.add('bm-modal-open');};
         const hide=()=>{modal.classList.remove('is-open');modal.setAttribute('aria-hidden','true');document.body.classList.remove('bm-modal-open');};
-        document.querySelectorAll('.bm-login[href]').forEach(btn=>btn.addEventListener('click',function(e){if(this.getAttribute('href')&&this.getAttribute('href').includes('/login')){e.preventDefault();open();}}));
-        if(window.location.hash==='#login')open();
+        const showLogin=()=>{if(loginView)loginView.classList.remove('is-hidden');if(registerView)registerView.classList.add('is-hidden');};
+        const showRegister=()=>{if(loginView)loginView.classList.add('is-hidden');if(registerView)registerView.classList.remove('is-hidden');};
+        document.querySelectorAll('.bm-login[href]').forEach(btn=>btn.addEventListener('click',function(e){if(this.getAttribute('href')&&this.getAttribute('href').includes('/login')){e.preventDefault();showLogin();open();}}));
+        if(openRegister)openRegister.addEventListener('click',function(e){e.preventDefault();showRegister();open();});
+        if(backLogin)backLogin.addEventListener('click',function(e){e.preventDefault();showLogin();});
+        if(window.location.hash==='#login')showLogin(),open();
         if(close)close.addEventListener('click',hide);
         modal.addEventListener('click',function(e){if(e.target===modal)hide();});
         document.addEventListener('keydown',function(e){if(e.key==='Escape'&&modal.classList.contains('is-open'))hide();});
