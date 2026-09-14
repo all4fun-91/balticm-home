@@ -80,6 +80,13 @@
         .bm-register-back{justify-content:center;margin-top:17px;margin-bottom:0}
         .bm-register-back a{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:38px;padding:8px 14px;border:1px solid rgba(150,220,245,.16);border-radius:9px;background:linear-gradient(180deg,rgba(150,220,245,.07),rgba(255,255,255,.025));box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 6px 18px rgba(0,0,0,.16);color:rgba(225,245,252,.78);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:.01em;transition:.18s ease}
         .bm-register-back a:hover{color:#e8fbff;border-color:rgba(130,220,250,.48);background:linear-gradient(180deg,rgba(120,205,235,.13),rgba(255,255,255,.04));box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 8px 24px rgba(55,150,190,.12);transform:translateY(-1px)}
+        .bm-forgot-form{width:100%;max-width:540px;margin:0 auto}
+        .bm-forgot-icon{width:70px;height:70px;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(85,220,255,.42);border-radius:16px;background:rgba(40,190,230,.045);box-shadow:0 0 26px rgba(40,190,230,.08),inset 0 0 20px rgba(40,190,230,.035);color:#aeefff;font-size:31px}
+        .bm-forgot-title{margin-bottom:10px}
+        .bm-forgot-subtitle{max-width:520px;margin:0 auto 26px;color:rgba(255,255,255,.62);font-size:13px;line-height:1.6;text-align:center}
+        .bm-forgot-submit{margin-top:7px}
+        .bm-forgot-divider{margin:28px 0 17px}
+        .bm-forgot-back{margin-top:0}
         body.bm-modal-open{overflow:hidden}
         @media(max-width:820px){.bm-login-dialog{grid-template-columns:1fr;min-height:0;max-height:92vh;overflow:auto}.bm-login-side{min-height:250px;padding:34px 28px 26px}.bm-login-side-copy{margin-top:30px}.bm-login-side h2{font-size:36px}.bm-login-benefits{display:none}.bm-login-formside{padding:34px 28px 32px}.bm-login-form-title{font-size:32px}}
         @media(max-width:520px){.bm-login-modal{padding:8px}.bm-login-dialog{width:100%;border-radius:18px}.bm-login-side{min-height:220px;padding:27px 21px 24px}.bm-login-brand img{width:48px;height:48px}.bm-login-side h2{font-size:31px}.bm-login-side-lead{font-size:12px}.bm-login-formside{padding:28px 19px 25px}.bm-login-form-title{font-size:29px;margin-bottom:22px}.bm-login-providers{gap:8px}.bm-login-provider{height:54px}.bm-login-provider img{width:24px;height:24px}}
@@ -138,7 +145,7 @@
                         <button type="submit" class="bm-login-submit">Log In</button>
                     </form>
                     <div class="bm-login-links">
-                        @if(Route::has('password.request'))<a href="{{ route('password.request') }}">Forgot your password?</a>@endif
+                        @if(Route::has('password.request'))<a href="{{ route('password.request') }}" id="bm-open-forgot">Forgot your password?</a>@endif
                         @if(Route::has('register'))<a href="{{ route('register') }}" id="bm-open-register">Register</a>@endif
                     </div>
                     <div class="bm-login-divider"><span>Other login options</span></div>
@@ -176,21 +183,43 @@
                     </div>
                     <p class="bm-login-note">SECURE COMMUNITY REGISTRATION · Your account keeps your profile, community activity and game services connected.</p>
                 </div>
+                <div class="bm-login-view is-hidden" id="bm-forgot-view">
+                    <div class="bm-forgot-icon"><i class="bi bi-lock"></i></div>
+                    <h2 class="bm-login-form-title bm-forgot-title">Forgot your password?</h2>
+                    <p class="bm-forgot-subtitle">No worries — enter your e-mail address and we’ll send you a link to reset your password.</p>
+                    <form class="bm-forgot-form" method="POST" action="{{ route('password.email') }}">
+                        @csrf
+                        <div class="bm-register-field">
+                            <i class="bi bi-envelope"></i>
+                            <input type="email" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="E-mail address..." required>
+                        </div>
+                        <button type="submit" class="bm-login-submit bm-forgot-submit">Send Reset Link</button>
+                    </form>
+                    <div class="bm-login-divider bm-forgot-divider"><span>OR</span></div>
+                    <div class="bm-login-links bm-register-back bm-forgot-back">
+                        <a href="#" id="bm-back-login-forgot">← Back to Log In</a>
+                    </div>
+                    <p class="bm-login-note">PASSWORD RECOVERY · We’ll send a secure reset link to your account e-mail.</p>
+                </div>
             </section>
         </div>
     </div>
     <script>
     document.addEventListener('DOMContentLoaded',function(){
         const modal=document.getElementById('bm-login-modal'),close=document.getElementById('bm-login-close'),eye=document.getElementById('bm-login-eye'),password=document.getElementById('bm-login-password');
-        const loginView=document.getElementById('bm-login-view'),registerView=document.getElementById('bm-register-view'),openRegister=document.getElementById('bm-open-register'),backLogin=document.getElementById('bm-back-login');
+        const loginView=document.getElementById('bm-login-view'),registerView=document.getElementById('bm-register-view'),forgotView=document.getElementById('bm-forgot-view');
+        const openRegister=document.getElementById('bm-open-register'),openForgot=document.getElementById('bm-open-forgot'),backLogin=document.getElementById('bm-back-login'),backLoginForgot=document.getElementById('bm-back-login-forgot');
         if(!modal)return;
         const open=()=>{modal.classList.add('is-open');modal.setAttribute('aria-hidden','false');document.body.classList.add('bm-modal-open');};
         const hide=()=>{modal.classList.remove('is-open');modal.setAttribute('aria-hidden','true');document.body.classList.remove('bm-modal-open');};
-        const showLogin=()=>{if(loginView)loginView.classList.remove('is-hidden');if(registerView)registerView.classList.add('is-hidden');};
-        const showRegister=()=>{if(loginView)loginView.classList.add('is-hidden');if(registerView)registerView.classList.remove('is-hidden');};
+        const showLogin=()=>{if(loginView)loginView.classList.remove('is-hidden');if(registerView)registerView.classList.add('is-hidden');if(forgotView)forgotView.classList.add('is-hidden');};
+        const showRegister=()=>{if(loginView)loginView.classList.add('is-hidden');if(registerView)registerView.classList.remove('is-hidden');if(forgotView)forgotView.classList.add('is-hidden');};
+        const showForgot=()=>{if(loginView)loginView.classList.add('is-hidden');if(registerView)registerView.classList.add('is-hidden');if(forgotView)forgotView.classList.remove('is-hidden');};
         document.querySelectorAll('.bm-login[href]').forEach(btn=>btn.addEventListener('click',function(e){if(this.getAttribute('href')&&this.getAttribute('href').includes('/login')){e.preventDefault();showLogin();open();}}));
         if(openRegister)openRegister.addEventListener('click',function(e){e.preventDefault();showRegister();open();});
+        if(openForgot)openForgot.addEventListener('click',function(e){e.preventDefault();showForgot();open();});
         if(backLogin)backLogin.addEventListener('click',function(e){e.preventDefault();showLogin();});
+        if(backLoginForgot)backLoginForgot.addEventListener('click',function(e){e.preventDefault();showLogin();});
         if(window.location.hash==='#login')showLogin(),open();
         if(close)close.addEventListener('click',hide);
         modal.addEventListener('click',function(e){if(e.target===modal)hide();});
