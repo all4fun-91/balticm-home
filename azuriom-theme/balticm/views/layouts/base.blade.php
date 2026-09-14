@@ -21,7 +21,7 @@
         .bm-login-dialog{position:relative;width:min(1080px,96vw);min-height:650px;display:grid;grid-template-columns:43% 57%;overflow:hidden;border:1px solid rgba(255,255,255,.2);border-radius:24px;background:#05090f;box-shadow:0 30px 100px rgba(0,0,0,.78),inset 0 0 50px rgba(255,255,255,.025)}
         .bm-login-close{position:absolute;z-index:5;top:17px;right:17px;width:38px;height:38px;border:1px solid rgba(255,255,255,.18);border-radius:10px;background:rgba(5,8,13,.72);color:#fff;font-size:21px;line-height:1;cursor:pointer}
         .bm-login-close:hover{border-color:rgba(255,122,24,.7);color:#ff9a3d}
-        .bm-login-side{position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:55px 42px 34px;overflow:hidden;background:linear-gradient(180deg,rgba(2,7,14,.2),rgba(2,7,14,.84)),url('https://media.balticm.eu/media/site/1789353600524-63dc7873-b363-4d93-a68c-4451208f096d.png') center/cover no-repeat}
+        .bm-login-side{position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:55px 42px 34px;overflow:hidden;background:linear-gradient(180deg,rgba(2,7,14,.2),rgba(2,7,14,.84)),url('https://media.balticm.eu/media/site/1789346383673-4e25ebb7-52fc-45bb-8fcb-f9c96c46b873.png') center/cover no-repeat}
         .bm-login-side:before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 72% 40%,rgba(52,125,190,.22),transparent 34%),linear-gradient(90deg,rgba(2,6,12,.08),rgba(2,6,12,.45))}
         .bm-login-side>*{position:relative;z-index:1}
         .bm-login-brand{display:flex;align-items:center;gap:14px}
@@ -140,12 +140,11 @@
         const open=()=>{modal.classList.add('is-open');modal.setAttribute('aria-hidden','false');document.body.classList.add('bm-modal-open');};
         const hide=()=>{modal.classList.remove('is-open');modal.setAttribute('aria-hidden','true');document.body.classList.remove('bm-modal-open');};
         document.querySelectorAll('.bm-login[href]').forEach(btn=>btn.addEventListener('click',function(e){if(this.getAttribute('href')&&this.getAttribute('href').includes('/login')){e.preventDefault();open();}}));
-        if(window.location.hash==='#login')open();
-        window.addEventListener('hashchange',function(){if(window.location.hash==='#login')open();});
+        if(window.location.hash === '#login') open();
         close.addEventListener('click',hide);
         modal.addEventListener('click',e=>{if(e.target===modal)hide();});
         document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('is-open'))hide();});
-        if(eye&&password)eye.addEventListener('click',function(){const show=password.type==='password';password.type=show?'text':'password';eye.classList.toggle('bi-eye',!show);eye.classList.toggle('bi-eye-slash',show);});
+        if(eye&&password)eye.addEventListener('click',function(){const visible=password.type==='text';password.type=visible?'password':'text';this.className=visible?'bi bi-eye bm-login-eye':'bi bi-eye-slash bm-login-eye';});
     });
     </script>
     @endif
