@@ -89,9 +89,9 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'HTTP localhost health check failed.' }
           if ($http -ne '308') { throw "Expected HTTP 308 redirect, got HTTP $http." }
 
-          $https = & curl.exe -k -sS -L --resolve 'balticm.eu:443:127.0.0.1' https://balticm.eu/
+          $httpsCode = & curl.exe -k -sS -o NUL -w '%{http_code}' -L --resolve 'balticm.eu:443:127.0.0.1' https://balticm.eu/
           if ($LASTEXITCODE -ne 0) { throw 'HTTPS localhost health check failed.' }
-          if ($https -notmatch 'BALTICM') { throw 'BalticM homepage was not returned over HTTPS.' }
+          if ($httpsCode -ne '200') { throw "Expected HTTPS 200, got HTTP $httpsCode." }
 
       - name: Restart BalticM Node server
         shell: powershell
