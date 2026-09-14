@@ -43,6 +43,7 @@
         .bm-login-form{width:100%;max-width:540px;margin:0 auto}
         .bm-login-field{position:relative;margin-bottom:14px}
         .bm-login-field i{position:absolute;left:17px;top:50%;transform:translateY(-50%);z-index:1;color:rgba(255,255,255,.52);font-size:19px}
+        .bm-login-field:after{content:'';position:absolute;left:0;bottom:11px;width:24px;height:1px;background:rgba(255,255,255,.2);transform:rotate(28deg);transform-origin:left center;pointer-events:none;z-index:2}
         .bm-login-field input{width:100%;height:58px;padding:0 18px 0 53px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.015);color:#fff;font-size:14px;outline:none;clip-path:polygon(0 0,100% 0,100% 100%,4% 100%,0 80%)}
         .bm-login-field input:focus{border-color:rgba(255,154,61,.72);box-shadow:0 0 0 2px rgba(255,122,24,.08)}
         .bm-login-field input::placeholder{color:rgba(255,255,255,.38)}
@@ -50,7 +51,8 @@
         .bm-login-eye{position:absolute;right:17px;left:auto!important;cursor:pointer}
         .bm-login-checkrow{display:flex;align-items:center;gap:10px;margin:17px 0 23px;color:rgba(255,255,255,.62);font-size:12px}
         .bm-login-checkrow input{width:19px;height:19px;accent-color:#ff7a18}
-        .bm-login-submit{width:100%;height:58px;border:0;border-radius:0 0 12px 0;background:linear-gradient(180deg,#dff7ff,#a8d8e8);color:#071019;font-size:18px;font-weight:700;cursor:pointer;box-shadow:0 10px 30px rgba(117,190,220,.12);clip-path:polygon(0 0,100% 0,100% 100%,4% 100%,0 80%)}
+        .bm-login-submit{position:relative;width:100%;height:58px;border:0;border-radius:0 0 12px 0;background:linear-gradient(180deg,#dff7ff,#a8d8e8);color:#071019;font-size:18px;font-weight:700;cursor:pointer;box-shadow:0 10px 30px rgba(117,190,220,.12);clip-path:polygon(0 0,100% 0,100% 100%,4% 100%,0 80%);overflow:hidden}
+        .bm-login-submit:before{content:'';position:absolute;left:0;bottom:11px;width:24px;height:1px;background:rgba(7,16,25,.32);transform:rotate(28deg);transform-origin:left center;pointer-events:none}
         .bm-login-submit:hover{filter:brightness(1.06);transform:translateY(-1px)}
         .bm-login-links{display:flex;justify-content:space-between;margin:17px 0 25px;font-size:12px}
         .bm-login-links a{color:rgba(255,255,255,.7);text-decoration:none;border-bottom:1px dotted rgba(255,255,255,.35);padding-bottom:2px}
