@@ -77,14 +77,21 @@ jobs:
           Start-Sleep -Seconds 2
 
           Start-Process -FilePath $caddy -ArgumentList 'run','--config',$configTarget,'--adapter','caddyfile' -WorkingDirectory (Split-Path $caddy) -WindowStyle Hidden
-          Start-Sleep -Seconds 4
+          Start-Sleep -Seconds 8
 
-          $listening = Get-NetTCPConnection -LocalPort 80 -State Listen -ErrorAction SilentlyContinue
-          if (-not $listening) { throw 'Caddy is not listening on port 80 after restart.' }
+          $listening80 = Get-NetTCPConnection -LocalPort 80 -State Listen -ErrorAction SilentlyContinue
+          if (-not $listening80) { throw 'Caddy is not listening on port 80 after restart.' }
 
-          $response = Invoke-WebRequest -Uri 'http://127.0.0.1/' -UseBasicParsing
-          if ($response.StatusCode -ne 200) { throw "BalticM returned HTTP $($response.StatusCode) on localhost." }
-          if ($response.Content -notmatch 'BALTICM') { throw 'BalticM homepage was not returned by Azuriom/Caddy.' }
+          $listening443 = Get-NetTCPConnection -LocalPort 443 -State Listen -ErrorAction SilentlyContinue
+          if (-not $listening443) { throw 'Caddy is not listening on port 443 after restart.' }
+
+          $http = & curl.exe -sS -o NUL -w '%{http_code}' http://127.0.0.1/ -H 'Host: balticm.eu'
+          if ($LASTEXITCODE -ne 0) { throw 'HTTP localhost health check failed.' }
+          if ($http -ne '308') { throw "Expected HTTP 308 redirect, got HTTP $http." }
+
+          $https = & curl.exe -k -sS -L --resolve 'balticm.eu:443:127.0.0.1' https://balticm.eu/
+          if ($LASTEXITCODE -ne 0) { throw 'HTTPS localhost health check failed.' }
+          if ($https -notmatch 'BALTICM') { throw 'BalticM homepage was not returned over HTTPS.' }
 
       - name: Restart BalticM Node server
         shell: powershell
