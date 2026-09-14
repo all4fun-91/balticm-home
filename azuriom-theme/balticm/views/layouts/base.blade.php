@@ -29,7 +29,7 @@
         .bm-login-dialog h2{margin:0;font-size:34px;letter-spacing:-.04em;font-weight:900}
         .bm-login-lead{margin:9px 0 24px;color:rgba(255,255,255,.68);font-size:13px;line-height:1.5}
         .bm-login-providers{display:flex;flex-direction:column;align-items:flex-start;gap:11px}
-        .bm-login-provider{width:390px;max-width:100%;min-height:58px;display:flex;align-items:center;gap:13px;padding:0 17px;border:1px solid rgba(255,255,255,.14);border-radius:12px;background:rgba(255,255,255,.035);color:#fff;text-decoration:none;transition:border-color .18s ease,background .18s ease,transform .18s ease}
+        .bm-login-provider{width:300px;max-width:100%;min-height:58px;display:flex;align-items:center;gap:13px;padding:0 17px;border:1px solid rgba(255,255,255,.14);border-radius:12px;background:rgba(255,255,255,.035);color:#fff;text-decoration:none;transition:border-color .18s ease,background .18s ease,transform .18s ease}
         .bm-login-provider:hover{border-color:rgba(255,122,24,.62);background:rgba(255,122,24,.08);color:#fff;transform:translateY(-1px)}
         .bm-login-provider img{width:26px;height:26px;object-fit:contain;display:block;flex:0 0 26px}
         .bm-login-provider span{font-size:11px;font-weight:900;letter-spacing:.1em}
