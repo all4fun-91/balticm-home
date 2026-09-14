@@ -33,8 +33,10 @@
         .bm-login-side h2{margin:0;color:#fff;font-size:48px;line-height:.98;letter-spacing:-.045em;font-weight:950}
         .bm-login-side h2 span{color:#ff7a18}
         .bm-login-side-lead{margin:20px 0 0;color:rgba(255,255,255,.76);font-size:14px;line-height:1.6}
-        .bm-login-benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;border-top:1px solid rgba(255,255,255,.1);padding-top:22px}
-        .bm-login-benefit{text-align:center;color:rgba(255,255,255,.7);font-size:9px;font-weight:800;letter-spacing:.07em;text-transform:uppercase}
+        .bm-login-benefits{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:0 -42px -34px;padding:20px 22px 18px;border:1px solid rgba(255,255,255,.16);border-bottom:0;background:rgba(3,8,14,.78);clip-path:polygon(0 0,92% 0,100% 18%,100% 82%,92% 100%,0 100%);box-shadow:inset 0 0 26px rgba(0,0,0,.42)}
+        .bm-login-benefits:after{content:'';position:absolute;inset:0;pointer-events:none;border-top:1px solid rgba(255,255,255,.12);box-shadow:inset 0 0 18px rgba(255,255,255,.015)}
+        .bm-login-benefit{position:relative;z-index:1;text-align:center;color:rgba(255,255,255,.7);font-size:9px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;border-right:1px solid rgba(255,255,255,.12);padding:4px 8px}
+        .bm-login-benefit:last-child{border-right:0}
         .bm-login-benefit i{display:block;margin-bottom:8px;color:#fff;font-size:21px}
         .bm-login-formside{display:flex;flex-direction:column;justify-content:center;padding:55px 58px 42px;background:linear-gradient(135deg,#080d14,#05080d)}
         .bm-login-form-title{margin:0 0 28px;text-align:center;color:#fff;font-size:38px;font-weight:500;letter-spacing:-.035em}
@@ -56,7 +58,7 @@
         .bm-login-divider{display:flex;align-items:center;gap:13px;margin:0 0 17px;color:rgba(255,255,255,.43);font-size:9px;font-weight:800;letter-spacing:.12em}
         .bm-login-divider:before,.bm-login-divider:after{content:'';height:1px;flex:1;background:rgba(255,255,255,.14)}
         .bm-login-providers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-        .bm-login-provider{height:60px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.16);border-radius:10px;background:rgba(255,255,255,.035);color:#fff;text-decoration:none;transition:.18s ease}
+        .bm-login-provider{height:60px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.16);border-radius:10px;background:rgba(255,255,255,.035);color:#fff;text-decoration:none;transition:.18s ease;clip-path:polygon(0 0,92% 0,100% 18%,100% 82%,92% 100%,0 100%)}
         .bm-login-provider:hover{border-color:rgba(255,122,24,.62);background:rgba(255,122,24,.08);color:#fff;transform:translateY(-1px)}
         .bm-login-provider img{width:28px;height:28px;object-fit:contain}
         .bm-login-provider span{display:none}
@@ -140,11 +142,11 @@
         const open=()=>{modal.classList.add('is-open');modal.setAttribute('aria-hidden','false');document.body.classList.add('bm-modal-open');};
         const hide=()=>{modal.classList.remove('is-open');modal.setAttribute('aria-hidden','true');document.body.classList.remove('bm-modal-open');};
         document.querySelectorAll('.bm-login[href]').forEach(btn=>btn.addEventListener('click',function(e){if(this.getAttribute('href')&&this.getAttribute('href').includes('/login')){e.preventDefault();open();}}));
-        if(window.location.hash === '#login') open();
-        close.addEventListener('click',hide);
-        modal.addEventListener('click',e=>{if(e.target===modal)hide();});
-        document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('is-open'))hide();});
-        if(eye&&password)eye.addEventListener('click',function(){const visible=password.type==='text';password.type=visible?'password':'text';this.className=visible?'bi bi-eye bm-login-eye':'bi bi-eye-slash bm-login-eye';});
+        if(window.location.hash==='#login')open();
+        if(close)close.addEventListener('click',hide);
+        modal.addEventListener('click',function(e){if(e.target===modal)hide();});
+        document.addEventListener('keydown',function(e){if(e.key==='Escape'&&modal.classList.contains('is-open'))hide();});
+        if(eye&&password)eye.addEventListener('click',function(){password.type=password.type==='password'?'text':'password';this.classList.toggle('bi-eye');this.classList.toggle('bi-eye-slash');});
     });
     </script>
     @endif
