@@ -5,106 +5,147 @@
 
 @section('app')
 <style>
-html,body{overflow-x:hidden!important;background:#02050b!important}
-main.bm-home-main{position:relative!important;margin:0!important;padding:0!important;min-height:100vh!important;background:#02050b!important;border:0!important;box-shadow:none!important;overflow:hidden!important}
-main.bm-home-main *{box-sizing:border-box}
-.bm-home-hero{position:relative;min-height:500px;overflow:hidden;background:#02050b}
-.bm-home-art{position:absolute;inset:0;overflow:hidden;background:#02050b;z-index:0}
-.bm-home-art img{position:absolute;left:-1%;top:-1%;width:102%;height:102%;max-width:none;object-fit:cover;object-position:center center;display:block}
-.bm-home-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(2,5,11,.72) 0%,rgba(2,5,11,.25) 46%,rgba(2,5,11,.04) 100%),linear-gradient(180deg,rgba(2,5,11,.08) 0%,rgba(2,5,11,.02) 65%,#02050b 100%);z-index:1;pointer-events:none}
-.bm-home-content{position:relative;z-index:2;width:min(1200px,calc(100% - 48px));margin:0 auto;padding:82px 0 105px;color:#f5f8ff}
-.bm-home-eyebrow{font-size:10px;font-weight:900;letter-spacing:.38em;color:#d9e6f6}
-.bm-home-title{margin:17px 0 12px;font-size:clamp(64px,7.2vw,104px);line-height:.84;letter-spacing:-.065em;font-weight:800}
-.bm-home-title span{display:block;color:#2f9cff}
-.bm-home-lead{margin:0;max-width:560px;color:#d1dbea;font-size:14px;line-height:1.6}
-.bm-home-stats{position:relative;z-index:4;width:min(1080px,calc(100% - 48px));margin:-82px auto 0;display:grid;grid-template-columns:repeat(4,1fr);background:rgba(4,12,22,.92);border:1px solid rgba(102,164,220,.2);border-radius:14px;overflow:hidden;box-shadow:0 18px 45px rgba(0,0,0,.28)}
-.bm-home-stat{min-height:86px;padding:18px 22px;border-right:1px solid rgba(102,164,220,.16)}
-.bm-home-stat:last-child{border-right:0}
-.bm-home-stat b{display:block;font-size:21px;color:#f5f8ff}
-.bm-home-stat span{display:block;margin-top:5px;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:#8495ab}
-.bm-home-body{position:relative;z-index:2;width:min(1080px,calc(100% - 48px));margin:18px auto 0;padding-bottom:48px}
-.bm-home-message{padding:14px 16px;margin-bottom:12px;border:1px solid rgba(102,164,220,.16);border-radius:10px;background:rgba(5,13,24,.78);color:#a8b8cb;font-size:10px}
-.bm-home-news{margin:0;padding:0;background:transparent;border:0}
-.bm-home-news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.bm-home-news-empty{grid-column:1/-1;padding:16px;color:#718198;font-size:10px}
-.bm-home-news-card{display:block;min-height:150px;overflow:hidden;border:1px solid rgba(102,164,220,.16);border-radius:12px;background:rgba(4,11,20,.9);color:#f5f8ff;text-decoration:none;box-shadow:0 12px 30px rgba(0,0,0,.16)}
-.bm-home-news-card:hover{color:#fff;border-color:rgba(73,171,255,.42);transform:translateY(-2px)}
-.bm-home-news-card img{width:100%;height:105px;object-fit:cover;display:block}
-.bm-home-news-top{display:flex;justify-content:space-between;padding:12px 14px 0;color:#39b8ff;font-size:8px;letter-spacing:.14em;font-weight:900}
-.bm-home-news-top small{color:#718198;font-size:8px;letter-spacing:0;font-weight:500}
-.bm-home-news-body{padding:8px 14px 14px}
-.bm-home-news-body h3{margin:0 0 7px;font-size:14px;line-height:1.2}
-.bm-home-news-body p{margin:0;color:#8798ae;font-size:9px;line-height:1.45}
-.bm-home-footer{margin:0;padding:28px 24px 32px;background:#02050b;border:0!important;box-shadow:none!important;text-align:center;color:#66758a;font-size:8px;letter-spacing:.12em}
-.bm-home-footer strong{color:#aebdd0}
-footer.bm-footer-new{display:none!important;height:0!important;margin:0!important;padding:0!important;border:0!important;background:#02050b!important;box-shadow:none!important}
+/* =========================================================
+   BALTICM HOME — standalone page
+   All homepage layout + styling lives in this file.
+   ========================================================= */
+.bm-home,
+.bm-home *{box-sizing:border-box}
+.bm-home{--bg:#02050b;--panel:rgba(4,12,23,.92);--line:rgba(115,177,230,.20);--muted:#8797ac;--blue:#2f9cff;position:relative;isolation:isolate;overflow:hidden;background:var(--bg);color:#f5f8ff;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+.bm-home a{color:inherit}
+.bm-home__backdrop{position:absolute;z-index:-2;top:0;left:0;right:0;height:560px;overflow:hidden;background:#02050b}
+.bm-home__backdrop img{position:absolute;left:-1%;top:-1%;width:102%;height:102%;max-width:none;object-fit:cover;object-position:center top;display:block}
+.bm-home__backdrop:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,5,11,.05) 0%,rgba(2,5,11,.02) 65%,#02050b 100%);pointer-events:none}
+.bm-home__hero{min-height:405px;display:flex;align-items:center}
+.bm-home__wrap{width:min(1200px,calc(100% - 48px));margin:0 auto}
+.bm-home__hero-inner{padding:70px 0 42px}
+.bm-home__eyebrow{font-size:10px;font-weight:900;letter-spacing:.38em;color:#d2dceb;margin-bottom:16px}
+.bm-home__title{margin:0;max-width:760px;font-size:clamp(62px,7vw,96px);line-height:.84;letter-spacing:-.065em;font-weight:800}
+.bm-home__title span{display:block;color:var(--blue)}
+.bm-home__lead{max-width:600px;margin:14px 0 0;color:#d2d9e5;font-size:14px;line-height:1.55}
+.bm-home__content{position:relative;z-index:2;padding-bottom:46px}
+.bm-home__stats{display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden;margin-top:-2px;background:rgba(3,10,19,.93);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 45px rgba(0,0,0,.28)}
+.bm-home__stat{min-height:82px;padding:18px 22px;border-right:1px solid var(--line)}
+.bm-home__stat:last-child{border-right:0}
+.bm-home__stat strong{display:block;font-size:21px;line-height:1}
+.bm-home__stat small{display:block;margin-top:8px;color:#8493a8;font-size:8px;letter-spacing:.14em;text-transform:uppercase}
+.bm-home__news{margin-top:14px}
+.bm-home__news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.bm-home__news-card{min-height:145px;padding:17px;border:1px solid var(--line);border-radius:13px;background:linear-gradient(145deg,rgba(7,17,30,.96),rgba(2,7,14,.98));text-decoration:none;transition:transform .18s ease,border-color .18s ease,background .18s ease}
+.bm-home__news-card:hover{transform:translateY(-2px);border-color:rgba(68,167,255,.45);background:linear-gradient(145deg,rgba(9,21,37,.98),rgba(3,8,16,.99))}
+.bm-home__news-top{display:flex;justify-content:space-between;gap:10px;color:#41baff;font-size:8px;font-weight:900;letter-spacing:.15em}
+.bm-home__news-top time{color:#6f7f94;font-weight:500;letter-spacing:0}
+.bm-home__news-card img{width:100%;height:96px;object-fit:cover;display:block;margin:12px 0;border-radius:8px}
+.bm-home__news-card h3{margin:11px 0 7px;font-size:14px;line-height:1.25}
+.bm-home__news-card p{margin:0;color:#8998ad;font-size:10px;line-height:1.5}
+.bm-home__empty{padding:22px;border:1px dashed var(--line);border-radius:12px;color:#7f8da2;font-size:11px;background:rgba(3,8,15,.55)}
+.bm-home__footer{border-top:1px solid rgba(255,255,255,.05);background:#02050b}
+.bm-home__footer-inner{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.bm-home__footer-brand{font-size:12px;font-weight:900;letter-spacing:.08em}
+.bm-home__footer-tag{display:block;margin-top:4px;color:#64738a;font-size:7px;letter-spacing:.22em}
+.bm-home__footer-links{display:flex;gap:20px;flex-wrap:wrap;justify-content:center}
+.bm-home__footer-links a{color:#7f8ea3;text-decoration:none;font-size:9px}
+.bm-home__footer-links a:hover{color:#fff}
+.bm-home__footer-social{display:flex;gap:8px}
+.bm-home__footer-social a{width:32px;height:32px;display:grid;place-items:center;border:1px solid rgba(115,177,230,.16);border-radius:8px;color:#9eacc0;text-decoration:none;font-size:12px}
+.bm-home__footer-social a:hover{border-color:rgba(68,167,255,.5);color:#fff}
+
+/* Neutralize the old global footer on this page. */
+body:has(.bm-home) > footer,
+#app + footer{display:none!important}
+
+/* Neutralize old homepage pseudo-elements/backgrounds. */
+.bm-home .bm-hero,.bm-home .bm-latest,.bm-home .bm-cta,.bm-home .bm-community-strip{background:none!important;border:0!important;box-shadow:none!important}
 
 @media(max-width:900px){
-.bm-home-hero{min-height:500px}
-.bm-home-content{padding:65px 0 105px}
-.bm-home-title{font-size:68px}
-.bm-home-news-grid{grid-template-columns:1fr}
+ .bm-home__wrap{width:calc(100% - 32px)}
+ .bm-home__backdrop{height:620px}
+ .bm-home__hero{min-height:465px}
+ .bm-home__hero-inner{padding:65px 0 55px}
+ .bm-home__stats{grid-template-columns:1fr 1fr}
+ .bm-home__stat:nth-child(2){border-right:0}
+ .bm-home__stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+ .bm-home__news-grid{grid-template-columns:1fr}
+ .bm-home__footer-inner{align-items:flex-start;flex-direction:column;padding:22px 0}
 }
 @media(max-width:600px){
-.bm-home-content,.bm-home-body{width:calc(100% - 24px)}
-.bm-home-content{padding:58px 0 110px}
-.bm-home-title{font-size:54px}
-.bm-home-lead{font-size:12px}
-.bm-home-stats{width:calc(100% - 24px);grid-template-columns:1fr 1fr;margin-top:-88px}
-.bm-home-stat{padding:16px;border-bottom:1px solid rgba(102,164,220,.16)}
-.bm-home-stat:nth-child(2){border-right:0}
-.bm-home-stat:nth-child(3),.bm-home-stat:nth-child(4){border-bottom:0}
-.bm-home-stat b{font-size:18px}
+ .bm-home__wrap{width:calc(100% - 24px)}
+ .bm-home__backdrop{height:560px}
+ .bm-home__backdrop img{left:-3%;top:0;width:106%;height:100%;object-fit:cover}
+ .bm-home__hero{min-height:430px}
+ .bm-home__hero-inner{padding:58px 0 50px}
+ .bm-home__title{font-size:53px}
+ .bm-home__lead{font-size:12px}
+ .bm-home__stats{grid-template-columns:1fr 1fr}
+ .bm-home__stat{padding:16px}
 }
 </style>
 
-<main class="bm-home-main">
-    <section class="bm-home-hero">
-        <div class="bm-home-art">
-            <img src="{{ theme_asset('balticm-background-web.webp') }}" alt="">
-        </div>
-        <div class="bm-home-shade"></div>
-        <div class="bm-home-content">
-            <div class="bm-home-eyebrow">G A M I N G &nbsp; C O M M U N I T Y</div>
-            <h1 class="bm-home-title">BALTICM<span>PLAY TOGETHER.</span></h1>
-            <p class="bm-home-lead">A home for players, creators and communities. Play together. Grow together.</p>
-        </div>
-    </section>
-
-    <section class="bm-home-stats">
-        <div class="bm-home-stat"><b>{{ number_format(\Azuriom\Models\User::count()) }}</b><span>Community Members</span></div>
-        <div class="bm-home-stat"><b>{{ $servers->count() }}+</b><span>Active Servers</span></div>
-        <div class="bm-home-stat"><b>EU</b><span>Community</span></div>
-        <div class="bm-home-stat"><b>24/7</b><span>Online Support</span></div>
-    </section>
-
-    <div class="bm-home-body">
-        @if($message)
-            <div class="bm-home-message">{{ $message }}</div>
-        @endif
-
-        <section class="bm-home-news" id="latest-news">
-            <div class="bm-home-news-grid">
-                @if($posts->isEmpty())
-                    <div class="bm-home-news-empty">No news published yet. More BalticM updates are coming soon.</div>
-                @else
-                    @foreach($posts->take(3) as $post)
-                        <a class="bm-home-news-card" href="{{ route('posts.show', $post->slug) }}">
-                            <div class="bm-home-news-top"><span>NEWS</span><small>{{ format_date($post->created_at) }}</small></div>
-                            @if($post->hasImage())
-                                <img src="{{ $post->imageUrl() }}" alt="{{ $post->title }}">
-                            @endif
-                            <div class="bm-home-news-body">
-                                <h3>{{ $post->title }}</h3>
-                                <p>{{ Str::limit(strip_tags($post->content), 150) }}</p>
-                            </div>
-                        </a>
-                    @endforeach
-                @endif
-            </div>
-        </section>
+<main class="bm-home">
+    <div class="bm-home__backdrop" aria-hidden="true">
+        <img src="{{ theme_asset('balticm-background-web.webp') }}" alt="">
     </div>
 
-    <footer class="bm-home-footer"><strong>BALTICM</strong> · PLAY TOGETHER</footer>
+    <section class="bm-home__hero">
+        <div class="bm-home__wrap bm-home__hero-inner">
+            <div class="bm-home__eyebrow">G A M I N G &nbsp; C O M M U N I T Y</div>
+            <h1 class="bm-home__title">BALTICM<span>PLAY TOGETHER.</span></h1>
+            <p class="bm-home__lead">A home for players, creators and communities. Play together. Grow together.</p>
+        </div>
+    </section>
+
+    <section class="bm-home__content">
+        <div class="bm-home__wrap">
+            <div class="bm-home__stats">
+                <div class="bm-home__stat"><strong>{{ number_format(\Azuriom\Models\User::count()) }}</strong><small>Community Members</small></div>
+                <div class="bm-home__stat"><strong>{{ $servers->count() }}+</strong><small>Active Servers</small></div>
+                <div class="bm-home__stat"><strong>EU</strong><small>Community</small></div>
+                <div class="bm-home__stat"><strong>24/7</strong><small>Online Support</small></div>
+            </div>
+
+            @if($message)
+                <div class="bm-home__empty" style="margin-top:14px">{{ $message }}</div>
+            @endif
+
+            <section class="bm-home__news" id="latest-news">
+                <div class="bm-home__news-grid">
+                    @if($posts->isEmpty())
+                        <div class="bm-home__empty">No news published yet. More BalticM updates are coming soon.</div>
+                    @else
+                        @foreach($posts->take(3) as $post)
+                            <a class="bm-home__news-card" href="{{ route('posts.show', $post->slug) }}">
+                                <div class="bm-home__news-top"><span>NEWS</span><time>{{ format_date($post->created_at) }}</time></div>
+                                @if($post->hasImage())
+                                    <img src="{{ $post->imageUrl() }}" alt="{{ $post->title }}">
+                                @endif
+                                <h3>{{ $post->title }}</h3>
+                                <p>{{ Str::limit(strip_tags($post->content), 150) }}</p>
+                            </a>
+                        @endforeach
+                    @endif
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <footer class="bm-home__footer">
+        <div class="bm-home__wrap bm-home__footer-inner">
+            <div>
+                <div class="bm-home__footer-brand">BALTICM</div>
+                <span class="bm-home__footer-tag">PLAY TOGETHER</span>
+            </div>
+            <nav class="bm-home__footer-links" aria-label="Footer">
+                <a href="{{ url('/') }}">Home</a>
+                <a href="{{ url('/forum') }}">Forum</a>
+                <a href="{{ url('/servers') }}">Servers</a>
+                <a href="{{ url('/about') }}">About</a>
+            </nav>
+            <div class="bm-home__footer-social">
+                <a href="https://discord.com/invite/y2EGmd5Er5" target="_blank" rel="noopener" aria-label="Discord"><i class="bi bi-discord"></i></a>
+                <a href="https://www.youtube.com/@MiersBerzins" target="_blank" rel="noopener" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                <a href="https://www.twitch.tv/miersberzins" target="_blank" rel="noopener" aria-label="Twitch"><i class="bi bi-twitch"></i></a>
+            </div>
+        </div>
+    </footer>
 </main>
 @endsection
