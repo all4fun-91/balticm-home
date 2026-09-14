@@ -31,12 +31,9 @@
         .bm-login-providers{display:grid;gap:11px}
         .bm-login-provider{min-height:58px;display:flex;align-items:center;gap:13px;padding:0 17px;border:1px solid rgba(255,255,255,.14);border-radius:12px;background:rgba(255,255,255,.035);color:#fff;text-decoration:none;transition:border-color .18s ease,background .18s ease,transform .18s ease}
         .bm-login-provider:hover{border-color:rgba(255,122,24,.62);background:rgba(255,122,24,.08);color:#fff;transform:translateY(-1px)}
-        .bm-login-provider i{width:22px;text-align:center;font-size:19px}
+        .bm-login-provider img{width:26px;height:26px;object-fit:contain;display:block;flex:0 0 26px}
         .bm-login-provider span{font-size:11px;font-weight:900;letter-spacing:.1em}
-        .bm-login-provider .bm-arrow{margin-left:auto;font-size:13px;color:rgba(255,255,255,.45)}
-        .bm-login-provider.is-disabled{opacity:.55;cursor:not-allowed}
-        .bm-login-provider.is-disabled:hover{border-color:rgba(255,255,255,.14);background:rgba(255,255,255,.035);transform:none}
-        .bm-login-provider .bm-soon{margin-left:auto;color:#ff9a3d;font-size:8px;font-weight:900;letter-spacing:.16em}
+        .bm-login-provider .bm-arrow{margin-left:auto;width:13px;height:13px;opacity:.45}
         .bm-login-divider{display:flex;align-items:center;gap:10px;margin:24px 0 14px;color:rgba(255,255,255,.36);font-size:7px;font-weight:800;letter-spacing:.2em}
         .bm-login-divider:before,.bm-login-divider:after{content:'';height:1px;flex:1;background:rgba(255,255,255,.1)}
         .bm-login-note{margin:0;color:rgba(255,255,255,.45);font-size:9px;line-height:1.5;text-align:center}
@@ -70,21 +67,21 @@
             <p class="bm-login-lead">Choose how you want to sign in to the BalticM community.</p>
             <div class="bm-login-providers">
                 @if(Route::has('auth.steam'))
-                    <a class="bm-login-provider" href="{{ route('auth.steam') }}"><i class="bi bi-steam"></i><span>CONTINUE WITH STEAM</span><i class="bi bi-arrow-right bm-arrow"></i></a>
+                    <a class="bm-login-provider" href="{{ route('auth.steam') }}"><img src="https://cdn.simpleicons.org/steam/ffffff" alt="Steam"><span>CONTINUE WITH STEAM</span><img class="bm-arrow" src="https://cdn.simpleicons.org/arrowright/ffffff" alt=""></a>
                 @else
-                    <div class="bm-login-provider is-disabled"><i class="bi bi-steam"></i><span>CONTINUE WITH STEAM</span><span class="bm-soon">SOON</span></div>
+                    <div class="bm-login-provider"><img src="https://cdn.simpleicons.org/steam/ffffff" alt="Steam"><span>STEAM — SOON</span></div>
                 @endif
                 @if(Route::has('discord-auth.login'))
-                    <a class="bm-login-provider" href="{{ route('discord-auth.login') }}"><i class="bi bi-discord"></i><span>CONTINUE WITH DISCORD</span><i class="bi bi-arrow-right bm-arrow"></i></a>
+                    <a class="bm-login-provider" href="{{ route('discord-auth.login') }}"><img src="https://cdn.simpleicons.org/discord/ffffff" alt="Discord"><span>CONTINUE WITH DISCORD</span><img class="bm-arrow" src="https://cdn.simpleicons.org/arrowright/ffffff" alt=""></a>
                 @else
-                    <div class="bm-login-provider is-disabled"><i class="bi bi-discord"></i><span>CONTINUE WITH DISCORD</span><span class="bm-soon">SOON</span></div>
+                    <div class="bm-login-provider"><img src="https://cdn.simpleicons.org/discord/ffffff" alt="Discord"><span>DISCORD — SOON</span></div>
                 @endif
                 @if(Route::has('google.login'))
-                    <a class="bm-login-provider" href="{{ route('google.login') }}"><i class="bi bi-google"></i><span>CONTINUE WITH GOOGLE</span><i class="bi bi-arrow-right bm-arrow"></i></a>
+                    <a class="bm-login-provider" href="{{ route('google.login') }}"><img src="https://cdn.simpleicons.org/google" alt="Google"><span>CONTINUE WITH GOOGLE</span><img class="bm-arrow" src="https://cdn.simpleicons.org/arrowright/ffffff" alt=""></a>
                 @elseif(Route::has('google-auth.login'))
-                    <a class="bm-login-provider" href="{{ route('google-auth.login') }}"><i class="bi bi-google"></i><span>CONTINUE WITH GOOGLE</span><i class="bi bi-arrow-right bm-arrow"></i></a>
+                    <a class="bm-login-provider" href="{{ route('google-auth.login') }}"><img src="https://cdn.simpleicons.org/google" alt="Google"><span>CONTINUE WITH GOOGLE</span><img class="bm-arrow" src="https://cdn.simpleicons.org/arrowright/ffffff" alt=""></a>
                 @else
-                    <div class="bm-login-provider is-disabled"><i class="bi bi-google"></i><span>CONTINUE WITH GOOGLE</span><span class="bm-soon">SOON</span></div>
+                    <div class="bm-login-provider"><img src="https://cdn.simpleicons.org/google" alt="Google"><span>GOOGLE — SOON</span></div>
                 @endif
             </div>
             <div class="bm-login-divider"><span>SECURE COMMUNITY LOGIN</span></div>
