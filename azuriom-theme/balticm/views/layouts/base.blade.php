@@ -34,6 +34,9 @@
         .bm-login-provider i{width:22px;text-align:center;font-size:19px}
         .bm-login-provider span{font-size:11px;font-weight:900;letter-spacing:.1em}
         .bm-login-provider .bm-arrow{margin-left:auto;font-size:13px;color:rgba(255,255,255,.45)}
+        .bm-login-provider.is-disabled{opacity:.55;cursor:not-allowed}
+        .bm-login-provider.is-disabled:hover{border-color:rgba(255,255,255,.14);background:rgba(255,255,255,.035);transform:none}
+        .bm-login-provider .bm-soon{margin-left:auto;color:#ff9a3d;font-size:8px;font-weight:900;letter-spacing:.16em}
         .bm-login-divider{display:flex;align-items:center;gap:10px;margin:24px 0 14px;color:rgba(255,255,255,.36);font-size:7px;font-weight:800;letter-spacing:.2em}
         .bm-login-divider:before,.bm-login-divider:after{content:'';height:1px;flex:1;background:rgba(255,255,255,.1)}
         .bm-login-note{margin:0;color:rgba(255,255,255,.45);font-size:9px;line-height:1.5;text-align:center}
@@ -68,14 +71,20 @@
             <div class="bm-login-providers">
                 @if(Route::has('auth.steam'))
                     <a class="bm-login-provider" href="{{ route('auth.steam') }}"><i class="bi bi-steam"></i><span>CONTINUE WITH STEAM</span><i class="bi bi-arrow-right bm-arrow"></i></a>
+                @else
+                    <div class="bm-login-provider is-disabled"><i class="bi bi-steam"></i><span>CONTINUE WITH STEAM</span><span class="bm-soon">SOON</span></div>
                 @endif
                 @if(Route::has('discord-auth.login'))
                     <a class="bm-login-provider" href="{{ route('discord-auth.login') }}"><i class="bi bi-discord"></i><span>CONTINUE WITH DISCORD</span><i class="bi bi-arrow-right bm-arrow"></i></a>
+                @else
+                    <div class="bm-login-provider is-disabled"><i class="bi bi-discord"></i><span>CONTINUE WITH DISCORD</span><span class="bm-soon">SOON</span></div>
                 @endif
                 @if(Route::has('google.login'))
                     <a class="bm-login-provider" href="{{ route('google.login') }}"><i class="bi bi-google"></i><span>CONTINUE WITH GOOGLE</span><i class="bi bi-arrow-right bm-arrow"></i></a>
                 @elseif(Route::has('google-auth.login'))
                     <a class="bm-login-provider" href="{{ route('google-auth.login') }}"><i class="bi bi-google"></i><span>CONTINUE WITH GOOGLE</span><i class="bi bi-arrow-right bm-arrow"></i></a>
+                @else
+                    <div class="bm-login-provider is-disabled"><i class="bi bi-google"></i><span>CONTINUE WITH GOOGLE</span><span class="bm-soon">SOON</span></div>
                 @endif
             </div>
             <div class="bm-login-divider"><span>SECURE COMMUNITY LOGIN</span></div>
