@@ -7,7 +7,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="theme-color" content="#02050b">
     <title>@yield('title', 'BalticM — Play Together') | {{ site_name() }}</title>
-    <link rel="shortcut icon" href="{{ favicon() }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://media.balticm.eu/media/site/1789353600524-63dc7873-b363-4d93-a68c-4451208f096d.png?v=2">
+    <link rel="shortcut icon" type="image/png" href="https://media.balticm.eu/media/site/1789353600524-63dc7873-b363-4d93-a68c-4451208f096d.png?v=2">
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
     <link href="{{ asset('css/base.css') }}" rel="stylesheet">
