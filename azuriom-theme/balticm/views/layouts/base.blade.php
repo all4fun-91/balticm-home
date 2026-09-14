@@ -19,9 +19,11 @@
 </head>
 <body class="balticm-theme" @if(dark_theme(true)) data-bs-theme="dark" @endif>
 <div id="app">
-    <header>
-        @include('elements.navbar')
-    </header>
+    @if(!request()->routeIs('home'))
+        <header>
+            @include('elements.navbar')
+        </header>
+    @endif
     @yield('app')
 </div>
 @stack('footer-scripts')
