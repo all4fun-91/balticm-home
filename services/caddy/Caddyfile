@@ -1,4 +1,4 @@
-balticm.eu {
+balticm.eu, www.balticm.eu {
     encode zstd gzip
     reverse_proxy 127.0.0.1:8080
 }
