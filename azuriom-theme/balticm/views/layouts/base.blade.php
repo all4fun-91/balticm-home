@@ -96,6 +96,7 @@
         const open=()=>{modal.classList.add('is-open');modal.setAttribute('aria-hidden','false');document.body.classList.add('bm-modal-open');};
         const hide=()=>{modal.classList.remove('is-open');modal.setAttribute('aria-hidden','true');document.body.classList.remove('bm-modal-open');};
         document.querySelectorAll('.bm-login[href]').forEach(btn=>btn.addEventListener('click',function(e){if(this.getAttribute('href') && this.getAttribute('href').includes('/login')){e.preventDefault();open();}}));
+        if(window.location.hash === '#login') open();
         close.addEventListener('click',hide);
         modal.addEventListener('click',e=>{if(e.target===modal)hide();});
         document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('is-open'))hide();});
