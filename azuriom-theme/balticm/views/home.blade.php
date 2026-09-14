@@ -7,23 +7,28 @@
 <style>
 /* =========================================================
    BALTICM HOME — standalone page
-   All homepage layout + styling lives in this file.
+   Homepage styling is isolated here.
    ========================================================= */
+html,body{overflow-x:hidden!important}
+body.balticm-theme{background:#02050b!important;background-image:none!important}
+
 .bm-home,
 .bm-home *{box-sizing:border-box}
-.bm-home{--bg:#02050b;--panel:rgba(4,12,23,.92);--line:rgba(115,177,230,.20);--muted:#8797ac;--blue:#2f9cff;position:relative;isolation:isolate;overflow:hidden;background:var(--bg);color:#f5f8ff;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+.bm-home{--bg:#02050b;--panel:rgba(4,12,23,.92);--line:rgba(115,177,230,.20);--muted:#8797ac;--blue:#2f9cff;position:relative;isolation:isolate;overflow:hidden;background:#02050b!important;background-image:none!important;color:#f5f8ff;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
 .bm-home a{color:inherit}
-.bm-home__backdrop{position:absolute;z-index:-2;top:0;left:0;right:0;height:560px;overflow:hidden;background:#02050b}
-.bm-home__backdrop img{position:absolute;left:-1%;top:-1%;width:102%;height:102%;max-width:none;object-fit:cover;object-position:center top;display:block}
-.bm-home__backdrop:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,5,11,.05) 0%,rgba(2,5,11,.02) 65%,#02050b 100%);pointer-events:none}
-.bm-home__hero{min-height:405px;display:flex;align-items:center}
+
+/* Only this image is allowed to provide the homepage artwork. */
+.bm-home__backdrop{position:absolute;z-index:-1;top:0;left:0;right:0;height:560px;overflow:hidden;background:#02050b}
+.bm-home__backdrop img{position:absolute;left:0;top:0;width:100%;height:auto;max-width:none;display:block}
+
+.bm-home__hero{min-height:405px;display:flex;align-items:center;background:transparent!important;background-image:none!important}
 .bm-home__wrap{width:min(1200px,calc(100% - 48px));margin:0 auto}
 .bm-home__hero-inner{padding:70px 0 42px}
 .bm-home__eyebrow{font-size:10px;font-weight:900;letter-spacing:.38em;color:#d2dceb;margin-bottom:16px}
 .bm-home__title{margin:0;max-width:760px;font-size:clamp(62px,7vw,96px);line-height:.84;letter-spacing:-.065em;font-weight:800}
 .bm-home__title span{display:block;color:var(--blue)}
 .bm-home__lead{max-width:600px;margin:14px 0 0;color:#d2d9e5;font-size:14px;line-height:1.55}
-.bm-home__content{position:relative;z-index:2;padding-bottom:46px}
+.bm-home__content{position:relative;z-index:2;padding-bottom:46px;background:transparent!important;background-image:none!important}
 .bm-home__stats{display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden;margin-top:-2px;background:rgba(3,10,19,.93);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 45px rgba(0,0,0,.28)}
 .bm-home__stat{min-height:82px;padding:18px 22px;border-right:1px solid var(--line)}
 .bm-home__stat:last-child{border-right:0}
@@ -39,7 +44,8 @@
 .bm-home__news-card h3{margin:11px 0 7px;font-size:14px;line-height:1.25}
 .bm-home__news-card p{margin:0;color:#8998ad;font-size:10px;line-height:1.5}
 .bm-home__empty{padding:22px;border:1px dashed var(--line);border-radius:12px;color:#7f8da2;font-size:11px;background:rgba(3,8,15,.55)}
-.bm-home__footer{border-top:1px solid rgba(255,255,255,.05);background:#02050b}
+
+.bm-home__footer{border-top:0!important;background:#02050b!important;background-image:none!important}
 .bm-home__footer-inner{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:20px}
 .bm-home__footer-brand{font-size:12px;font-weight:900;letter-spacing:.08em}
 .bm-home__footer-tag{display:block;margin-top:4px;color:#64738a;font-size:7px;letter-spacing:.22em}
@@ -50,12 +56,15 @@
 .bm-home__footer-social a{width:32px;height:32px;display:grid;place-items:center;border:1px solid rgba(115,177,230,.16);border-radius:8px;color:#9eacc0;text-decoration:none;font-size:12px}
 .bm-home__footer-social a:hover{border-color:rgba(68,167,255,.5);color:#fff}
 
-/* Neutralize the old global footer on this page. */
-body:has(.bm-home) > footer,
+/* Kill the old Azuriom/global footer on this page only. */
+body:has(.bm-home)>footer,
 #app + footer{display:none!important}
 
-/* Neutralize old homepage pseudo-elements/backgrounds. */
-.bm-home .bm-hero,.bm-home .bm-latest,.bm-home .bm-cta,.bm-home .bm-community-strip{background:none!important;border:0!important;box-shadow:none!important}
+/* Kill old theme artwork/rules if they target generic main elements. */
+.bm-home .bm-hero,
+.bm-home .bm-latest,
+.bm-home .bm-cta,
+.bm-home .bm-community-strip{background:none!important;background-image:none!important;border:0!important;box-shadow:none!important}
 
 @media(max-width:900px){
  .bm-home__wrap{width:calc(100% - 32px)}
@@ -71,12 +80,10 @@ body:has(.bm-home) > footer,
 @media(max-width:600px){
  .bm-home__wrap{width:calc(100% - 24px)}
  .bm-home__backdrop{height:560px}
- .bm-home__backdrop img{left:-3%;top:0;width:106%;height:100%;object-fit:cover}
  .bm-home__hero{min-height:430px}
  .bm-home__hero-inner{padding:58px 0 50px}
  .bm-home__title{font-size:53px}
  .bm-home__lead{font-size:12px}
- .bm-home__stats{grid-template-columns:1fr 1fr}
  .bm-home__stat{padding:16px}
 }
 </style>
