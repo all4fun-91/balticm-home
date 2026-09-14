@@ -162,7 +162,7 @@
                         @csrf
                         <div class="bm-register-field">
                             <i class="bi bi-person"></i>
-                            <input type="text" name="username" value="{{ old('username') }}" autocomplete="username" placeholder="Username..." required>
+                            <input type="text" name="name" value="{{ old('name') }}" autocomplete="name" placeholder="Username..." required>
                         </div>
                         <div class="bm-register-field">
                             <i class="bi bi-envelope"></i>
