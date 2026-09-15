@@ -10,9 +10,10 @@
 
     .bm-navlinks {
         position: absolute;
-        left: 50%;
+        left: 50vw;
         transform: translateX(-50%);
         white-space: nowrap;
+        z-index: 5;
     }
 }
 </style>
