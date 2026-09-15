@@ -1,7 +1,11 @@
 <style>
 @media (min-width: 901px) {
-    .bm-nav {
+    .bm-top {
         position: relative;
+    }
+
+    .bm-nav {
+        position: static;
     }
 
     .bm-navlinks {
