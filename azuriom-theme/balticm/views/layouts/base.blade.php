@@ -18,9 +18,10 @@
     <style>
         .bm-login-modal{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:22px;background:rgba(0,0,0,.78);backdrop-filter:blur(3px)}
         .bm-login-modal.is-open{display:flex}
-        .bm-login-dialog{position:relative;width:min(1080px,96vw);min-height:650px;display:grid;grid-template-columns:43% 57%;overflow:hidden;border:1px solid rgba(255,255,255,.2);border-radius:24px;background:#05090f;box-shadow:0 30px 100px rgba(0,0,0,.78),inset 0 0 50px rgba(255,255,255,.025)}
+        .bm-login-dialog{position:relative;box-sizing:border-box;width:min(1080px,calc(100vw - 44px));height:650px;display:grid;grid-template-columns:43% 57%;grid-template-rows:minmax(0,1fr);overflow:hidden;border:1px solid rgba(255,255,255,.2);border-radius:24px;background:#05090f;box-shadow:0 30px 100px rgba(0,0,0,.78),inset 0 0 50px rgba(255,255,255,.025)}
         .bm-login-close{position:absolute;z-index:5;top:17px;right:17px;width:38px;height:38px;border:1px solid rgba(255,255,255,.18);border-radius:10px;background:rgba(5,8,13,.72);color:#fff;font-size:21px;line-height:1;cursor:pointer}
         .bm-login-close:hover{border-color:rgba(255,122,24,.7);color:#ff9a3d}
+        .bm-login-dialog>section{box-sizing:border-box;min-width:0;min-height:0}
         .bm-login-side{position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:55px 42px 34px;overflow:hidden;background:linear-gradient(180deg,rgba(2,7,14,.2),rgba(2,7,14,.84)),url('https://media.balticm.eu/media/site/1789346383673-4e25ebb7-52fc-45bb-8fcb-f9c96c46b873.png') center/cover no-repeat}
         .bm-login-side:before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 72% 40%,rgba(52,125,190,.22),transparent 34%),linear-gradient(90deg,rgba(2,6,12,.08),rgba(2,6,12,.45))}
         .bm-login-side>*{position:relative;z-index:1}
@@ -38,8 +39,8 @@
         .bm-login-benefit{position:relative;z-index:1;text-align:center;color:rgba(255,255,255,.7);font-size:9px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;border-right:1px solid rgba(255,255,255,.12);padding:4px 8px}
         .bm-login-benefit:last-child{border-right:0}
         .bm-login-benefit i{display:block;margin-bottom:8px;color:#fff;font-size:21px}
-        .bm-login-formside{display:flex;flex-direction:column;justify-content:center;padding:55px 58px 42px;background:linear-gradient(135deg,#080d14,#05080d)}
-        .bm-login-view{width:100%}
+        .bm-login-formside{display:flex;flex-direction:column;height:100%;padding:55px 58px 42px;overflow:hidden;background:linear-gradient(135deg,#080d14,#05080d)}
+        .bm-login-view{box-sizing:border-box;width:100%;height:100%;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;display:flex;flex-direction:column;justify-content:safe center}
         .bm-login-view.is-hidden{display:none}
         .bm-login-form-title{margin:0 0 10px;text-align:center;color:#fff;font-size:38px;font-weight:500;letter-spacing:-.035em}
         .bm-auth-icon{width:70px;height:70px;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(85,220,255,.42);border-radius:16px;background:rgba(40,190,230,.045);box-shadow:0 0 26px rgba(40,190,230,.08),inset 0 0 20px rgba(40,190,230,.035);color:#aeefff;font-size:31px}
@@ -90,7 +91,7 @@
         .bm-forgot-divider{margin:28px 0 17px}
         .bm-forgot-back{margin-top:0}
         body.bm-modal-open{overflow:hidden}
-        @media(max-width:820px){.bm-login-dialog{grid-template-columns:1fr;min-height:0;max-height:92vh;overflow:auto}.bm-login-side{min-height:250px;padding:34px 28px 26px}.bm-login-side-copy{margin-top:30px}.bm-login-side h2{font-size:36px}.bm-login-benefits{display:none}.bm-login-formside{padding:34px 28px 32px}.bm-login-form-title{font-size:32px}}
+        @media(max-width:820px){.bm-login-dialog{width:min(100%,620px);height:auto;grid-template-columns:1fr;grid-template-rows:auto;max-height:92vh;overflow:auto}.bm-login-side{min-height:250px;padding:34px 28px 26px}.bm-login-side-copy{margin-top:30px}.bm-login-side h2{font-size:36px}.bm-login-benefits{display:none}.bm-login-formside{height:auto;padding:34px 28px 32px;overflow:visible}.bm-login-view{height:auto;min-height:0;overflow:visible;scrollbar-gutter:auto}.bm-login-form-title{font-size:32px}}
         @media(max-width:520px){.bm-login-modal{padding:8px}.bm-login-dialog{width:100%;border-radius:18px}.bm-login-side{min-height:220px;padding:27px 21px 24px}.bm-login-brand img{width:48px;height:48px}.bm-login-side h2{font-size:31px}.bm-login-side-lead{font-size:12px}.bm-login-formside{padding:28px 19px 25px}.bm-login-form-title{font-size:29px;margin-bottom:10px}.bm-auth-icon{width:62px;height:62px;margin-bottom:15px;font-size:28px}.bm-auth-subtitle{font-size:12px;margin-bottom:22px}.bm-login-providers{gap:8px}.bm-login-provider{height:54px}.bm-login-provider img{width:24px;height:24px}}
     </style>
     @endif
@@ -240,3 +241,4 @@
 </div>
 </body>
 </html>
+
