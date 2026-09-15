@@ -1,19 +1,31 @@
 <style>
 @media (min-width: 901px) {
-    .bm-top {
-        position: relative;
+    .bm-nav {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+        align-items: center;
     }
 
-    .bm-nav {
-        position: static;
+    .bm-collapse {
+        display: contents !important;
+        margin-left: 0;
+        flex: none;
     }
 
     .bm-navlinks {
-        position: absolute;
-        left: 50vw;
-        transform: translateX(-50%);
+        grid-column: 2;
+        display: flex;
+        align-items: center;
+        justify-self: center;
+        gap: 30px;
         white-space: nowrap;
-        z-index: 5;
+        position: static;
+        transform: none;
+    }
+
+    .bm-nav-right {
+        grid-column: 3;
+        justify-self: end;
     }
 }
 </style>
