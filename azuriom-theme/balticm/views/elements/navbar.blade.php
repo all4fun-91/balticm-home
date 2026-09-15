@@ -1,33 +1,31 @@
 <style>
 @media (min-width: 901px) {
-    .bm-nav {
-        display: grid !important;
-        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) !important;
+    .bm-navlinks {
+        position: absolute !important;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        display: flex !important;
         align-items: center;
-        justify-content: normal;
+        gap: 30px;
+        white-space: nowrap;
+        margin: 0 !important;
     }
 
-    .bm-brand {
-        grid-column: 1;
-        justify-self: start;
+    .bm-nav {
+        position: relative;
     }
 
     .bm-collapse {
-        display: contents !important;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex: 1;
         margin-left: 0 !important;
     }
 
-    .bm-navlinks {
-        grid-column: 2;
-        position: static !important;
-        transform: none !important;
-        justify-self: center;
-        white-space: nowrap;
-    }
-
     .bm-nav-right {
-        grid-column: 3;
-        justify-self: end;
+        margin-left: auto;
     }
 }
 </style>
