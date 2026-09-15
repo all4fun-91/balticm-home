@@ -1,0 +1,32 @@
+name: Fix BalticM homepage nav
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: self-hosted
+    steps:
+      - name: Fix homepage navigation only
+        shell: powershell
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $app = 'C:\BalticM\balticm-home'
+          $file = Join-Path $app 'azuriom-theme\balticm\views\home.blade.php'
+          $text = [IO.File]::ReadAllText($file)
+          $old = '.bm-links{display:flex;gap:28px;margin-left:auto;margin-right:38px}'
+          $new = '.bm-links{display:flex;gap:28px;position:absolute;left:50%;transform:translateX(-50%);margin:0;white-space:nowrap;z-index:2}'
+          if (-not $text.Contains($old)) { throw 'Homepage nav CSS pattern not found.' }
+          $text = $text.Replace($old, $new)
+          [IO.File]::WriteAllText($file, $text, [Text.UTF8Encoding]::new($false))
+          git -C $app config user.name 'BalticM Deploy'
+          git -C $app config user.email 'deploy@balticm.eu'
+          git -C $app add azuriom-theme/balticm/views/home.blade.php .github/workflows/fix-home-nav.yml
+          git -C $app rm .github/workflows/fix-home-nav.yml
+          git -C $app commit -m 'Fix homepage navigation centering'
+          git -C $app push origin main
