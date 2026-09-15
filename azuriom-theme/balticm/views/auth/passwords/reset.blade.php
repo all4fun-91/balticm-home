@@ -37,9 +37,9 @@
     .bm-reset-submit{position:relative;width:100%;height:58px;margin-top:8px;border:0;border-radius:0 0 12px 0;background:linear-gradient(180deg,#dff7ff,#a8d8e8);color:#071019;font-size:18px;font-weight:700;cursor:pointer;box-shadow:0 10px 30px rgba(117,190,220,.12);clip-path:polygon(0 0,100% 0,100% 100%,4% 100%,0 80%);overflow:hidden}
     .bm-reset-submit:before{content:'';position:absolute;left:0;bottom:11px;width:24px;height:1px;background:rgba(7,16,25,.32);transform:rotate(28deg);transform-origin:left center;pointer-events:none}
     .bm-reset-submit:hover{filter:brightness(1.06);transform:translateY(-1px)}
-    .bm-reset-back{display:flex;justify-content:center;margin-top:19px}
-    .bm-reset-back a{display:inline-flex;align-items:center;justify-content:center;min-width:148px;height:40px;padding:0 18px;border:1px solid rgba(255,255,255,.18);border-radius:9px;background:rgba(255,255,255,.045);box-shadow:inset 0 0 18px rgba(255,255,255,.025);color:rgba(255,255,255,.82);font-size:12px;font-weight:700;text-decoration:none;letter-spacing:.01em;transition:all .18s ease}
-    .bm-reset-back a:hover{color:#fff;border-color:rgba(255,154,61,.55);background:rgba(255,122,24,.08);box-shadow:0 0 22px rgba(255,122,24,.08);transform:translateY(-1px)}
+    .bm-reset-back{display:flex;justify-content:center;margin-top:17px;margin-bottom:0}
+    .bm-reset-back a{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:38px;padding:8px 14px;border:1px solid rgba(150,220,245,.16);border-radius:9px;background:linear-gradient(180deg,rgba(150,220,245,.07),rgba(255,255,255,.025));box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 6px 18px rgba(0,0,0,.16);color:rgba(225,245,252,.78);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:.01em;transition:.18s ease}
+    .bm-reset-back a:hover{color:#e8fbff;border-color:rgba(130,220,250,.48);background:linear-gradient(180deg,rgba(120,205,235,.13),rgba(255,255,255,.04));box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 8px 24px rgba(55,150,190,.12);transform:translateY(-1px)}
     .bm-reset-note{margin:24px 0 0;color:rgba(255,255,255,.38);font-size:9px;line-height:1.55;text-align:center;letter-spacing:.02em}
     @media (max-width:900px){
         .bm-reset-card{grid-template-columns:1fr;max-width:620px}
