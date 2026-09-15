@@ -132,8 +132,9 @@
             <section class="bm-login-formside">
                 <div class="bm-login-view" id="bm-login-view">
                     <div class="bm-auth-icon"><i class="bi bi-box-arrow-in-right"></i></div>
+                    <div class="bm-login-eyebrow" style="text-align:center;margin-bottom:8px;">WELCOME BACK</div>
                     <h2 class="bm-login-form-title" id="bm-login-title">Log In</h2>
-                    <p class="bm-auth-subtitle">Welcome back — sign in to your BalticM account and continue playing together.</p>
+                    <p class="bm-auth-subtitle">Sign in to your BalticM account and continue playing together.</p>
                     <form class="bm-login-form" method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="bm-login-field">
@@ -162,8 +163,9 @@
                 </div>
                 <div class="bm-login-view is-hidden" id="bm-register-view">
                     <div class="bm-auth-icon"><i class="bi bi-person-plus"></i></div>
-                    <h2 class="bm-login-form-title">Register</h2>
-                    <p class="bm-auth-subtitle">Create your BalticM account and join the community. It only takes a moment.</p>
+                    <div class="bm-login-eyebrow" style="text-align:center;margin-bottom:8px;">JOIN THE COMMUNITY</div>
+                    <h2 class="bm-login-form-title">Create Your Account</h2>
+                    <p class="bm-auth-subtitle">Create your BalticM account and become part of the community.</p>
                     <form class="bm-register-form" method="POST" action="{{ route('register') }}">
                         @csrf
                         <div class="bm-register-field">
@@ -191,6 +193,7 @@
                 </div>
                 <div class="bm-login-view is-hidden" id="bm-forgot-view">
                     <div class="bm-forgot-icon"><i class="bi bi-lock"></i></div>
+                    <div class="bm-login-eyebrow" style="text-align:center;margin-bottom:8px;">ACCOUNT RECOVERY</div>
                     <h2 class="bm-login-form-title bm-forgot-title">Forgot your password?</h2>
                     <p class="bm-forgot-subtitle">No worries — enter your e-mail address and we’ll send you a link to reset your password.</p>
                     <form class="bm-forgot-form" method="POST" action="{{ route('password.email') }}">
