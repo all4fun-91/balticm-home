@@ -5,8 +5,8 @@
 @section('content')
 <style>
     .bm-reset-page{min-height:calc(100vh - 170px);display:flex;align-items:center;justify-content:center;padding:34px 18px}
-    .bm-reset-card{position:relative;width:min(1080px,100%);min-height:620px;display:grid;grid-template-columns:43% 57%;overflow:hidden;border:1px solid rgba(255,255,255,.18);border-radius:24px;background:#05090f;box-shadow:0 30px 100px rgba(0,0,0,.72),inset 0 0 50px rgba(255,255,255,.025)}
-    .bm-reset-side{position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:48px 42px 30px;overflow:hidden;background:linear-gradient(180deg,rgba(2,7,14,.18),rgba(2,7,14,.86)),url('https://media.balticm.eu/media/site/1789346383673-4e25ebb7-52fc-45bb-8fcb-f9c96c46b873.png') center/cover no-repeat}
+    .bm-reset-card{position:relative;width:min(1080px,100%);min-height:650px;display:grid;grid-template-columns:43% 57%;overflow:hidden;border:1px solid rgba(255,255,255,.2);border-radius:24px;background:#05090f;box-shadow:0 30px 100px rgba(0,0,0,.78),inset 0 0 50px rgba(255,255,255,.025)}
+    .bm-reset-side{position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:55px 42px 34px;overflow:hidden;background:linear-gradient(180deg,rgba(2,7,14,.18),rgba(2,7,14,.86)),url('https://media.balticm.eu/media/site/1789346383673-4e25ebb7-52fc-45bb-8fcb-f9c96c46b873.png') center/cover no-repeat}
     .bm-reset-side:before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 72% 40%,rgba(52,125,190,.22),transparent 34%),linear-gradient(90deg,rgba(2,6,12,.08),rgba(2,6,12,.45))}
     .bm-reset-side>*{position:relative;z-index:1}
     .bm-reset-brand{display:flex;align-items:center;gap:14px}
@@ -18,11 +18,11 @@
     .bm-reset-copy h1{margin:0;color:#fff;font-size:46px;line-height:.98;letter-spacing:-.045em;font-weight:950}
     .bm-reset-copy h1 span{color:#ff7a18}
     .bm-reset-lead{margin:20px 0 0;color:rgba(255,255,255,.76);font-size:14px;line-height:1.6}
-    .bm-reset-benefits{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:0 -42px -30px;padding:18px 20px 16px;border-top:1px solid rgba(255,255,255,.16);background:rgba(3,8,14,.78);box-shadow:inset 0 0 26px rgba(0,0,0,.42)}
+    .bm-reset-benefits{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:0 -42px -34px;padding:20px 22px 18px;border-top:1px solid rgba(255,255,255,.16);background:rgba(3,8,14,.78);box-shadow:inset 0 0 26px rgba(0,0,0,.42)}
     .bm-reset-benefit{text-align:center;color:rgba(255,255,255,.7);font-size:9px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;border-right:1px solid rgba(255,255,255,.12);padding:4px 8px}
     .bm-reset-benefit:last-child{border-right:0}
     .bm-reset-benefit i{display:block;margin-bottom:8px;color:#fff;font-size:21px}
-    .bm-reset-formside{display:flex;flex-direction:column;justify-content:center;padding:54px 58px 42px;background:linear-gradient(135deg,#080d14,#05080d)}
+    .bm-reset-formside{display:flex;flex-direction:column;justify-content:center;padding:55px 58px 42px;background:linear-gradient(135deg,#080d14,#05080d)}
     .bm-reset-formwrap{width:100%;max-width:540px;margin:0 auto}
     .bm-reset-icon{width:58px;height:58px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;border:1px solid rgba(255,154,61,.3);border-radius:14px;background:rgba(255,122,24,.07);color:#ff9a3d;font-size:24px}
     .bm-reset-form-eyebrow{margin:0 0 8px;color:#ff9a3d;font-size:10px;font-weight:900;letter-spacing:.25em;text-align:center}
