@@ -41,27 +41,8 @@
     .bm-reset-back a{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:38px;padding:8px 14px;border:1px solid rgba(150,220,245,.16);border-radius:9px;background:linear-gradient(180deg,rgba(150,220,245,.07),rgba(255,255,255,.025));box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 6px 18px rgba(0,0,0,.16);color:rgba(225,245,252,.78);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:.01em;transition:.18s ease}
     .bm-reset-back a:hover{color:#e8fbff;border-color:rgba(130,220,250,.48);background:linear-gradient(180deg,rgba(120,205,235,.13),rgba(255,255,255,.04));box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 8px 24px rgba(55,150,190,.12);transform:translateY(-1px)}
     .bm-reset-note{margin:24px 0 0;color:rgba(255,255,255,.38);font-size:9px;line-height:1.55;text-align:center;letter-spacing:.02em}
-    @media (max-width:900px){
-        .bm-reset-card{grid-template-columns:1fr;max-width:620px}
-        .bm-reset-side{min-height:280px;padding:32px 28px 26px}
-        .bm-reset-copy{margin:34px 0 50px}
-        .bm-reset-copy h1{font-size:38px}
-        .bm-reset-benefits{margin:0 -28px -26px}
-        .bm-reset-formside{padding:42px 28px 34px}
-    }
-    @media (max-width:560px){
-        .bm-reset-page{padding:20px 10px}
-        .bm-reset-side{min-height:245px}
-        .bm-reset-brand img{width:50px;height:50px}
-        .bm-reset-brand strong{font-size:18px}
-        .bm-reset-copy{margin:25px 0 42px}
-        .bm-reset-copy h1{font-size:31px}
-        .bm-reset-lead{font-size:12px}
-        .bm-reset-benefit{font-size:7px;padding:3px 4px}
-        .bm-reset-benefit i{font-size:17px}
-        .bm-reset-formside{padding:34px 20px 28px}
-        .bm-reset-title{font-size:31px}
-    }
+    @media (max-width:900px){.bm-reset-card{grid-template-columns:1fr;max-width:620px}.bm-reset-side{min-height:280px;padding:32px 28px 26px}.bm-reset-copy{margin:34px 0 50px}.bm-reset-copy h1{font-size:38px}.bm-reset-benefits{margin:0 -28px -26px}.bm-reset-formside{padding:42px 28px 34px}}
+    @media (max-width:560px){.bm-reset-page{padding:20px 10px}.bm-reset-side{min-height:245px}.bm-reset-brand img{width:50px;height:50px}.bm-reset-brand strong{font-size:18px}.bm-reset-copy{margin:25px 0 42px}.bm-reset-copy h1{font-size:31px}.bm-reset-lead{font-size:12px}.bm-reset-benefit{font-size:7px;padding:3px 4px}.bm-reset-benefit i{font-size:17px}.bm-reset-formside{padding:34px 20px 28px}.bm-reset-title{font-size:31px}}
 </style>
 
 <div class="bm-reset-page">
@@ -69,62 +50,35 @@
         <section class="bm-reset-side">
             <div class="bm-reset-brand">
                 <img src="https://media.balticm.eu/media/site/1789353600524-63dc7873-b363-4d93-a68c-4451208f096d.png?v=2" alt="BalticM">
-                <div>
-                    <strong>BALTICM</strong>
-                    <small>PLAY TOGETHER</small>
-                </div>
+                <div><strong>BALTICM</strong><small>PLAY TOGETHER</small></div>
             </div>
-
             <div class="bm-reset-copy">
                 <div class="bm-reset-eyebrow">ACCOUNT SECURITY</div>
                 <h1>SET A NEW <span>PASSWORD.</span></h1>
                 <p class="bm-reset-lead">Choose a new password for your BalticM account and get back into the community.</p>
             </div>
-
             <div class="bm-reset-benefits">
                 <div class="bm-reset-benefit"><i class="bi bi-shield-check"></i>Secure Account</div>
                 <div class="bm-reset-benefit"><i class="bi bi-people"></i>Safe Community</div>
                 <div class="bm-reset-benefit"><i class="bi bi-controller"></i>Play Together</div>
             </div>
         </section>
-
         <section class="bm-reset-formside">
             <div class="bm-reset-formwrap">
                 <div class="bm-reset-icon"><i class="bi bi-shield-lock"></i></div>
                 <h2 class="bm-reset-title">Reset Your Password</h2>
                 <p class="bm-reset-subtitle">Enter your account e-mail and choose a new password below.</p>
-
                 <form method="POST" action="{{ route('password.update') }}">
                     @csrf
                     <input type="hidden" name="token" value="{{ $token }}">
-
-                    <div class="bm-reset-field">
-                        <i class="bi bi-envelope"></i>
-                        <input id="email" type="email" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" placeholder="E-mail address..." autofocus>
-                    </div>
-                    @error('email')
-                        <span class="bm-reset-error">{{ $message }}</span>
-                    @enderror
-
-                    <div class="bm-reset-field">
-                        <i class="bi bi-lock"></i>
-                        <input id="password" type="password" name="password" required autocomplete="new-password" placeholder="New password...">
-                    </div>
-                    @error('password')
-                        <span class="bm-reset-error">{{ $message }}</span>
-                    @enderror
-
-                    <div class="bm-reset-field">
-                        <i class="bi bi-lock-fill"></i>
-                        <input id="password-confirm" type="password" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm password...">
-                    </div>
-
+                    <div class="bm-reset-field"><i class="bi bi-envelope"></i><input id="email" type="email" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" placeholder="E-mail address..." autofocus></div>
+                    @error('email')<span class="bm-reset-error">{{ $message }}</span>@enderror
+                    <div class="bm-reset-field"><i class="bi bi-lock"></i><input id="password" type="password" name="password" required autocomplete="new-password" placeholder="New password..."></div>
+                    @error('password')<span class="bm-reset-error">{{ $message }}</span>@enderror
+                    <div class="bm-reset-field"><i class="bi bi-lock-fill"></i><input id="password-confirm" type="password" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm password..."></div>
                     <button type="submit" class="bm-reset-submit">Reset Password</button>
                 </form>
-
-                <div class="bm-reset-back">
-                    <a href="{{ url('/') }}#login">← Back to Log In</a>
-                </div>
+                <div class="bm-reset-back"><a href="{{ route('login') }}">← Back to Log In</a></div>
                 <p class="bm-reset-note">PASSWORD RECOVERY · Your reset link is secure and can only be used for this account.</p>
             </div>
         </section>
