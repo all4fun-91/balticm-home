@@ -41,7 +41,9 @@
         .bm-login-formside{display:flex;flex-direction:column;justify-content:center;padding:55px 58px 42px;background:linear-gradient(135deg,#080d14,#05080d)}
         .bm-login-view{width:100%}
         .bm-login-view.is-hidden{display:none}
-        .bm-login-form-title{margin:0 0 28px;text-align:center;color:#fff;font-size:38px;font-weight:500;letter-spacing:-.035em}
+        .bm-login-form-title{margin:0 0 10px;text-align:center;color:#fff;font-size:38px;font-weight:500;letter-spacing:-.035em}
+        .bm-auth-icon{width:70px;height:70px;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(85,220,255,.42);border-radius:16px;background:rgba(40,190,230,.045);box-shadow:0 0 26px rgba(40,190,230,.08),inset 0 0 20px rgba(40,190,230,.035);color:#aeefff;font-size:31px}
+        .bm-auth-subtitle{max-width:520px;margin:0 auto 26px;color:rgba(255,255,255,.62);font-size:13px;line-height:1.6;text-align:center}
         .bm-login-form{width:100%;max-width:540px;margin:0 auto}
         .bm-login-field{position:relative;margin-bottom:14px}
         .bm-login-field i{position:absolute;left:17px;top:50%;transform:translateY(-50%);z-index:1;color:rgba(255,255,255,.52);font-size:19px}
@@ -89,7 +91,7 @@
         .bm-forgot-back{margin-top:0}
         body.bm-modal-open{overflow:hidden}
         @media(max-width:820px){.bm-login-dialog{grid-template-columns:1fr;min-height:0;max-height:92vh;overflow:auto}.bm-login-side{min-height:250px;padding:34px 28px 26px}.bm-login-side-copy{margin-top:30px}.bm-login-side h2{font-size:36px}.bm-login-benefits{display:none}.bm-login-formside{padding:34px 28px 32px}.bm-login-form-title{font-size:32px}}
-        @media(max-width:520px){.bm-login-modal{padding:8px}.bm-login-dialog{width:100%;border-radius:18px}.bm-login-side{min-height:220px;padding:27px 21px 24px}.bm-login-brand img{width:48px;height:48px}.bm-login-side h2{font-size:31px}.bm-login-side-lead{font-size:12px}.bm-login-formside{padding:28px 19px 25px}.bm-login-form-title{font-size:29px;margin-bottom:22px}.bm-login-providers{gap:8px}.bm-login-provider{height:54px}.bm-login-provider img{width:24px;height:24px}}
+        @media(max-width:520px){.bm-login-modal{padding:8px}.bm-login-dialog{width:100%;border-radius:18px}.bm-login-side{min-height:220px;padding:27px 21px 24px}.bm-login-brand img{width:48px;height:48px}.bm-login-side h2{font-size:31px}.bm-login-side-lead{font-size:12px}.bm-login-formside{padding:28px 19px 25px}.bm-login-form-title{font-size:29px;margin-bottom:10px}.bm-auth-icon{width:62px;height:62px;margin-bottom:15px;font-size:28px}.bm-auth-subtitle{font-size:12px;margin-bottom:22px}.bm-login-providers{gap:8px}.bm-login-provider{height:54px}.bm-login-provider img{width:24px;height:24px}}
     </style>
     @endif
     @stack('styles')
@@ -129,7 +131,9 @@
             </section>
             <section class="bm-login-formside">
                 <div class="bm-login-view" id="bm-login-view">
+                    <div class="bm-auth-icon"><i class="bi bi-box-arrow-in-right"></i></div>
                     <h2 class="bm-login-form-title" id="bm-login-title">Log In</h2>
+                    <p class="bm-auth-subtitle">Welcome back — sign in to your BalticM account and continue playing together.</p>
                     <form class="bm-login-form" method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="bm-login-field">
@@ -157,7 +161,9 @@
                     <p class="bm-login-note">SECURE COMMUNITY LOGIN · Your account keeps your profile, community activity and game services connected.</p>
                 </div>
                 <div class="bm-login-view is-hidden" id="bm-register-view">
+                    <div class="bm-auth-icon"><i class="bi bi-person-plus"></i></div>
                     <h2 class="bm-login-form-title">Register</h2>
+                    <p class="bm-auth-subtitle">Create your BalticM account and join the community. It only takes a moment.</p>
                     <form class="bm-register-form" method="POST" action="{{ route('register') }}">
                         @csrf
                         <div class="bm-register-field">
