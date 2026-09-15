@@ -25,7 +25,8 @@
     .bm-reset-benefit i{display:block;margin-bottom:8px;color:#fff;font-size:21px}
     .bm-reset-formside{display:flex;flex-direction:column;height:100%;padding:55px 58px 42px;overflow:hidden;background:linear-gradient(135deg,#080d14,#05080d)}
     .bm-reset-formwrap{box-sizing:border-box;width:100%;max-width:540px;max-height:100%;min-height:0;margin:auto;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable}
-    .bm-reset-icon{width:58px;height:58px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;border:1px solid rgba(255,154,61,.3);border-radius:14px;background:rgba(255,122,24,.07);color:#ff9a3d;font-size:24px}
+    .bm-reset-icon{position:relative;width:54px;height:54px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;border:0;border-radius:50%;background:radial-gradient(circle at 32% 25%,rgba(255,181,99,.18),rgba(198,88,14,.065) 56%,rgba(18,9,4,.1) 100%);box-shadow:inset 0 0 0 1px rgba(255,154,61,.65),inset 0 0 18px rgba(255,122,24,.07),0 0 0 5px rgba(255,122,24,.025),0 12px 28px rgba(0,0,0,.22);color:#ffad5a;font-size:23px}
+    .bm-reset-icon:after{content:'';position:absolute;top:5px;right:8px;width:5px;height:5px;border-radius:50%;background:#b9f3ff;box-shadow:0 0 10px rgba(185,243,255,.7)}
     .bm-reset-form-eyebrow{margin:0 0 8px;color:#ff9a3d;font-size:10px;font-weight:900;letter-spacing:.25em;text-align:center}
     .bm-reset-title{margin:0 0 10px;text-align:center;color:#fff;font-size:38px;line-height:1.05;font-weight:500;letter-spacing:-.035em}
     .bm-reset-subtitle{max-width:460px;margin:0 auto 28px;color:rgba(255,255,255,.55);font-size:13px;line-height:1.6;text-align:center}

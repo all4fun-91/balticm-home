@@ -43,7 +43,8 @@
         .bm-login-view{box-sizing:border-box;width:100%;height:100%;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;display:flex;flex-direction:column;justify-content:safe center}
         .bm-login-view.is-hidden{display:none}
         .bm-login-form-title{margin:0 0 7px;text-align:center;color:#fff;font-size:34px;line-height:1.08;font-weight:500;letter-spacing:-.035em}
-        .bm-auth-icon{width:62px;height:62px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(85,220,255,.42);border-radius:16px;background:rgba(40,190,230,.045);box-shadow:0 0 26px rgba(40,190,230,.08),inset 0 0 20px rgba(40,190,230,.035);color:#aeefff;font-size:28px}
+        .bm-auth-icon,.bm-forgot-icon{position:relative;width:54px;height:54px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;border:0;border-radius:50%;background:radial-gradient(circle at 32% 25%,rgba(135,235,255,.18),rgba(29,132,163,.06) 56%,rgba(5,12,20,.1) 100%);box-shadow:inset 0 0 0 1px rgba(103,223,255,.68),inset 0 0 18px rgba(78,208,245,.08),0 0 0 5px rgba(91,215,250,.028),0 12px 28px rgba(0,0,0,.22);color:#b9f3ff;font-size:24px}
+        .bm-auth-icon:after,.bm-forgot-icon:after{content:'';position:absolute;top:5px;right:8px;width:5px;height:5px;border-radius:50%;background:#ff9a3d;box-shadow:0 0 10px rgba(255,154,61,.7)}
         .bm-auth-subtitle{max-width:520px;margin:0 auto 18px;color:rgba(255,255,255,.62);font-size:13px;line-height:1.45;text-align:center}
         .bm-login-form{width:100%;max-width:540px;margin:0 auto}
         .bm-login-field{position:relative;margin-bottom:10px}
@@ -84,7 +85,6 @@
         .bm-register-back a{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:34px;padding:6px 12px;border:1px solid rgba(150,220,245,.16);border-radius:9px;background:linear-gradient(180deg,rgba(150,220,245,.07),rgba(255,255,255,.025));box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 6px 18px rgba(0,0,0,.16);color:rgba(225,245,252,.78);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:.01em;transition:.18s ease}
         .bm-register-back a:hover{color:#e8fbff;border-color:rgba(130,220,250,.48);background:linear-gradient(180deg,rgba(120,205,235,.13),rgba(255,255,255,.04));box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 8px 24px rgba(55,150,190,.12);transform:translateY(-1px)}
         .bm-forgot-form{width:100%;max-width:540px;margin:0 auto}
-        .bm-forgot-icon{width:62px;height:62px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(85,220,255,.42);border-radius:16px;background:rgba(40,190,230,.045);box-shadow:0 0 26px rgba(40,190,230,.08),inset 0 0 20px rgba(40,190,230,.035);color:#aeefff;font-size:28px}
         .bm-forgot-title{margin-bottom:10px}
         .bm-forgot-subtitle{max-width:520px;margin:0 auto 18px;color:rgba(255,255,255,.62);font-size:13px;line-height:1.45;text-align:center}
         .bm-forgot-submit{margin-top:7px}
@@ -92,7 +92,7 @@
         .bm-forgot-back{margin-top:0}
         body.bm-modal-open{overflow:hidden}
         @media(max-width:820px){.bm-login-dialog{width:min(100%,620px);height:auto;grid-template-columns:1fr;grid-template-rows:auto;max-height:92vh;overflow:auto}.bm-login-side{min-height:250px;padding:34px 28px 26px}.bm-login-side-copy{margin-top:30px}.bm-login-side h2{font-size:36px}.bm-login-benefits{display:none}.bm-login-formside{height:auto;padding:34px 28px 32px;overflow:visible}.bm-login-view{height:auto;min-height:0;overflow:visible;scrollbar-gutter:auto}.bm-login-form-title{font-size:32px}}
-        @media(max-width:520px){.bm-login-modal{padding:8px}.bm-login-dialog{width:100%;border-radius:18px}.bm-login-side{min-height:220px;padding:27px 21px 24px}.bm-login-brand img{width:48px;height:48px}.bm-login-side h2{font-size:31px}.bm-login-side-lead{font-size:12px}.bm-login-formside{padding:28px 19px 25px}.bm-login-form-title{font-size:29px;margin-bottom:10px}.bm-auth-icon{width:62px;height:62px;margin-bottom:15px;font-size:28px}.bm-auth-subtitle{font-size:12px;margin-bottom:22px}.bm-login-providers{gap:8px}.bm-login-provider{height:54px}.bm-login-provider img{width:24px;height:24px}}
+        @media(max-width:520px){.bm-login-modal{padding:8px}.bm-login-dialog{width:100%;border-radius:18px}.bm-login-side{min-height:220px;padding:27px 21px 24px}.bm-login-brand img{width:48px;height:48px}.bm-login-side h2{font-size:31px}.bm-login-side-lead{font-size:12px}.bm-login-formside{padding:28px 19px 25px}.bm-login-form-title{font-size:29px;margin-bottom:10px}.bm-auth-icon,.bm-forgot-icon{width:52px;height:52px;margin-bottom:12px;font-size:23px}.bm-auth-subtitle{font-size:12px;margin-bottom:22px}.bm-login-providers{gap:8px}.bm-login-provider{height:54px}.bm-login-provider img{width:24px;height:24px}}
     </style>
     @endif
     @stack('styles')
@@ -132,7 +132,7 @@
             </section>
             <section class="bm-login-formside">
                 <div class="bm-login-view" id="bm-login-view">
-                    <div class="bm-auth-icon"><i class="bi bi-box-arrow-in-right"></i></div>
+                    <div class="bm-auth-icon"><i class="bi bi-person-check"></i></div>
                     <div class="bm-login-eyebrow" style="text-align:center;margin-bottom:8px;">WELCOME BACK</div>
                     <h2 class="bm-login-form-title" id="bm-login-title">Log In</h2>
                     <p class="bm-auth-subtitle">Sign in to your BalticM account and continue playing together.</p>
@@ -193,7 +193,7 @@
                     <p class="bm-login-note">SECURE COMMUNITY REGISTRATION · Your account keeps your profile, community activity and game services connected.</p>
                 </div>
                 <div class="bm-login-view is-hidden" id="bm-forgot-view">
-                    <div class="bm-forgot-icon"><i class="bi bi-lock"></i></div>
+                    <div class="bm-forgot-icon"><i class="bi bi-key"></i></div>
                     <div class="bm-login-eyebrow" style="text-align:center;margin-bottom:8px;">ACCOUNT RECOVERY</div>
                     <h2 class="bm-login-form-title bm-forgot-title">Forgot your password?</h2>
                     <p class="bm-forgot-subtitle">No worries — enter your e-mail address and we’ll send you a link to reset your password.</p>
