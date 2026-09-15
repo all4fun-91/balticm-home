@@ -38,8 +38,8 @@
     .bm-reset-submit:before{content:'';position:absolute;left:0;bottom:11px;width:24px;height:1px;background:rgba(7,16,25,.32);transform:rotate(28deg);transform-origin:left center;pointer-events:none}
     .bm-reset-submit:hover{filter:brightness(1.06);transform:translateY(-1px)}
     .bm-reset-back{display:flex;justify-content:center;margin-top:19px}
-    .bm-reset-back a{color:rgba(255,255,255,.7);font-size:12px;text-decoration:none;border-bottom:1px dotted rgba(255,255,255,.35);padding-bottom:2px}
-    .bm-reset-back a:hover{color:#ff9a3d}
+    .bm-reset-back a{display:inline-flex;align-items:center;justify-content:center;min-width:148px;height:40px;padding:0 18px;border:1px solid rgba(255,255,255,.18);border-radius:9px;background:rgba(255,255,255,.045);box-shadow:inset 0 0 18px rgba(255,255,255,.025);color:rgba(255,255,255,.82);font-size:12px;font-weight:700;text-decoration:none;letter-spacing:.01em;transition:all .18s ease}
+    .bm-reset-back a:hover{color:#fff;border-color:rgba(255,154,61,.55);background:rgba(255,122,24,.08);box-shadow:0 0 22px rgba(255,122,24,.08);transform:translateY(-1px)}
     .bm-reset-note{margin:24px 0 0;color:rgba(255,255,255,.38);font-size:9px;line-height:1.55;text-align:center;letter-spacing:.02em}
     @media (max-width:900px){
         .bm-reset-card{grid-template-columns:1fr;max-width:620px}
