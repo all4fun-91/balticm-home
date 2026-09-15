@@ -1,26 +1,27 @@
 <style>
 @media (min-width: 901px) {
     .bm-nav {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+        display: grid !important;
+        grid-template-columns: 1fr auto 1fr !important;
         align-items: center;
+    }
+
+    .bm-brand {
+        grid-column: 1;
+        justify-self: start;
     }
 
     .bm-collapse {
         display: contents !important;
-        margin-left: 0;
-        flex: none;
+        margin-left: 0 !important;
     }
 
     .bm-navlinks {
+        position: static !important;
         grid-column: 2;
-        display: flex;
-        align-items: center;
         justify-self: center;
-        gap: 30px;
+        transform: none !important;
         white-space: nowrap;
-        position: static;
-        transform: none;
     }
 
     .bm-nav-right {
