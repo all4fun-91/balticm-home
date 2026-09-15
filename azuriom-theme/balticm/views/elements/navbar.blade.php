@@ -1,3 +1,18 @@
+<style>
+@media (min-width: 901px) {
+    .bm-nav {
+        position: relative;
+    }
+
+    .bm-navlinks {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+    }
+}
+</style>
+
 <nav class="bm-top">
     <div class="bm-wrap bm-nav">
         <a class="bm-brand" href="{{ route('home') }}">
