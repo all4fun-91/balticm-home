@@ -2,8 +2,9 @@
 @media (min-width: 901px) {
     .bm-nav {
         display: grid !important;
-        grid-template-columns: 1fr auto 1fr !important;
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) !important;
         align-items: center;
+        justify-content: normal;
     }
 
     .bm-brand {
@@ -17,10 +18,10 @@
     }
 
     .bm-navlinks {
-        position: static !important;
         grid-column: 2;
-        justify-self: center;
+        position: static !important;
         transform: none !important;
+        justify-self: center;
         white-space: nowrap;
     }
 
